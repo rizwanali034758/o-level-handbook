@@ -379,6 +379,25 @@ footer b{color:var(--ink)}
 }
 .top.show{display:grid}
 
+/* ── syllabus explorer ─────────────────────────── */
+.topic{background:#fff;border:1px solid var(--rule);border-radius:3px;margin-bottom:.6rem;overflow:hidden}
+.topic summary{
+  list-style:none;cursor:pointer;padding:.85rem 1rem;display:flex;align-items:center;gap:.7rem;
+  font-family:var(--display);font-weight:700;font-size:1rem;
+}
+.topic summary::-webkit-details-marker{display:none}
+.topic summary::before{content:"+";font-family:var(--mono);color:var(--mark);font-weight:600;width:1rem;flex:0 0 auto}
+.topic[open] summary::before{content:"–"}
+.topic .tcount{margin-left:auto;font-family:var(--mono);font-size:.7rem;color:var(--ink-soft);font-weight:400}
+.topic-body{padding:0 1rem 1rem}
+.topic .subrow{display:flex;align-items:flex-start;gap:.6rem;padding:.35rem 0;font-size:.92rem;border-top:1px solid var(--paper-2)}
+.topic .subrow:first-child{border-top:0}
+.topic .subrow label{cursor:pointer}
+.topic .tip{
+  margin-top:.7rem;padding:.6rem .8rem;background:var(--paper-2);border-left:3px solid var(--amber);
+  font-size:.85rem;color:var(--ink-soft);
+}
+
 /* reveal */
 .rv{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
 .rv.in{opacity:1;transform:none}
@@ -416,11 +435,11 @@ footer b{color:var(--ink)}
       </div>
 
       <div class="cta-row">
-        <a class="chip" href="#books">Books &amp; free resources
+        <a class="chip" href="#explorer">Explore the syllabus
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
         </a>
+        <a class="chip ghost" href="#books">Books &amp; free resources</a>
         <a class="chip ghost" href="#papers-hub">Past papers hub</a>
-        <a class="chip ghost" href="#E">Build a syllabus tracker</a>
       </div>
       <div class="stamp">Do not open until ready</div>
     </div>
@@ -726,6 +745,20 @@ footer b{color:var(--ink)}
     <p>Pick yours. Each one names the loop that actually works for it.</p>
     <div class="tabs" role="tablist" id="tabs"></div>
     <div id="panels"></div>
+  </div>
+</section>
+
+<!-- ══ SYLLABUS EXPLORER ══ -->
+<div class="part rv" id="explorer"><h2>Syllabus Explorer — real topics, checked off as you go</h2><span>Pulled from the official syllabus PDFs</span></div>
+<section class="card rv" style="grid-template-columns:1fr;border-bottom:0">
+  <div class="card-body" style="max-width:none">
+    <p style="max-width:var(--col)">Every topic and sub-topic below is copied from Cambridge's own current syllabus content list — not a summary, the actual structure examiners set papers against. Tick sub-topics as you finish them; your progress saves in this browser. Each main topic has one honest tip about where marks are actually won or lost.</p>
+    <div class="note calm" style="max-width:var(--col)">
+      <span class="lbl">Status</span>
+      Physics (5054) and Chemistry (5070) are fully mapped. Biology, Mathematics, English, Pakistan Studies, Islamiyat, Computer Science, Urdu and Additional Mathematics are next — this section grows with each update.
+    </div>
+    <div class="tabs" role="tablist" id="explorerTabs" style="margin-top:1.4rem"></div>
+    <div id="explorerPanels"></div>
   </div>
 </section>
 
@@ -1279,6 +1312,82 @@ subjects.forEach((s,i)=>{
   p.className="panel"; p.id="panel-"+i; p.hidden=i!==0; p.setAttribute("role","tabpanel");
   p.innerHTML='<h4>'+s.n+'</h4><p class="flow">'+s.flow+'</p><p>'+s.p+'</p><ul>'+s.l.map(x=>'<li>'+x+'</li>').join('')+'</ul>';
   panelsEl.appendChild(p);
+});
+
+/* ── syllabus explorer ────────────────────────── */
+const syllabusTopics=[
+ {n:"Physics",code:"5054",topics:[
+   {t:"Motion, forces and energy",subs:["Physical quantities & measurement techniques","Motion — speed, velocity, acceleration, distance/speed-time graphs","Mass and weight","Density","Forces — balanced/unbalanced, friction, elastic deformation, circular motion, turning effect, centre of gravity","Momentum","Energy, work and power","Pressure"],tip:"The biggest single topic on the paper. Graph-reading and F = ma calculations appear on almost every sitting — redo every graph type until you can read acceleration off a speed–time graph without pausing."},
+   {t:"Thermal physics",subs:["Kinetic particle model of matter","Thermal properties and temperature","Transfer of thermal energy — conduction, convection, radiation"],tip:"Learn the particle-level explanation for every phenomenon here — 'explain' questions dominate this topic, not bare definitions."},
+   {t:"Waves",subs:["General properties of waves","Light — reflection, refraction, lenses, dispersion","Electromagnetic spectrum","Sound"],tip:"Draw ray diagrams by hand repeatedly. The EM spectrum uses/hazards table is pure recall — turn it into flashcards."},
+   {t:"Electricity and magnetism",subs:["Simple magnetism and magnetic fields","Electrical quantities — charge, current, e.m.f., p.d., resistance","Electric circuits — series & parallel, components","Practical electricity & safety","Electromagnetic effects — induction, generators, motors, transformers","Uses of an oscilloscope"],tip:"The largest, most calculation-heavy topic. Master series/parallel circuit rules cold before touching electromagnetic induction — everything after depends on it."},
+   {t:"Nuclear physics",subs:["The nuclear model of the atom","Radioactivity — detection, types of emission, decay, fission & fusion, half-life, safety"],tip:"Half-life calculations and decay equations are the most commonly tested numerical skill here — drill both weekly."},
+   {t:"Space physics",subs:["Earth and the Solar System","Stars and the Universe — life cycle of a star, redshift, Big Bang evidence"],tip:"Mostly descriptive recall. The star life-cycle sequence and the redshift explanation for the Big Bang come up almost every session."}
+ ]},
+ {n:"Chemistry",code:"5070",topics:[
+   {t:"Experimental chemistry",subs:["Experimental design","Methods of purification & analysis — distillation, chromatography","Identification of ions and gases"],tip:"Memorise every ion and gas test with its exact observed result — this is examined directly on Paper 3/4 and indirectly everywhere else."},
+   {t:"The particulate nature of matter",subs:["Kinetic particle theory","Atomic structure","Structure and properties of materials","Ionic bonding","Covalent bonding","Metallic bonding"],tip:"Draw every dot-and-cross diagram from memory. Linking structure to physical properties is the reasoning skill examiners test most in this topic."},
+   {t:"Formulae, stoichiometry and the mole concept",subs:["Formulae & equations","Relative atomic/molecular mass","Empirical & molecular formulae","Mole calculations, % yield & % purity"],tip:"The most calculation-dense topic in the syllabus. Practise mole calculations daily until automatic, not just before a test."},
+   {t:"Electrolysis",subs:["Electrolysis of molten & aqueous compounds","Extraction of aluminium","Purification of copper","Electroplating"],tip:"Learn the selective-discharge rules cold — most marks here are lost predicting the wrong electrode product."},
+   {t:"Energy from chemicals",subs:["Exothermic & endothermic reactions","Energy profile diagrams","Fuels — fossil fuels, hydrogen fuel cells, photosynthesis"],tip:"Bond-breaking/bond-making reasoning is tested as an 'explain' question almost every paper — practise writing it as full sentences, not fragments."},
+   {t:"Chemical reactions",subs:["Rate of reaction","Redox","Reversible reactions"],tip:"Collision-theory explanations need both frequency AND energy of collisions to earn full marks — a common half-mark loss."},
+   {t:"Acids, bases and salts",subs:["Characteristic properties of acids & bases","Preparation of salts","Ammonia & the Haber process","Sulfuric acid & the Contact process"],tip:"Match the correct salt-preparation method (precipitation, titration, or excess solid) to each solubility case — a classic multi-mark question."},
+   {t:"The Periodic Table",subs:["Periodic trends","Group properties — Group I, Group VII, noble gases","Transition elements"],tip:"Build one Group I vs Group VII comparison table — it alone answers most questions on this topic."},
+   {t:"Metals",subs:["Properties of metals & alloys","Reactivity series","Extraction of metals","Iron & steel","Aluminium"],tip:"Link extraction method directly to the metal's position in the reactivity series — examiners test this connection constantly."},
+   {t:"Atmosphere and environment",subs:["Composition of air","Pollutants & their sources","Ozone depletion, greenhouse effect, carbon cycle","Water purification"],tip:"Almost entirely recall. Build one pollutant → source → effect → solution table and revise it as a whole."},
+   {t:"Organic chemistry",subs:["Alkanes","Alkenes","Alcohols","Carboxylic acids","Polymers — addition & condensation"],tip:"Draw structural formulae for every homologous series from memory. Naming and isomer questions are easy marks once this is drilled."}
+ ]}
+];
+const exTabsEl=document.getElementById("explorerTabs"), exPanelsEl=document.getElementById("explorerPanels");
+syllabusTopics.forEach((subj,si)=>{
+  const b=document.createElement("button");
+  b.className="tab"; b.textContent=subj.n+" ("+subj.code+")"; b.setAttribute("role","tab");
+  b.setAttribute("aria-selected",si===0?"true":"false");
+  b.onclick=()=>{
+    exTabsEl.querySelectorAll(".tab").forEach(t=>t.setAttribute("aria-selected","false"));
+    b.setAttribute("aria-selected","true");
+    exPanelsEl.querySelectorAll(".panel").forEach(p=>p.hidden=true);
+    document.getElementById("expanel-"+si).hidden=false;
+  };
+  exTabsEl.appendChild(b);
+
+  const panel=document.createElement("div");
+  panel.className="panel"; panel.id="expanel-"+si; panel.hidden=si!==0; panel.style.background="transparent"; panel.style.border="0"; panel.style.padding="0";
+  exPanelsEl.appendChild(panel);
+
+  const storeKey="explorer:progress:"+subj.code;
+  (async()=>{
+    let progress={};
+    try{ const r=await store.get(storeKey); progress=r?JSON.parse(r.value):{}; }catch(e){ progress={}; }
+
+    subj.topics.forEach((topic,ti)=>{
+      const det=document.createElement("details");
+      det.className="topic"; if(ti===0) det.open=true;
+      const doneCount=topic.subs.filter((_,sj)=>progress[ti+"-"+sj]).length;
+      det.innerHTML=
+        '<summary>'+topic.t+'<span class="tcount" data-count="'+ti+'">'+doneCount+' / '+topic.subs.length+'</span></summary>'+
+        '<div class="topic-body">'+
+          topic.subs.map((s,sj)=>{
+            const id="ex-"+subj.code+"-"+ti+"-"+sj;
+            const checked=progress[ti+"-"+sj]?"checked":"";
+            return '<div class="subrow"><input type="checkbox" class="box" id="'+id+'" data-t="'+ti+'" data-s="'+sj+'" '+checked+'><label for="'+id+'">'+s+'</label></div>';
+          }).join('')+
+          '<div class="tip"><strong>Where marks go:</strong> '+topic.tip+'</div>'+
+        '</div>';
+      panel.appendChild(det);
+    });
+
+    panel.querySelectorAll('input[type=checkbox]').forEach(cb=>{
+      cb.addEventListener("change",async()=>{
+        const ti=cb.dataset.t, sj=cb.dataset.s;
+        progress[ti+"-"+sj]=cb.checked;
+        const topic=subj.topics[ti];
+        const doneCount=topic.subs.filter((_,j)=>progress[ti+"-"+j]).length;
+        panel.querySelector('[data-count="'+ti+'"]').textContent=doneCount+" / "+topic.subs.length;
+        try{ await store.set(storeKey, JSON.stringify(progress)); }catch(e){}
+      });
+    });
+  })();
 });
 
 /* ── books & resources by subject ────────────── */
