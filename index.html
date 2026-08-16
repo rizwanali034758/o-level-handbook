@@ -1,0 +1,1401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The O Level Handbook — A to Z</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#131F33;
+  --ink-soft:#465975;
+  --paper:#F0F1EB;
+  --paper-2:#E7E9E1;
+  --rule:#D5D8CC;
+  --mark:#B23A2B;
+  --tick:#1E7A5A;
+  --amber:#E5B23C;
+  --deep:#0D1726;
+  --shadow:rgba(19,31,51,.10);
+
+  --display:'Bricolage Grotesque','Helvetica Neue',sans-serif;
+  --body:'Source Serif 4',Georgia,serif;
+  --mono:'IBM Plex Mono',ui-monospace,monospace;
+
+  --wrap:1120px;
+  --col:660px;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{animation-duration:.001ms!important;transition-duration:.001ms!important}
+}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--body);
+  font-size:17px;
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%}
+a{color:var(--ink)}
+
+/* ── ruled paper texture ───────────────────────── */
+.ruled{
+  background-image:linear-gradient(to bottom,transparent calc(2rem - 1px),rgba(19,31,51,.055) calc(2rem - 1px),transparent 2rem);
+  background-size:100% 2rem;
+}
+
+/* ── reading progress ──────────────────────────── */
+#progress{
+  position:fixed;top:0;left:0;height:3px;width:0%;
+  background:var(--mark);z-index:120;transition:width .1s linear;
+}
+
+/* ── top bar + A–Z rail ────────────────────────── */
+header.bar{
+  position:sticky;top:0;z-index:100;
+  background:rgba(240,241,235,.94);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--rule);
+}
+.bar-inner{
+  max-width:var(--wrap);margin:0 auto;
+  display:flex;align-items:center;gap:1rem;
+  padding:.55rem 1.1rem;
+}
+.brand{
+  font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-soft);white-space:nowrap;
+  text-decoration:none;
+}
+.brand b{color:var(--ink)}
+.rail{
+  display:flex;gap:.1rem;overflow-x:auto;scrollbar-width:none;
+  margin-left:auto;padding:2px;
+}
+.rail::-webkit-scrollbar{display:none}
+.rail a{
+  font-family:var(--mono);font-size:.72rem;font-weight:500;
+  width:1.55rem;height:1.55rem;flex:0 0 auto;
+  display:grid;place-items:center;border-radius:3px;
+  color:var(--ink-soft);text-decoration:none;
+  transition:background .15s,color .15s;
+}
+.rail a:hover{background:var(--paper-2);color:var(--ink)}
+.rail a.on{background:var(--ink);color:var(--paper)}
+.rail a:focus-visible,.chip:focus-visible,button:focus-visible,summary:focus-visible,a:focus-visible{
+  outline:2px solid var(--mark);outline-offset:2px;
+}
+@media(max-width:820px){
+  .rail{margin-left:0;width:100%;order:2;padding-bottom:2px}
+  .bar-inner{flex-wrap:wrap;gap:.4rem;padding:.5rem .8rem}
+}
+
+/* ── hero: exam cover sheet ────────────────────── */
+.hero{
+  max-width:var(--wrap);margin:0 auto;padding:2.6rem 1.1rem 1rem;
+}
+.cover{
+  border:1.5px solid var(--ink);
+  background:#fff;
+  box-shadow:8px 8px 0 var(--ink);
+  position:relative;
+  overflow:hidden;
+}
+.cover-top{
+  display:flex;justify-content:space-between;align-items:flex-start;
+  gap:1rem;padding:1.1rem 1.4rem;border-bottom:1.5px solid var(--ink);
+  font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink-soft);
+}
+.cover-body{padding:2.2rem 1.4rem 1.6rem}
+h1{
+  font-family:var(--display);
+  font-weight:800;
+  font-size:clamp(2.4rem,7.6vw,4.6rem);
+  line-height:.95;letter-spacing:-.03em;
+  margin:0 0 1rem;max-width:14ch;
+}
+h1 em{font-style:normal;color:var(--mark)}
+.hero-sub{
+  font-size:1.05rem;max-width:52ch;color:var(--ink-soft);margin:0 0 1.6rem;
+}
+.instructions{
+  border-top:1px dashed var(--rule);padding-top:1.1rem;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:.8rem 1.6rem;
+}
+.instructions li{
+  list-style:none;font-family:var(--mono);font-size:.78rem;line-height:1.5;
+  color:var(--ink-soft);display:flex;gap:.55rem;align-items:flex-start;
+}
+.instructions ul{margin:0;padding:0}
+.instructions svg{flex:0 0 auto;margin-top:.15rem}
+.stamp{
+  position:absolute;right:-1.5rem;bottom:-1.5rem;
+  font-family:var(--mono);font-size:.7rem;letter-spacing:.2em;
+  color:var(--mark);border:2px solid var(--mark);border-radius:4px;
+  padding:.5rem .9rem;transform:rotate(-12deg);opacity:.28;
+  text-transform:uppercase;pointer-events:none;
+}
+.cta-row{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.6rem}
+.chip{
+  font-family:var(--mono);font-size:.75rem;letter-spacing:.04em;
+  text-decoration:none;border:1.5px solid var(--ink);
+  padding:.55rem .95rem;border-radius:2px;background:var(--ink);color:var(--paper);
+  transition:transform .15s,box-shadow .15s;
+  display:inline-flex;align-items:center;gap:.45rem;
+}
+.chip.ghost{background:transparent;color:var(--ink)}
+.chip:hover{transform:translate(-2px,-2px);box-shadow:3px 3px 0 var(--mark)}
+
+/* ── sections ──────────────────────────────────── */
+main{max-width:var(--wrap);margin:0 auto;padding:0 1.1rem}
+.part{
+  margin:4.2rem 0 1.6rem;padding-bottom:.5rem;
+  border-bottom:1.5px solid var(--ink);
+  display:flex;align-items:baseline;justify-content:space-between;gap:1rem;
+}
+.part h2{
+  font-family:var(--display);font-weight:700;letter-spacing:-.02em;
+  font-size:clamp(1.35rem,3.6vw,2rem);margin:0;
+}
+.part span{
+  font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-soft);white-space:nowrap;
+}
+section.card{
+  display:grid;grid-template-columns:5.5rem minmax(0,1fr);
+  gap:0 1.6rem;padding:2.2rem 0;
+  border-bottom:1px solid var(--rule);
+  scroll-margin-top:110px;
+}
+.letter{
+  font-family:var(--display);font-weight:800;font-size:4.2rem;line-height:.8;
+  color:transparent;-webkit-text-stroke:1.5px var(--ink-soft);
+  position:sticky;top:100px;height:min-content;opacity:.55;
+}
+.card-body{min-width:0;max-width:var(--col)}
+.eyebrow{
+  font-family:var(--mono);font-size:.68rem;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--mark);margin:0 0 .5rem;
+}
+.card h3{
+  font-family:var(--display);font-weight:700;letter-spacing:-.02em;
+  font-size:clamp(1.4rem,4vw,1.9rem);line-height:1.12;margin:0 0 .9rem;
+}
+.card p{margin:0 0 1rem}
+.card p:last-child{margin-bottom:0}
+mark{background:linear-gradient(to bottom,transparent 55%,rgba(229,178,60,.55) 55%);color:inherit;padding:0 .1em}
+strong{font-weight:600}
+@media(max-width:760px){
+  section.card{grid-template-columns:1fr;gap:0}
+  .letter{position:static;font-size:2.6rem;opacity:.4;margin-bottom:.5rem}
+}
+
+/* ── reusable blocks ───────────────────────────── */
+.note{
+  border-left:3px solid var(--mark);background:var(--paper-2);
+  padding:.9rem 1.1rem;margin:1.2rem 0;font-size:.95rem;
+}
+.note .lbl{
+  font-family:var(--mono);font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--mark);display:block;margin-bottom:.3rem;
+}
+.note.calm{border-left-color:var(--tick)}
+.note.calm .lbl{color:var(--tick)}
+ul.plain{padding-left:1.15rem;margin:0 0 1rem}
+ul.plain li{margin-bottom:.35rem}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:.9rem;margin:1.2rem 0}
+.tile{
+  background:#fff;border:1px solid var(--rule);padding:1rem 1.1rem;border-radius:3px;
+}
+.tile h4{
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
+  margin:0 0 .45rem;color:var(--ink-soft);display:flex;align-items:center;gap:.5rem;
+}
+.tile p{font-size:.93rem;margin:0}
+.term{
+  display:grid;grid-template-columns:minmax(120px,auto) 1fr;gap:.3rem 1rem;
+  border-top:1px solid var(--rule);padding:.6rem 0;font-size:.95rem;
+}
+.term dt{font-family:var(--mono);font-size:.78rem;color:var(--mark);padding-top:.15rem}
+.term dd{margin:0}
+@media(max-width:520px){.term{grid-template-columns:1fr;gap:.1rem}}
+
+/* ── the loop ──────────────────────────────────── */
+.loop{
+  counter-reset:step;display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:.55rem;margin:1.4rem 0;
+}
+.loop li{
+  list-style:none;background:#fff;border:1px solid var(--rule);
+  padding:.75rem .85rem .8rem;border-radius:3px;font-size:.9rem;line-height:1.4;
+  position:relative;
+}
+.loop li::before{
+  counter-increment:step;content:counter(step,decimal-leading-zero);
+  font-family:var(--mono);font-size:.65rem;color:var(--mark);display:block;margin-bottom:.25rem;
+}
+.loop li:last-child{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.loop li:last-child::before{color:var(--amber)}
+
+/* ── tracker ───────────────────────────────────── */
+.tracker-wrap{overflow-x:auto;margin:1.2rem 0;border:1px solid var(--rule);background:#fff}
+table.tracker{border-collapse:collapse;width:100%;min-width:560px;font-size:.88rem}
+table.tracker th{
+  font-family:var(--mono);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--ink-soft);font-weight:500;padding:.7rem .5rem;border-bottom:1px solid var(--rule);
+  text-align:center;
+}
+table.tracker th:first-child{text-align:left;padding-left:.9rem}
+table.tracker td{padding:.35rem .5rem;border-bottom:1px solid var(--paper-2);text-align:center}
+table.tracker td:first-child{text-align:left;padding-left:.9rem}
+table.tracker input[type=text]{
+  font-family:var(--body);font-size:.92rem;border:0;background:transparent;
+  color:var(--ink);width:100%;padding:.35rem 0;border-bottom:1px dashed transparent;
+}
+table.tracker input[type=text]:focus{outline:none;border-bottom-color:var(--rule)}
+.box{
+  appearance:none;-webkit-appearance:none;width:1.15rem;height:1.15rem;
+  border:1.5px solid var(--ink-soft);border-radius:2px;cursor:pointer;
+  display:inline-grid;place-content:center;background:#fff;transition:.12s;
+}
+.box::before{
+  content:"";width:.62rem;height:.36rem;border-left:2px solid #fff;border-bottom:2px solid #fff;
+  transform:rotate(-45deg) scale(0);transition:transform .12s;
+}
+.box:checked{background:var(--tick);border-color:var(--tick)}
+.box:checked::before{transform:rotate(-45deg) scale(1)}
+.meter{
+  display:flex;align-items:center;gap:.7rem;font-family:var(--mono);font-size:.72rem;color:var(--ink-soft);
+}
+.meter .track{flex:1;height:6px;background:var(--paper-2);border-radius:99px;overflow:hidden}
+.meter .fill{height:100%;width:0%;background:var(--tick);transition:width .3s}
+.btn-mini{
+  font-family:var(--mono);font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;
+  background:transparent;border:1px solid var(--rule);color:var(--ink-soft);
+  padding:.4rem .7rem;border-radius:2px;cursor:pointer;
+}
+.btn-mini:hover{border-color:var(--ink);color:var(--ink)}
+
+/* ── command words ─────────────────────────────── */
+.cmds{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.5rem;margin:1.2rem 0}
+.cmd{
+  background:#fff;border:1px solid var(--rule);border-radius:3px;padding:.75rem .85rem;cursor:default;
+}
+.cmd b{font-family:var(--mono);font-size:.85rem;display:block;color:var(--ink);margin-bottom:.25rem}
+.cmd span{font-size:.86rem;color:var(--ink-soft);line-height:1.4;display:block}
+.cmd:hover{border-color:var(--ink);box-shadow:2px 2px 0 var(--paper-2)}
+
+/* ── subject tabs ──────────────────────────────── */
+.tabs{display:flex;flex-wrap:wrap;gap:.35rem;margin:1.2rem 0 1rem}
+.tab{
+  font-family:var(--mono);font-size:.72rem;padding:.45rem .75rem;border-radius:2px;
+  border:1px solid var(--rule);background:#fff;color:var(--ink-soft);cursor:pointer;
+}
+.tab[aria-selected=true]{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.panel[hidden]{display:none}
+.panel{background:#fff;border:1px solid var(--rule);padding:1.2rem 1.2rem 1.3rem;border-radius:3px}
+.panel h4{font-family:var(--display);font-size:1.2rem;margin:0 0 .2rem;letter-spacing:-.01em}
+.panel .flow{
+  font-family:var(--mono);font-size:.72rem;color:var(--mark);margin:0 0 .8rem;line-height:1.6;
+}
+.panel p{font-size:.95rem;margin:0 0 .7rem}
+.panel ul{padding-left:1.15rem;font-size:.95rem;margin:0}
+.panel li{margin-bottom:.3rem}
+
+/* ── routine timeline ──────────────────────────── */
+.day{border-left:2px solid var(--rule);margin:1.3rem 0 1.3rem .4rem;padding-left:1.2rem}
+.slot{position:relative;padding-bottom:1.15rem}
+.slot::before{
+  content:"";position:absolute;left:calc(-1.2rem - 5px);top:.45rem;
+  width:9px;height:9px;border-radius:99px;background:var(--paper);border:2px solid var(--ink-soft);
+}
+.slot.key::before{background:var(--mark);border-color:var(--mark)}
+.slot .t{font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;color:var(--mark);text-transform:uppercase}
+.slot .n{font-weight:600;display:block;margin:.1rem 0 .1rem}
+.slot .d{font-size:.9rem;color:var(--ink-soft)}
+
+/* ── dark stretch ──────────────────────────────── */
+.dark{
+  background:var(--deep);color:#DFE4EA;margin:4rem calc(50% - 50vw) 0;padding:3.4rem calc(50vw - 50%) 3.6rem;
+  width:100vw;
+}
+.dark-inner{max-width:var(--wrap);margin:0 auto;padding:0 1.1rem}
+.dark h2{font-family:var(--display);font-size:clamp(1.6rem,4.5vw,2.4rem);margin:0 0 .5rem;letter-spacing:-.02em;color:#fff}
+.dark .lead{color:#93A2B4;max-width:56ch;margin:0 0 2rem}
+.countdown{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.7rem}
+.mile{border:1px solid #24344A;border-radius:3px;padding:1rem;background:#111E30}
+.mile .when{font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);display:block;margin-bottom:.45rem}
+.mile ul{margin:0;padding-left:1.05rem;font-size:.9rem;color:#C3CCD8}
+.mile li{margin-bottom:.25rem}
+.mile:last-child{border-color:var(--mark)}
+
+/* ── mistakes checklist ────────────────────────── */
+.avoid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:.15rem 1.4rem;margin:1.2rem 0}
+.avoid label{
+  display:flex;gap:.65rem;align-items:flex-start;padding:.45rem 0;
+  font-size:.94rem;cursor:pointer;border-bottom:1px dotted var(--rule);
+}
+.avoid input:checked + span{text-decoration:line-through;color:var(--ink-soft);opacity:.6}
+.avoid span{line-height:1.45}
+
+/* ── weeks ─────────────────────────────────────── */
+.weeks{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:.7rem;margin:1.3rem 0}
+.week{background:#fff;border:1px solid var(--rule);border-top:3px solid var(--ink);padding:1rem 1.05rem;border-radius:0 0 3px 3px}
+.week .wk{font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mark);display:block;margin-bottom:.35rem}
+.week h4{font-family:var(--display);font-size:1.05rem;margin:0 0 .5rem}
+.week ul{margin:0;padding-left:1.05rem;font-size:.9rem}
+.week li{margin-bottom:.28rem}
+
+/* ── closing ───────────────────────────────────── */
+.ladder{margin:1.4rem 0;padding:0;list-style:none}
+.ladder li{
+  font-family:var(--mono);font-size:.85rem;padding:.5rem 0 .5rem 1.6rem;position:relative;
+  border-bottom:1px solid var(--rule);color:var(--ink-soft);
+}
+.ladder li::before{content:"↳";position:absolute;left:.2rem;color:var(--mark)}
+.ladder li:first-child::before{content:"●";font-size:.6rem;top:.75rem}
+.ladder li:last-child{color:var(--ink);font-weight:600;border-bottom:0}
+
+footer{
+  max-width:var(--wrap);margin:0 auto;padding:2.6rem 1.1rem 3.5rem;
+  font-family:var(--mono);font-size:.72rem;color:var(--ink-soft);line-height:1.7;
+  border-top:1px solid var(--rule);
+}
+footer b{color:var(--ink)}
+.top{
+  position:fixed;right:1rem;bottom:1rem;z-index:90;
+  width:2.6rem;height:2.6rem;border-radius:99px;border:1.5px solid var(--ink);
+  background:var(--paper);color:var(--ink);cursor:pointer;display:none;place-items:center;
+  box-shadow:2px 2px 0 var(--ink);
+}
+.top.show{display:grid}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
+.rv.in{opacity:1;transform:none}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+
+<header class="bar">
+  <div class="bar-inner">
+    <a class="brand" href="#top">O Level <b>Handbook</b></a>
+    <nav class="rail" id="rail" aria-label="Jump to section"></nav>
+  </div>
+</header>
+
+<div class="hero" id="top">
+  <div class="cover">
+    <div class="cover-top">
+      <div>Cambridge O Level · Free Candidate Handbook<br>Built for students preparing anywhere — extra detail for Pakistan</div>
+      <div style="text-align:right">Time allowed: 2–3 years<br>Answer <em style="font-style:normal;color:var(--mark)">all</em> questions</div>
+    </div>
+    <div class="cover-body ruled">
+      <h1>Stop counting hours. Start closing the <em>loop</em>.</h1>
+      <p class="hero-sub">O Levels is not a memory contest. It is a system: read the syllabus, learn a topic, test yourself blind, solve past-paper questions, mark them honestly, fix what broke. This page is that system taken apart — plus real syllabus codes, the actual textbooks examiners expect, and free sites that won't waste your time.</p>
+
+      <div class="instructions">
+        <ul>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#B23A2B" stroke-width="2"><path d="M4 4h12l4 4v12H4z"/><path d="M16 4v4h4"/></svg> The syllabus is the only authority. Not the textbook.</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#B23A2B" stroke-width="2"><path d="M12 3v18M5 10l7-7 7 7"/></svg> Retrieval beats rereading, every single time.</li>
+        </ul>
+        <ul>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#B23A2B" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> Past papers start early, not in the last month.</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#B23A2B" stroke-width="2"><path d="M4 6h16M4 12h10M4 18h13"/></svg> Finished work is the unit of progress, not chair time.</li>
+        </ul>
+      </div>
+
+      <div class="cta-row">
+        <a class="chip" href="#books">Books &amp; free resources
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="chip ghost" href="#papers-hub">Past papers hub</a>
+        <a class="chip ghost" href="#E">Build a syllabus tracker</a>
+      </div>
+      <div class="stamp">Do not open until ready</div>
+    </div>
+  </div>
+</div>
+
+<main>
+
+<!-- ══ PART 1 ══ -->
+<div class="part rv"><h2>Part 1 · Getting your bearings</h2><span>A — D</span></div>
+
+<section class="card rv" id="A">
+  <div class="letter" aria-hidden="true">A</div>
+  <div class="card-body">
+    <p class="eyebrow">A · What this actually is</p>
+    <h3>O Level is a qualification, not a difficulty setting</h3>
+    <p>Cambridge O Level is an internationally recognised secondary qualification. You're assessed at the end of the course through written exams and, in some subjects, oral or practical components. Grades run <strong>A* down to E</strong>. Exam series happen in <strong>June</strong> and <strong>November</strong>, with results normally out in August and January.</p>
+    <p>The real difference from Matric isn't that one is "harder." It's what earns marks:</p>
+    <div class="note">
+      <span class="lbl">The formula</span>
+      Understanding + application + exam technique + accurately written answers.
+    </div>
+    <p>Memorisation still matters in several subjects. But memorising a textbook without learning <em>how Cambridge asks questions</em> is a weak strategy that fails quietly — you'll feel prepared right up until the paper is in front of you.</p>
+  </div>
+</section>
+
+<section class="card rv" id="B">
+  <div class="letter" aria-hidden="true">B</div>
+  <div class="card-body">
+    <p class="eyebrow">B · Vocabulary</p>
+    <h3>Learn these eight words today</h3>
+    <p>You'll hear them constantly. Not knowing them is why the system feels confusing at first.</p>
+    <dl style="margin:1.2rem 0 0">
+      <div class="term"><dt>Syllabus</dt><dd>The official document telling you exactly what Cambridge is allowed to examine.</dd></div>
+      <div class="term"><dt>Syllabus code</dt><dd>The number identifying your subject. Pakistan Studies is 2059, for example.</dd></div>
+      <div class="term"><dt>Component / Paper</dt><dd>One subject often has two or more separate exam papers.</dd></div>
+      <div class="term"><dt>Past paper</dt><dd>A real exam from a previous session.</dd></div>
+      <div class="term"><dt>Mark scheme</dt><dd>Cambridge's marking guidance, showing precisely what earns marks. Abbreviated MS.</dd></div>
+      <div class="term"><dt>Examiner report</dt><dd>Feedback on how candidates performed, common mistakes, what examiners wanted. Abbreviated ER. Almost nobody reads these. Read them.</dd></div>
+      <div class="term"><dt>Specimen paper</dt><dd>A sample paper showing the format, used when a syllabus changes.</dd></div>
+      <div class="term"><dt>Series / session</dt><dd>The exam period — May/June or October/November.</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="card rv" id="C">
+  <div class="letter" aria-hidden="true">C</div>
+  <div class="card-body">
+    <p class="eyebrow">C · Subject choice</p>
+    <h3>Choose subjects for your future, not your friend group</h3>
+    <p>This decision constrains everything downstream — A Level options, university applications, equivalence. Six things should drive it:</p>
+    <div class="grid2">
+      <div class="tile"><h4>01 · Equivalence</h4><p>Pakistani educational and IBCC equivalence requirements that apply to you.</p></div>
+      <div class="tile"><h4>02 · A Level path</h4><p>What you may want to study at A Level, since some subjects assume prior study.</p></div>
+      <div class="tile"><h4>03 · University</h4><p>Your intended degree and its entry requirements.</p></div>
+      <div class="tile"><h4>04 · Your strengths</h4><p>Honest self-assessment, not aspiration.</p></div>
+      <div class="tile"><h4>05 · What's offered</h4><p>Your school's actual available subjects and teaching quality in each.</p></div>
+      <div class="tile"><h4>06 · Your status</h4><p>School candidate or private candidate — this changes logistics.</p></div>
+    </div>
+    <div class="note">
+      <span class="lbl">Check this yourself</span>
+      Requirements change. Verify the latest ones for your intended pathway instead of copying an older sibling's combination from three years ago.
+    </div>
+  </div>
+</section>
+
+<section class="card rv" id="D">
+  <div class="letter" aria-hidden="true">D</div>
+  <div class="card-body">
+    <p class="eyebrow">D · The timeline</p>
+    <h3>What the Pakistani O Level journey usually looks like</h3>
+    <p>Most students here spread O Levels across roughly <strong>2–3 academic years</strong>. Schools introduce material gradually and often split exams across different sessions, so you may sit some subjects a year before others.</p>
+    <p>Subjects that commonly appear in a programme: English, Mathematics, Urdu, Islamiyat, Pakistan Studies, Physics, Chemistry, Biology or Computer Science, plus an elective such as Economics, Business or Accounting.</p>
+    <div class="note calm">
+      <span class="lbl">Important</span>
+      There is no universal subject plan to copy. Your individual combination is the one that matters, and it should follow from section C.
+    </div>
+  </div>
+</section>
+
+<!-- ══ PART 2 ══ -->
+<div class="part rv"><h2>Part 2 · The study system</h2><span>E — J</span></div>
+
+<section class="card rv" id="E">
+  <div class="letter" aria-hidden="true">E</div>
+  <div class="card-body">
+    <p class="eyebrow">E · The master document</p>
+    <h3>Never prepare a subject without its syllabus</h3>
+    <p>This is the single biggest lesson on this page. Your textbook is not the final authority. Your teacher's notes are not the final authority. YouTube is definitely not the final authority.</p>
+    <p><mark>The syllabus is.</mark></p>
+    <p>Cambridge publishes and periodically updates syllabus documents per subject — Pakistan Studies, for instance, has separate documents for 2026, 2027 and 2028–2030. Download the one for <strong>your exam year</strong>. Studying a superseded syllabus means learning content that cannot appear on your paper, and missing content that will.</p>
+
+    <p style="margin-top:1.4rem"><strong>Then break it into a tracker.</strong> One row per topic, one tick per stage. This habit alone saves months of aimless studying, because "have I done Electricity?" becomes a question with an actual answer.</p>
+
+    <div class="tracker-wrap">
+      <table class="tracker" id="tracker">
+        <thead>
+          <tr>
+            <th>Topic</th><th>Learned</th><th>Notes</th><th>Topicals</th><th>Revised</th><th>Paper-ready</th>
+          </tr>
+        </thead>
+        <tbody id="trackerBody"></tbody>
+      </table>
+    </div>
+    <div class="meter">
+      <span id="pct">0%</span>
+      <span class="track"><span class="fill" id="fill"></span></span>
+      <button class="btn-mini" id="addRow">+ Row</button>
+      <button class="btn-mini" id="resetRows">Reset</button>
+    </div>
+    <p style="font-size:.85rem;color:var(--ink-soft);margin-top:.7rem">This one is live — type your own topics in and tick as you go. Rebuild it in a notebook for every subject.</p>
+  </div>
+</section>
+
+<section class="card rv" id="F">
+  <div class="letter" aria-hidden="true">F</div>
+  <div class="card-body">
+    <p class="eyebrow">F · Resources</p>
+    <h3>Six things per subject. No more.</h3>
+    <div class="grid2">
+      <div class="tile"><h4>① Official syllabus</h4><p>For your exact exam year.</p></div>
+      <div class="tile"><h4>② One main textbook</h4><p>One you will actually finish.</p></div>
+      <div class="tile"><h4>③ Class notes</h4><p>Yours or your teacher's.</p></div>
+      <div class="tile"><h4>④ Topical past papers</h4><p>Questions sorted by topic.</p></div>
+      <div class="tile"><h4>⑤ Yearly past papers</h4><p>Full papers, for later.</p></div>
+      <div class="tile"><h4>⑥ Mark schemes + ERs</h4><p>The correction layer. Non-optional.</p></div>
+    </div>
+    <p>Cambridge itself provides past papers, mark schemes, examiner reports and specimen papers through its subject pages.</p>
+    <div class="note">
+      <span class="lbl">The collector's trap</span>
+      Students mistake <em>collecting resources</em> for studying. Downloading a 4 GB folder feels like progress and produces none. One good book you finish beats a shelf you never open.
+    </div>
+  </div>
+</section>
+
+<section class="card rv" id="G">
+  <div class="letter" aria-hidden="true">G</div>
+  <div class="card-body">
+    <p class="eyebrow">G · Three stages</p>
+    <h3>Learn → Practise → Perform</h3>
+    <div class="grid2">
+      <div class="tile"><h4>Stage 1 · Learn</h4><p>Understand the chapter. Read, attend the lesson, ask questions, make concise notes.</p></div>
+      <div class="tile"><h4>Stage 2 · Practise</h4><p>Solve questions about that one topic — topical past papers.</p></div>
+      <div class="tile"><h4>Stage 3 · Perform</h4><p>Once most of the syllabus is covered, full papers under timed conditions.</p></div>
+    </div>
+    <p>The common failure is jumping straight from <strong>textbook → full past paper</strong>. You get demolished, conclude you're bad at the subject, and lose confidence you didn't need to lose. The middle stage exists so that doesn't happen.</p>
+  </div>
+</section>
+
+<section class="card rv" id="H">
+  <div class="letter" aria-hidden="true">H</div>
+  <div class="card-body">
+    <p class="eyebrow">H · Method</p>
+    <h3>How to actually study one chapter</h3>
+    <p>Reading ten pages and announcing "chapter done" is not studying. Here's the sequence, using a Physics chapter as the example:</p>
+    <ol class="loop" style="counter-reset:step">
+      <li>Preview headings, diagrams, formulas and syllabus objectives — 5 to 10 minutes.</li>
+      <li>Learn the concept properly. Slowly.</li>
+      <li>Close the book. Ask: can I explain this without looking?</li>
+      <li>Recall on paper — write it, draw the diagram, reproduce the formula.</li>
+      <li>Check your notes and find what you forgot.</li>
+      <li>Solve topical questions on it.</li>
+      <li>Mark with the mark scheme.</li>
+      <li>Record the errors in your error book.</li>
+    </ol>
+    <p>Step 3 is where most people quit, because it's the uncomfortable one. It's also the one that works.</p>
+  </div>
+</section>
+
+<section class="card rv" id="I">
+  <div class="letter" aria-hidden="true">I</div>
+  <div class="card-body">
+    <p class="eyebrow">I · Active recall</p>
+    <h3>Rereading feels productive. It mostly isn't.</h3>
+    <p>Read → highlight → read again → highlight again. Your eyes are busy, so it feels like work. But exams demand <strong>retrieval</strong>, and rereading never trains retrieval — it trains recognition, which is a different and much weaker thing.</p>
+    <p>After studying anything, close everything and ask:</p>
+    <ul class="plain">
+      <li>What were the five main points?</li>
+      <li>Can I define this term precisely?</li>
+      <li>Can I explain <em>why</em> this happens?</li>
+      <li>Can I draw the diagram from memory?</li>
+      <li>Can I solve a question about it?</li>
+      <li>Could I teach it to someone else?</li>
+    </ul>
+    <div class="note calm">
+      <span class="lbl">The principle</span>
+      The harder your brain works to retrieve something, the more clearly you discover what you actually know — and the stronger the memory becomes.
+    </div>
+  </div>
+</section>
+
+<section class="card rv" id="J">
+  <div class="letter" aria-hidden="true">J</div>
+  <div class="card-body">
+    <p class="eyebrow">J · Spacing</p>
+    <h3>Learn it in September, forget it by May</h3>
+    <p>That's the default outcome unless you deliberately revisit. A simple beginner schedule:</p>
+    <div class="day">
+      <div class="slot key"><span class="t">Day 1</span><span class="n">Learn the topic</span><span class="d">Full study cycle from section H.</span></div>
+      <div class="slot"><span class="t">Day 2</span><span class="n">Quick recall</span><span class="d">Ten minutes, notes closed.</span></div>
+      <div class="slot"><span class="t">~1 week</span><span class="n">Revise again</span><span class="d">Skim notes, then self-test.</span></div>
+      <div class="slot"><span class="t">~2–3 weeks</span><span class="n">Test yourself</span><span class="d">Blank paper, no prompts.</span></div>
+      <div class="slot"><span class="t">~1 month</span><span class="n">Revisit through questions</span><span class="d">Topicals, not rereading.</span></div>
+      <div class="slot key"><span class="t">Ongoing</span><span class="n">Keep meeting it in past papers</span><span class="d">Full papers do your spacing for you.</span></div>
+    </div>
+    <p>The exact intervals don't need to be perfect. Distribution across time is the whole point.</p>
+  </div>
+</section>
+
+<!-- ══ PART 3 ══ -->
+<div class="part rv"><h2>Part 3 · Exam craft</h2><span>K — N</span></div>
+
+<section class="card rv" id="K">
+  <div class="letter" aria-hidden="true">K</div>
+  <div class="card-body">
+    <p class="eyebrow">K · Past papers</p>
+    <h3>These are not dessert. They're the main course.</h3>
+    <p>Past papers are not something you save for the final month. Use them progressively:</p>
+    <div class="grid2">
+      <div class="tile"><h4>Early</h4><p>Topical questions, right after learning each topic.</p></div>
+      <div class="tile"><h4>Middle</h4><p>Harder topical sets and individual paper sections.</p></div>
+      <div class="tile"><h4>Final</h4><p>Complete papers, strictly timed.</p></div>
+    </div>
+    <p>They teach you Cambridge's wording, recurring question styles, time management, answer structure, mark allocation, your weak topics, and the traps that repeat year after year.</p>
+    <div class="note">
+      <span class="lbl">Blunt truth</span>
+      A student who knows the content but has barely practised the exam will still underperform. Content knowledge and exam performance are two separate skills, and only one of them is graded.
+    </div>
+  </div>
+</section>
+
+<section class="card rv" id="L">
+  <div class="letter" aria-hidden="true">L</div>
+  <div class="card-body">
+    <p class="eyebrow">L · Mark schemes</p>
+    <h3>A mark scheme isn't an answer key. It's a rulebook.</h3>
+    <p>Don't just check right or wrong — study <em>how marks are awarded</em>. Suppose you wrote six lines for a 3-mark question and got one mark. The useful question is: why did Cambridge reject the rest?</p>
+    <p>Usually one of these:</p>
+    <div class="grid2">
+      <div class="tile"><h4>Too vague</h4><p>No specific mechanism, term or figure.</p></div>
+      <div class="tile"><h4>Repetition</h4><p>Same idea rephrased three times earns one mark.</p></div>
+      <div class="tile"><h4>Inaccurate</h4><p>Scientifically or factually wrong, even if close.</p></div>
+      <div class="tile"><h4>Missing keyword</h4><p>The mark scheme required a specific term.</p></div>
+      <div class="tile"><h4>Wrong command word</h4><p>You described when asked to explain.</p></div>
+      <div class="tile"><h4>Unsupported</h4><p>A judgement with no evidence behind it.</p></div>
+    </div>
+    <p>Doing this analysis for twenty questions will change how you write more than another month of reading will.</p>
+  </div>
+</section>
+
+<section class="card rv" id="M">
+  <div class="letter" aria-hidden="true">M</div>
+  <div class="card-body">
+    <p class="eyebrow">M · Error book</p>
+    <h3>Your highest-value notebook has one title: MY MISTAKES</h3>
+    <p>For every meaningful error, record five fields:</p>
+    <div class="tile" style="margin:1.1rem 0">
+      <h4><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#B23A2B" stroke-width="2"><path d="M4 20h16M6 16l10-10 2 2-10 10H6z"/></svg> Entry template</h4>
+      <p style="font-family:var(--mono);font-size:.83rem;line-height:1.9">
+        Question / topic:<br>
+        What I wrote:<br>
+        Correct answer or concept:<br>
+        Why I lost the mark:<br>
+        Rule for next time:
+      </p>
+    </div>
+    <p><strong>Worked example — Physics, electricity.</strong> Mistake: confused current with voltage. Correction: current is the rate of flow of charge; potential difference is energy transferred per unit charge. Rule for next time: write the definitions down before attempting any calculation with unfamiliar wording.</p>
+    <p>Before mocks and before the final exams, revise this book instead of your textbook. It's a personalised syllabus of exactly what you get wrong.</p>
+  </div>
+</section>
+
+<section class="card rv" id="N">
+  <div class="letter" aria-hidden="true">N</div>
+  <div class="card-body">
+    <p class="eyebrow">N · Command words</p>
+    <h3>The question tells you which operation to perform</h3>
+    <p>Questions aren't just asking what you know. The first word is an instruction, and ignoring it is one of the cheapest ways to lose marks.</p>
+    <div class="cmds">
+      <div class="cmd"><b>State</b><span>A concise answer. No explanation needed, no marks for extra.</span></div>
+      <div class="cmd"><b>Describe</b><span>Say what happens or what something is like.</span></div>
+      <div class="cmd"><b>Explain</b><span>Give reasoning — the why or the how.</span></div>
+      <div class="cmd"><b>Compare</b><span>Similarities and/or differences, as appropriate.</span></div>
+      <div class="cmd"><b>Calculate</b><span>Mathematical working. Show it, and keep units.</span></div>
+      <div class="cmd"><b>Suggest</b><span>Apply what you know to an unfamiliar situation.</span></div>
+      <div class="cmd"><b>Evaluate / Discuss</b><span>Weigh evidence or sides, then give a reasoned judgement.</span></div>
+      <div class="cmd"><b>Outline</b><span>The main points only, without detail.</span></div>
+    </div>
+    <div class="note">
+      <span class="lbl">Do this now</span>
+      Open your syllabus and find its command-word table. Wording differs slightly between subjects, and your syllabus is the version that counts.
+    </div>
+  </div>
+</section>
+
+<!-- ══ PART 4 ══ -->
+<div class="part rv"><h2>Part 4 · Subject by subject</h2><span>O</span></div>
+
+<section class="card rv" id="O">
+  <div class="letter" aria-hidden="true">O</div>
+  <div class="card-body">
+    <p class="eyebrow">O · Nine subjects, nine methods</p>
+    <h3>The same study method for every subject is a mistake</h3>
+    <p>Pick yours. Each one names the loop that actually works for it.</p>
+    <div class="tabs" role="tablist" id="tabs"></div>
+    <div id="panels"></div>
+  </div>
+</section>
+
+<!-- ══ BOOKS & RESOURCES ══ -->
+<div class="part rv" id="books"><h2>Books, papers &amp; free resources — by subject</h2><span>Cross-checked, real links</span></div>
+<section class="card rv" style="grid-template-columns:1fr;border-bottom:0">
+  <div class="card-body" style="max-width:none">
+    <p style="max-width:var(--col)">Every book below is the one Cambridge examiners actually endorse for that syllabus code — not just "a popular book." Search each subject, or scroll. Each card gives you: the coursebook, where to get free notes, and where to get real past papers.</p>
+    <div class="note calm" style="max-width:var(--col)">
+      <span class="lbl">Honesty about the free sites</span>
+      GCE Guide, PapaCambridge, PastPapers.co, Mega Lecture, Mojza and ZNotes are community-run mirrors, not Cambridge itself — hugely useful, widely used across Pakistan, but not officially affiliated. Cambridge's own past papers live behind the <a href="https://schoolsupporthub.cambridgeinternational.org/" target="_blank" rel="noopener">School Support Hub</a>, which needs a registered school login. If a link below ever breaks, search the site directly for the syllabus code — codes don't change even when URLs do.
+    </div>
+
+    <div class="tabs" role="tablist" id="bookTabs" style="margin-top:1.6rem"></div>
+    <div id="bookPanels"></div>
+  </div>
+</section>
+
+<!-- ══ PAST PAPERS HUB ══ -->
+<div class="part rv" id="papers-hub"><h2>The past-papers &amp; notes hub</h2><span>General repositories — all subjects, all codes</span></div>
+<section class="card rv" style="grid-template-columns:1fr;border-bottom:0">
+  <div class="card-body" style="max-width:none">
+    <div class="grid2">
+      <div class="tile">
+        <h4><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#B23A2B" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="1"/><path d="M3 9h18"/></svg> Cambridge International — official</h4>
+        <p>Syllabus PDFs, specimen papers, grade thresholds, examiner reports. The final authority for every code on this page.<br><a href="https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-upper-secondary/cambridge-o-level/" target="_blank" rel="noopener">cambridgeinternational.org → Cambridge O Level</a></p>
+      </div>
+      <div class="tile">
+        <h4><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#B23A2B" stroke-width="2"><path d="M4 19V5a2 2 0 0 1 2-2h9l5 5v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z"/><path d="M14 3v5h5"/></svg> GCE Guide</h4>
+        <p>One of the most complete free archives of question papers, mark schemes and examiner reports, sorted by syllabus code and session.<br><a href="https://papers.gceguide.cc/o-levels/" target="_blank" rel="noopener">papers.gceguide.cc/o-levels</a></p>
+      </div>
+      <div class="tile">
+        <h4><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#B23A2B" stroke-width="2"><path d="M4 19V5a2 2 0 0 1 2-2h9l5 5v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z"/><path d="M14 3v5h5"/></svg> PapaCambridge</h4>
+        <p>Yearly and topical past papers, plus a coursebook/ebook library and free notes — organised by syllabus code.<br><a href="https://pastpapers.papacambridge.com/papers/caie/o-level" target="_blank" rel="noopener">pastpapers.papacambridge.com</a></p>
+      </div>
+      <div class="tile">
+        <h4><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#B23A2B" stroke-width="2"><path d="M4 19V5a2 2 0 0 1 2-2h9l5 5v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z"/><path d="M14 3v5h5"/></svg> PastPapers.co</h4>
+        <p>A cleaner, faster interface to the same kind of archive — good as a second source when one site is slow or missing a session.<br><a href="https://pastpapers.co/cie/?dir=O-Level" target="_blank" rel="noopener">pastpapers.co/cie</a></p>
+      </div>
+      <div class="tile">
+        <h4><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#B23A2B" stroke-width="2"><path d="M12 4v16M4 12h16"/></svg> ZNotes</h4>
+        <p>Free, condensed, student-written revision notes organised by Cambridge syllabus code — a strong first pass before past papers.<br><a href="https://znotes.org/caie/o-level/" target="_blank" rel="noopener">znotes.org/caie/o-level</a></p>
+      </div>
+      <div class="tile">
+        <h4><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#B23A2B" stroke-width="2"><path d="M12 4v16M4 12h16"/></svg> Mega Lecture</h4>
+        <p>Pakistan-based, free notes, worksheets and topical papers by syllabus code, plus paid tutoring if you want it. No sign-up needed for downloads.<br><a href="https://megalecture.com/resources/" target="_blank" rel="noopener">megalecture.com/resources</a></p>
+      </div>
+      <div class="tile">
+        <h4><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#B23A2B" stroke-width="2"><path d="M12 4v16M4 12h16"/></svg> Mojza</h4>
+        <p>Another free Pakistan-based notes bank covering Maths, Physics, Chemistry, Biology, Computer Science, Islamiyat, Urdu and more.<br><a href="https://mojza.org/olevels/" target="_blank" rel="noopener">mojza.org/olevels</a></p>
+      </div>
+      <div class="tile">
+        <h4><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#B23A2B" stroke-width="2"><path d="M12 4v16M4 12h16"/></svg> Save My Exams &amp; Physics &amp; Maths Tutor</h4>
+        <p>Polished, teacher-written notes and worked past-paper questions. Written primarily for IGCSE, so cross-check against your O Level syllabus for anything Cambridge-specific.<br><a href="https://www.savemyexams.com/" target="_blank" rel="noopener">savemyexams.com</a> · <a href="https://www.physicsandmathstutor.com/" target="_blank" rel="noopener">physicsandmathstutor.com</a></p>
+      </div>
+      <div class="tile">
+        <h4><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#B23A2B" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg> Khan Academy</h4>
+        <p>Not syllabus-specific, but genuinely excellent for building the underlying Maths, Physics, Chemistry and Biology concepts from zero, free, no ads.<br><a href="https://www.khanacademy.org/" target="_blank" rel="noopener">khanacademy.org</a></p>
+      </div>
+      <div class="tile">
+        <h4><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#B23A2B" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h10"/></svg> British Council Pakistan</h4>
+        <p>Private-candidate registration for O Level entries in Pakistan — the official body, not a resource site. Verify every deadline here directly.<br><a href="https://www.britishcouncil.pk/exam/international-schools-igcse-a-levels/private-candidates" target="_blank" rel="noopener">britishcouncil.pk → private candidates</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PART 5 ══ -->
+<div class="part rv"><h2>Part 5 · Time and discipline</h2><span>P — T</span></div>
+
+<section class="card rv" id="P">
+  <div class="letter" aria-hidden="true">P</div>
+  <div class="card-body">
+    <p class="eyebrow">P · Hours</p>
+    <h3>"I'll study 10 hours a day" lasts about three days</h3>
+    <p>If you're at school, a realistic starting point is around <strong>2–3 focused hours</strong> outside school on a normal weekday, adjusted for your workload, your level and how close the exams are. Weekends can hold more.</p>
+    <p>But measure <em>focused work</em>, not chair time. Three serious hours beat six distracted ones, and the six-hour version is what burns people out while producing nothing.</p>
+    <div class="note calm">
+      <span class="lbl">Better metric</span>
+      Not "how long did I study?" but "what did I finish, and can I prove it with marked questions?"
+    </div>
+  </div>
+</section>
+
+<section class="card rv" id="Q">
+  <div class="letter" aria-hidden="true">Q</div>
+  <div class="card-body">
+    <p class="eyebrow">Q · Daily routine</p>
+    <h3>A model school-day evening</h3>
+    <div class="day">
+      <div class="slot"><span class="t">First</span><span class="n">Rest and reset</span><span class="d">Eat, decompress. Don't start studying at the door.</span></div>
+      <div class="slot key"><span class="t">50 min</span><span class="n">Block 1 — hardest subject</span><span class="d">Maths, typically. Your best focus goes to your worst subject.</span></div>
+      <div class="slot"><span class="t">10 min</span><span class="n">Break</span><span class="d">Walk, water, stretch. Not a screen.</span></div>
+      <div class="slot key"><span class="t">50 min</span><span class="n">Block 2 — content subject</span><span class="d">Pakistan Studies, Biology, Islamiyat.</span></div>
+      <div class="slot"><span class="t">10 min</span><span class="n">Break</span><span class="d">Same rules.</span></div>
+      <div class="slot key"><span class="t">50 min</span><span class="n">Block 3 — questions</span><span class="d">Topical past-paper practice and marking.</span></div>
+      <div class="slot"><span class="t">15–20 min</span><span class="n">Close out</span><span class="d">Flashcards, formulas, vocabulary or the error book.</span></div>
+    </div>
+    <p>Don't copy the exact times. Copy the structure: hardest first, questions daily, marking included, a defined end.</p>
+  </div>
+</section>
+
+<section class="card rv" id="R">
+  <div class="letter" aria-hidden="true">R</div>
+  <div class="card-body">
+    <p class="eyebrow">R · Weekly planning</p>
+    <h3>Every weekend, write next week's targets</h3>
+    <p>Specific ones. A target you can't mark as done isn't a target.</p>
+    <div class="grid2">
+      <div class="tile"><h4>Maths</h4><p>Algebra chapter + 40 questions marked.</p></div>
+      <div class="tile"><h4>Physics</h4><p>Electricity + its topical set.</p></div>
+      <div class="tile"><h4>Chemistry</h4><p>Stoichiometry revision + 30 mole calculations.</p></div>
+      <div class="tile"><h4>English</h4><p>2 writing tasks + 1 comprehension, both marked.</p></div>
+      <div class="tile"><h4>Pakistan Studies</h4><p>One history topic + past questions on it.</p></div>
+      <div class="tile"><h4>Islamiyat</h4><p>One major topic + past questions on it.</p></div>
+    </div>
+    <p><strong>Bad target:</strong> "Study Chemistry." <strong>Better target:</strong> "Finish mole calculations and solve 30 topical questions."</p>
+  </div>
+</section>
+
+<section class="card rv" id="S">
+  <div class="letter" aria-hidden="true">S</div>
+  <div class="card-body">
+    <p class="eyebrow">S · Distraction</p>
+    <h3>Your phone can quietly undo excellent preparation</h3>
+    <p>During a 50-minute block: phone out of the room, unnecessary notifications off, WhatsApp closed, no alternating between Shorts and simultaneous equations. Use the internet only when it serves the lesson in front of you.</p>
+    <div class="note">
+      <span class="lbl">Reframe</span>
+      You don't need superhuman discipline. You need an environment where distraction is <em>inconvenient</em>. Willpower is unreliable; friction is not.
+    </div>
+  </div>
+</section>
+
+<section class="card rv" id="T">
+  <div class="letter" aria-hidden="true">T</div>
+  <div class="card-body">
+    <p class="eyebrow">T · Notes</p>
+    <h3>Don't spend your life making beautiful notes</h3>
+    <p>Pretty notes are optional. Useful notes are essential. Good revision notes are <strong>short, organised and retrievable</strong> — headings, bullets, diagrams, formulas, tables, timelines, definitions, and a running list of your common mistakes.</p>
+    <p>Avoid rewriting the textbook. Over time your notes should become a <em>compressed version of the syllabus</em>, small enough to review in one sitting before an exam.</p>
+    <div class="note">
+      <span class="lbl">Test</span>
+      If your notes are as long as the book, they aren't notes. They're a transcript.
+    </div>
+  </div>
+</section>
+
+<!-- ══ PART 6 ══ -->
+<div class="part rv"><h2>Part 6 · Teachers, logistics, local reality</h2><span>U — W</span></div>
+
+<section class="card rv" id="U">
+  <div class="letter" aria-hidden="true">U</div>
+  <div class="card-body">
+    <p class="eyebrow">U · Tuition, wherever you are</p>
+    <h3>Choose the teacher, not the building</h3>
+    <p>You do not automatically need tuition for every subject. A strong teacher helps enormously when you can't understand a subject independently, keep losing marks for reasons you can't diagnose, lack discipline, or need your written answers marked by someone who knows the standard.</p>
+    <p>But tuition can't replace personal study, and paying for a subject you could self-teach costs you the hours you needed for the subject you can't.</p>
+    <p>Every Pakistani city, from Karachi to a smaller town like Sheikhupura, has a mix of established school campuses (Beaconhouse, LGS and similar chains) and independent academies. A listing saying "academy" proves nothing about Cambridge teaching quality, in a big city or a small one.</p>
+    <div class="note">
+      <span class="lbl">Ask before you pay</span>
+      <ul class="plain" style="margin:.5rem 0 0">
+        <li>Which O Level subjects do you teach, and which syllabus codes?</li>
+        <li>Who is the teacher, and how many years with Cambridge students?</li>
+        <li>Do students solve both topical and yearly past papers?</li>
+        <li>Are written answers actually marked and returned with corrections?</li>
+        <li>Can I attend a trial class first?</li>
+      </ul>
+    </div>
+    <p>A brilliant teacher in a modest academy beats an impressive campus with weak subject teaching, every time.</p>
+  </div>
+</section>
+
+<section class="card rv" id="V">
+  <div class="letter" aria-hidden="true">V</div>
+  <div class="card-body">
+    <p class="eyebrow">V · Self-study</p>
+    <h3>You don't have to move to Lahore</h3>
+    <p>Living in Sheikhupura doesn't mean commuting daily for a decent education. The combination that works: school or a local teacher + textbook + official syllabus + online explanations + past papers + mark schemes + disciplined self-study.</p>
+    <p>Travel is worth it only when it gives you something you genuinely can't get locally or online. Don't spend three hours travelling for a one-hour lesson unless the benefit clearly justifies the six hours a week you're burning.</p>
+  </div>
+</section>
+
+<section class="card rv" id="W">
+  <div class="letter" aria-hidden="true">W</div>
+  <div class="card-body">
+    <p class="eyebrow">W · Registration</p>
+    <h3>Entries, private candidates and the paperwork</h3>
+    <p>If you attend a Cambridge school, the school normally handles your entries. If you're a <strong>private candidate</strong>, the British Council Pakistan handles registration for international school qualifications through an online process.</p>
+    <p>The general sequence: online registration → subject and entry selection → fee payment → required documents → Statement of Entry and exam arrangements.</p>
+    <p>For identification, British Council states that Pakistani candidates need a valid original NADRA CNIC — or a B-form if under 18 — plus the Statement of Entry on exam day.</p>
+    <div class="note">
+      <span class="lbl">Verify before you rely on this</span>
+      Deadlines shift every series and this page is a study guide, not a live feed. As of mid-August 2026, the standard Cambridge October/November 2026 registration deadline was listed as 6 August 2026, with the late and retake stage running to 3 September 2026 — but <strong>check the British Council Pakistan private candidate page yourself</strong> before making any plan around a date. Missing a deadline costs you a whole series.
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ══ DARK: FINAL 6 MONTHS ══ -->
+<div class="dark" id="X">
+  <div class="dark-inner">
+    <p class="eyebrow" style="color:var(--amber)">X · The endgame</p>
+    <h2>Your final six months</h2>
+    <p class="lead">Preparation stops being about coverage and starts being about performance. Each phase has a different job — and the last month is not the time to start making new notes.</p>
+    <div class="countdown">
+      <div class="mile">
+        <span class="when">6 months out</span>
+        <ul><li>Strong syllabus coverage in place</li><li>Start naming your weak topics</li><li>Increase topical practice</li></ul>
+      </div>
+      <div class="mile">
+        <span class="when">4 months out</span>
+        <ul><li>Close remaining syllabus gaps</li><li>More past-paper exposure</li><li>Begin mixing topics together</li></ul>
+      </div>
+      <div class="mile">
+        <span class="when">3 months out</span>
+        <ul><li>Complete papers more often</li><li>Start timing yourself seriously</li></ul>
+      </div>
+      <div class="mile">
+        <span class="when">2 months out</span>
+        <ul><li>Past papers dominate the week</li><li>Analyse mistakes aggressively</li><li>Return to weak areas with questions</li></ul>
+      </div>
+      <div class="mile">
+        <span class="when">Final month</span>
+        <ul><li>Timed papers, error notebook</li><li>Formulas, definitions, hard topics</li><li>Exam technique only</li><li>No new decorative notes</li></ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main>
+
+<section class="card rv" id="Y">
+  <div class="letter" aria-hidden="true">Y</div>
+  <div class="card-body">
+    <p class="eyebrow">Y · Mocks</p>
+    <h3>A mock grade is data, not a prophecy</h3>
+    <p>Take mocks seriously, but don't treat a disappointing grade as a verdict. Use them diagnostically. After each paper, sort every lost mark into one of five buckets:</p>
+    <div class="grid2">
+      <div class="tile"><h4>Knowledge gap</h4><p>I never knew the concept. → Go back and learn it.</p></div>
+      <div class="tile"><h4>Memory gap</h4><p>I learned it, couldn't recall it. → Spaced revision.</p></div>
+      <div class="tile"><h4>Technique gap</h4><p>I knew it, answered it wrong. → Mark schemes and command words.</p></div>
+      <div class="tile"><h4>Timing gap</h4><p>I couldn't finish. → Timed practice, per-question budgets.</p></div>
+      <div class="tile"><h4>Careless error</h4><p>Sign, unit, misread question. → Checking routine.</p></div>
+    </div>
+    <p>"I got a B" tells you nothing actionable. "I lost 14 marks to technique and 6 to timing" tells you exactly what next week looks like.</p>
+  </div>
+</section>
+
+<section class="card rv" id="Z">
+  <div class="letter" aria-hidden="true">Z</div>
+  <div class="card-body">
+    <p class="eyebrow">Z · Exam day</p>
+    <h3>Confirm the boring things, then run the paper properly</h3>
+    <p><strong>Before you leave:</strong> exam date, reporting time, venue, which paper or component, required ID, Statement of Entry, permitted stationery and equipment. British Council advises bringing your ID and Statement of Entry to the exam. Leave enough margin for the traffic you didn't plan for.</p>
+    <p><strong>During the paper:</strong></p>
+    <ul class="plain">
+      <li>Read the instructions. Check how many questions you must answer.</li>
+      <li>Watch the marks — don't spend 15 minutes perfecting a 2-mark answer.</li>
+      <li>If you're stuck, move on and come back, where the paper allows it.</li>
+      <li>Leave time to check calculations, units, skipped questions and turned pages.</li>
+    </ul>
+    <div class="note calm">
+      <span class="lbl">Remember</span>
+      The paper is not testing whether you're clever. It's testing whether you can produce the specific evidence the mark scheme is looking for, inside the time given.
+    </div>
+  </div>
+</section>
+
+<!-- ══ THE LOOP ══ -->
+<div class="part rv" id="loop"><h2>The loop, in twelve steps</h2><span>Core cycle</span></div>
+<section class="card rv" style="grid-template-columns:1fr;border-bottom:0">
+  <div class="card-body" style="max-width:none">
+    <p style="max-width:var(--col)">If you forget everything else on this page, keep this. It's the entire system compressed — and steps 6, 7 and 11 are the ones people skip, which is exactly why they plateau.</p>
+    <ol class="loop">
+      <li>Download the correct syllabus</li>
+      <li>Break it into topics</li>
+      <li>Learn one topic properly</li>
+      <li>Test yourself without notes</li>
+      <li>Solve topical past-paper questions</li>
+      <li>Mark them carefully</li>
+      <li>Record every mistake</li>
+      <li>Revise the topic later</li>
+      <li>Finish the syllabus</li>
+      <li>Solve complete timed papers</li>
+      <li>Analyse every weakness</li>
+      <li>Repeat until exam day</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ══ FIRST 30 DAYS ══ -->
+<div class="part rv" id="days"><h2>Your first 30 days</h2><span>Start here tonight</span></div>
+<section class="card rv" style="grid-template-columns:1fr;border-bottom:0">
+  <div class="card-body" style="max-width:none">
+    <p style="max-width:var(--col)">Don't try to organise your entire O Level career tonight. Organise the next four weeks.</p>
+    <div class="weeks">
+      <div class="week">
+        <span class="wk">Week 1</span><h4>Set up</h4>
+        <ul>
+          <li>Find the syllabus code and exam year for every subject</li>
+          <li>Download each official syllabus</li>
+          <li>Get your main textbooks</li>
+          <li>Build folders: Subject → Syllabus → Notes → Topicals → Papers → Mark schemes → Mistakes</li>
+          <li>Name your strongest and weakest subject honestly</li>
+        </ul>
+      </div>
+      <div class="week">
+        <span class="wk">Week 2</span><h4>Build the routine</h4>
+        <ul>
+          <li>Start a fixed daily schedule</li>
+          <li>2–3 serious blocks on school days</li>
+          <li>Learn active recall properly</li>
+          <li>Open your error notebook</li>
+        </ul>
+      </div>
+      <div class="week">
+        <span class="wk">Week 3</span><h4>Bring in past papers</h4>
+        <ul>
+          <li>After each finished topic, solve its topical questions</li>
+          <li>Learn to read mark schemes</li>
+          <li>Start noticing Cambridge's recurring wording</li>
+        </ul>
+      </div>
+      <div class="week">
+        <span class="wk">Week 4</span><h4>Review honestly</h4>
+        <ul>
+          <li>Ask what you <em>finished</em> — not how long you sat</li>
+          <li>Check your syllabus tracker</li>
+          <li>Adjust next month's targets to what's actually realistic</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ MISTAKES ══ -->
+<div class="part rv" id="avoid"><h2>Mistakes to avoid</h2><span>Tick what you've already fixed</span></div>
+<section class="card rv" style="grid-template-columns:1fr;border-bottom:0">
+  <div class="card-body" style="max-width:none">
+    <div class="avoid" id="avoidList"></div>
+    <p style="font-size:.9rem;color:var(--ink-soft);margin-top:1rem">Most students recognise five or six of these in themselves. That's normal. Fixing two of them properly is worth more than reading another guide.</p>
+  </div>
+</section>
+
+<!-- ══ TOOLKIT ══ -->
+<div class="part rv" id="kit"><h2>Minimum toolkit</h2><span>You don't need an expensive setup</span></div>
+<section class="card rv" style="grid-template-columns:1fr;border-bottom:0">
+  <div class="card-body" style="max-width:none">
+    <div class="grid2">
+      <div class="tile"><h4><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#B23A2B" stroke-width="2"><rect x="2" y="4" width="20" height="13" rx="1"/><path d="M2 20h20"/></svg> Device + internet</h4><p>Any laptop, tablet or shared computer for syllabuses, papers and explanations.</p></div>
+      <div class="tile"><h4><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#B23A2B" stroke-width="2"><path d="M6 9V3h12v6M6 18h12v3H6z"/><rect x="3" y="9" width="18" height="9" rx="1"/></svg> Printer access</h4><p>Useful for past papers. Helpful, not compulsory.</p></div>
+      <div class="tile"><h4><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#B23A2B" stroke-width="2"><path d="M4 3h16v18H4z"/><path d="M8 3v18"/></svg> Paper and folders</h4><p>A4 sheets, notebooks, one folder per subject.</p></div>
+      <div class="tile"><h4><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#B23A2B" stroke-width="2"><path d="M3 17L14 6l4 4L7 21H3z"/><path d="M14 6l3-3 4 4-3 3"/></svg> Basic equipment</h4><p>Pens, pencils, ruler, and subject-specific instruments.</p></div>
+      <div class="tile"><h4><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#B23A2B" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M8 6h8M8 11h3M8 15h3"/></svg> Approved calculator</h4><p>Check it's permitted for your specific papers.</p></div>
+      <div class="tile"><h4><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#B23A2B" stroke-width="2"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l3 2M9 2h6"/></svg> A timer</h4><p>Blocks and timed papers both depend on it.</p></div>
+    </div>
+    <div class="note calm" style="max-width:var(--col)">
+      <span class="lbl">And the one that matters most</span>
+      A repeatable study routine. Everything above is replaceable. That isn't.
+    </div>
+  </div>
+</section>
+
+<!-- ══ CLOSING ══ -->
+<div class="part rv"><h2>A simple rule for A* preparation</h2><span>Final word</span></div>
+<section class="card rv" style="grid-template-columns:1fr;border-bottom:0">
+  <div class="card-body">
+    <p>Stop asking <em>"how many hours does an A* student study?"</em> Ask instead:</p>
+    <h3 style="margin:.8rem 0 1rem"><mark>What can an A* student do that I can't do yet?</mark></h3>
+    <p>Maybe they solve simultaneous equations faster. Maybe they can explain electromagnetic induction accurately. Maybe they build a better Pakistan Studies argument. Maybe they simply make fewer careless mistakes.</p>
+    <p>All of those are trainable skills. Turn every weakness into a task with a deadline, and the mystery disappears.</p>
+    <p>Your first objective isn't an A*. It's an <strong>A*-quality process</strong>. A beginner who studies two focused hours consistently, checks the syllabus, solves questions and learns from mistakes will overtake someone who panic-studies eight hours occasionally — reliably, and usually within a term.</p>
+    <p>The progression looks like this:</p>
+    <ul class="ladder">
+      <li>Confused beginner</li>
+      <li>I understand my subjects</li>
+      <li>I can learn chapters independently</li>
+      <li>I can answer topical questions</li>
+      <li>I understand mark schemes</li>
+      <li>I can complete full papers</li>
+      <li>I can identify my own weaknesses</li>
+      <li>I can fix those weaknesses</li>
+      <li>I am ready for the examination</li>
+    </ul>
+    <p>Being in Sheikhupura changes none of the fundamentals. Cambridge marks your paper against the same standard as everyone else's. Build around the official syllabus, good teaching where you need it, active recall, past-paper practice, correction and consistency.</p>
+    <p>Do that long enough and O Levels stops looking like a confusing foreign system, and starts looking like a list of manageable tasks.</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p><b>The O Level Handbook</b> — A to Z, plus a cross-checked books, papers and free-resources hub.</p>
+  <p>Syllabus documents, endorsed coursebooks, grade thresholds and specimen papers are sourced from <a href="https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-upper-secondary/cambridge-o-level/" target="_blank" rel="noopener">cambridgeinternational.org</a>. Past-paper and notes links point to GCE Guide, PapaCambridge, PastPapers.co, ZNotes, Mega Lecture, Mojza and Majid Tahir's site — independent, community-run resources widely used across Pakistan, not affiliated with Cambridge. Private-candidate registration runs through <a href="https://www.britishcouncil.pk/exam/international-schools-igcse-a-levels/private-candidates" target="_blank" rel="noopener">British Council Pakistan</a>.</p>
+  <p style="color:var(--mark)">Dates, deadlines, editions and syllabus versions change every series, and any third-party link can move or go down. Verify anything time-sensitive — deadlines, current coursebook editions, syllabus year — on the official Cambridge and British Council pages before you act on it.</p>
+  <p>Built as a single HTML file — free to host on GitHub Pages, Netlify or Cloudflare Pages, or copy the content anywhere you like.</p>
+</footer>
+
+<button class="top" id="toTop" aria-label="Back to top">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 19V6M6 12l6-6 6 6"/></svg>
+</button>
+
+<script>
+/* ── storage with in-memory fallback ─────────── */
+const mem = {};
+const store = {
+  async get(k){
+    try{ const r = await window.storage.get(k); return r ? r.value : (mem[k] ?? null); }
+    catch(e){ return mem[k] ?? null; }
+  },
+  async set(k,v){
+    mem[k]=v;
+    try{ await window.storage.set(k,v); }catch(e){}
+  }
+};
+
+/* ── A–Z rail ────────────────────────────────── */
+const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+const rail = document.getElementById("rail");
+letters.forEach(L=>{
+  if(!document.getElementById(L)) return;
+  const a=document.createElement("a");
+  a.href="#"+L; a.textContent=L; a.dataset.for=L;
+  a.setAttribute("aria-label","Section "+L);
+  rail.appendChild(a);
+});
+
+const io = new IntersectionObserver(es=>{
+  es.forEach(e=>{
+    if(e.isIntersecting){
+      document.querySelectorAll(".rail a").forEach(a=>a.classList.remove("on"));
+      const cur=rail.querySelector('[data-for="'+e.target.id+'"]');
+      if(cur){
+        cur.classList.add("on");
+        cur.scrollIntoView({block:"nearest",inline:"nearest"});
+      }
+    }
+  });
+},{rootMargin:"-45% 0px -50% 0px"});
+letters.forEach(L=>{ const el=document.getElementById(L); if(el) io.observe(el); });
+
+/* ── reveal on scroll ────────────────────────── */
+const rio = new IntersectionObserver(es=>{
+  es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add("in"); rio.unobserve(e.target);} });
+},{rootMargin:"0px 0px -8% 0px"});
+document.querySelectorAll(".rv").forEach(el=>rio.observe(el));
+
+/* ── progress + back to top ──────────────────── */
+const bar=document.getElementById("progress"), toTop=document.getElementById("toTop");
+addEventListener("scroll",()=>{
+  const h=document.documentElement.scrollHeight-innerHeight;
+  bar.style.width=(scrollY/h*100)+"%";
+  toTop.classList.toggle("show",scrollY>900);
+},{passive:true});
+toTop.onclick=()=>scrollTo({top:0,behavior:"smooth"});
+
+/* ── syllabus tracker ────────────────────────── */
+const STAGES=5;
+const defaults=["Topic 1 — e.g. Electricity","Topic 2","Topic 3","Topic 4"];
+const tbody=document.getElementById("trackerBody");
+let rows=[];
+
+function render(){
+  tbody.innerHTML="";
+  rows.forEach((r,i)=>{
+    const tr=document.createElement("tr");
+    const td=document.createElement("td");
+    const inp=document.createElement("input");
+    inp.type="text"; inp.value=r.name; inp.setAttribute("aria-label","Topic name");
+    inp.oninput=()=>{ rows[i].name=inp.value; save(); };
+    td.appendChild(inp); tr.appendChild(td);
+    for(let s=0;s<STAGES;s++){
+      const c=document.createElement("td");
+      const b=document.createElement("input");
+      b.type="checkbox"; b.className="box"; b.checked=!!r.done[s];
+      b.setAttribute("aria-label","Stage "+(s+1)+" for "+r.name);
+      b.onchange=()=>{ rows[i].done[s]=b.checked; save(); meter(); };
+      c.appendChild(b); tr.appendChild(c);
+    }
+    tbody.appendChild(tr);
+  });
+  meter();
+}
+function meter(){
+  const total=rows.length*STAGES;
+  const done=rows.reduce((a,r)=>a+r.done.filter(Boolean).length,0);
+  const p=total?Math.round(done/total*100):0;
+  document.getElementById("pct").textContent=p+"%";
+  document.getElementById("fill").style.width=p+"%";
+}
+function save(){ store.set("olevel:tracker",JSON.stringify(rows)); }
+
+document.getElementById("addRow").onclick=()=>{
+  rows.push({name:"New topic",done:Array(STAGES).fill(false)}); render(); save();
+};
+document.getElementById("resetRows").onclick=()=>{
+  rows=defaults.map(n=>({name:n,done:Array(STAGES).fill(false)})); render(); save();
+};
+(async()=>{
+  const raw=await store.get("olevel:tracker");
+  try{ rows=raw?JSON.parse(raw):null; }catch(e){ rows=null; }
+  if(!Array.isArray(rows)||!rows.length) rows=defaults.map(n=>({name:n,done:Array(STAGES).fill(false)}));
+  render();
+})();
+
+/* ── subject tabs ────────────────────────────── */
+const subjects=[
+  {n:"Maths",flow:"concept → worked examples → questions → hard questions → past papers → error correction",
+   p:"Maths improves through solving, not watching. A video you followed easily is not a question you can answer alone.",
+   l:["Keep a formula and concept sheet, but never memorise a procedure you can't explain.","When stuck, redo the worked example with the book closed.","Volume matters here more than in any other subject."]},
+  {n:"Physics",flow:"concept → formula → units → application → past-paper questions",
+   p:"Understand the relationships between quantities, not just the equations that link them.",
+   l:["Draw every diagram yourself, from memory.","Practise numericals repeatedly — units and rearrangement are where marks vanish.","Definitions must be precise; 'sort of right' earns nothing."]},
+  {n:"Chemistry",flow:"terminology → equations → calculations → particle explanations → observations → application",
+   p:"Chemistry punishes vagueness. Examiners want specific particles doing specific things.",
+   l:["Write chemical equations out; reading them builds nothing.","Learn expected observations, not just products.","Master mole calculations early — they recur everywhere."]},
+  {n:"Biology",flow:"diagrams → processes → comparisons → vocabulary → recall → past-paper questions",
+   p:"There's a lot of content, but Biology isn't paragraph-memorising. It's precise vocabulary plus applied reasoning.",
+   l:["Use labelled diagrams, tables and comparisons.","Flashcards work well here specifically.","Wrong term = wrong answer, even when the idea is right."]},
+  {n:"Computer Science",flow:"theory → computational thinking → problem solving → programming practice",
+   p:"Watching someone code is not the same as solving the problem yourself. It isn't close.",
+   l:["Write algorithms by hand, on paper, under time.","Theory needs the same recall treatment as any content subject.","Trace tables and dry runs are examinable skills — practise them."]},
+  {n:"English",flow:"reading → vocabulary in context → sentence control → organisation → writing → timed practice",
+   p:"English improves gradually and can't be crammed. Starting late is one of the most common regrets.",
+   l:["Read good English 20–30 minutes daily — it compounds across a year.","Work on comprehension and summary skills specific to your syllabus.","Get your writing marked by someone competent, regularly."]},
+  {n:"Urdu",flow:"reading → vocabulary → grammar → spelling → written expression → timed responses",
+   p:"\"I speak Urdu, so I'll score well\" is a trap. Fluent speech and exam-quality written Urdu are different skills.",
+   l:["Treat it as a full exam subject with its own practice schedule.","Practise translation where your syllabus requires it.","Do timed past-paper responses — handwriting speed matters."]},
+  {n:"Pakistan Studies",flow:"chronology → causes → events → consequences → significance → judgement",
+   p:"Treat each paper according to its own demands instead of memorising one giant set of notes.",
+   l:["History: build cause, event, consequence and significance for every topic.","Geography: combine knowledge with maps, figures, data interpretation and application.","The syllabus has changed — use the document for your exam year, not an old one."]},
+  {n:"Islamiyat",flow:"knowledge → accurate supporting material → explanation → significance and application",
+   p:"Don't judge your preparation by how many pages you can reproduce. Judge it by how well you answer the question that was actually asked.",
+   l:["Build topic sheets, then practise real past questions on them.","Supporting material must be accurate and relevant, not merely lengthy.","Application and significance carry marks that pure recall does not."]}
+];
+const tabsEl=document.getElementById("tabs"), panelsEl=document.getElementById("panels");
+subjects.forEach((s,i)=>{
+  const b=document.createElement("button");
+  b.className="tab"; b.textContent=s.n; b.setAttribute("role","tab");
+  b.setAttribute("aria-selected",i===0?"true":"false"); b.setAttribute("aria-controls","panel-"+i);
+  b.onclick=()=>{
+    tabsEl.querySelectorAll(".tab").forEach(t=>t.setAttribute("aria-selected","false"));
+    b.setAttribute("aria-selected","true");
+    panelsEl.querySelectorAll(".panel").forEach(p=>p.hidden=true);
+    document.getElementById("panel-"+i).hidden=false;
+  };
+  tabsEl.appendChild(b);
+
+  const p=document.createElement("div");
+  p.className="panel"; p.id="panel-"+i; p.hidden=i!==0; p.setAttribute("role","tabpanel");
+  p.innerHTML='<h4>'+s.n+'</h4><p class="flow">'+s.flow+'</p><p>'+s.p+'</p><ul>'+s.l.map(x=>'<li>'+x+'</li>').join('')+'</ul>';
+  panelsEl.appendChild(p);
+});
+
+/* ── books & resources by subject ────────────── */
+const bookSubjects=[
+ {n:"English Language",code:"1123",
+  book:{t:"Cambridge O Level English Language Coursebook (3rd ed.)",a:"Elsdon, Rees-Bidder, Toner & Creamer — Cambridge University Press",e:true},
+  notes:[["ZNotes — 1123","https://znotes.org/caie/o-level/english-language-1123"],["Mega Lecture — free notes","https://megalecture.com/o-level-english-language-notes/"]],
+  papers:[["GCE Guide","https://papers.gceguide.cc/o-levels/"],["PapaCambridge","https://pastpapers.papacambridge.com/papers/caie/o-level"]],
+  plan:"Work Directed Writing and Composition every week without exception — English decays fastest of any subject when left alone. One marked piece a week beats five unmarked ones."},
+ {n:"Urdu",code:"3247 (First Language) / 3248 (Second Language)",
+  book:{t:"Local syllabus-specific sets — e.g. \"O Level Urdu Syllabus B\" (Mujeeb Ur Rehman) for 3248, or your school's Syllabus A set for 3247",a:"Pakistani academic publishers — check which syllabus (A/B) and code your school entered you for before buying",e:false},
+  notes:[["Mega Lecture — search \"Urdu\"","https://megalecture.com/resources/"],["Mojza — Urdu notes","https://mojza.org/olevels/"]],
+  papers:[["GCE Guide","https://papers.gceguide.cc/o-levels/"],["PastPapers.co","https://pastpapers.co/cie/?dir=O-Level"]],
+  plan:"Confirm 3247 vs 3248 and Syllabus A vs B with your teacher first — buying the wrong one wastes money and time. Then drill translation and précis weekly; these are the most technique-dependent sections."},
+ {n:"Pakistan Studies",code:"2059",
+  book:{t:"Paper 1: \"The History and Culture of Pakistan\" — Paper 2: \"The Environment of Pakistan\"",a:"Nigel Kelly (endorsed) · Huma Naz Sethi",e:true},
+  notes:[["Mega Lecture — Pak Studies","https://megalecture.com/o-level-pakistan-studies-notes-worksheets/"],["Mega Lecture — History notes","https://megalecture.com/o-level-history-notes/"]],
+  papers:[["GCE Guide","https://papers.gceguide.cc/o-levels/"],["PapaCambridge","https://pastpapers.papacambridge.com/papers/caie/o-level"]],
+  plan:"Treat Paper 1 (history) and Paper 2 (geography) as two different subjects with two different skillsets — chronology and causation for one, data and map interpretation for the other."},
+ {n:"Islamiyat",code:"2058",
+  book:{t:"Cambridge O Level Islamiyat Coursebook / \"Islamiat for Students\"",a:"Farkhanda Noor Muhammad — Ferozsons",e:true},
+  notes:[["Mega Lecture — Islamiyat","https://megalecture.com/o-level-islamiyat-notes-worksheets/"],["Mojza — Islamiyat notes","https://mojza.org/olevels/"]],
+  papers:[["GCE Guide","https://papers.gceguide.cc/o-levels/"],["PastPapers.co","https://pastpapers.co/cie/?dir=O-Level"]],
+  plan:"Build topic sheets for each theme (Qur'an, Hadith, Seerah, Khulafa-e-Rashideen) rather than reading the book cover to cover — then answer real past questions on each sheet before moving on."},
+ {n:"Mathematics D",code:"4024",
+  book:{t:"The \"D1–D4\" series, widely used in Pakistani classrooms for 4024",a:"Various local editions — no single textbook is mandated by Cambridge; confirm your edition matches the current syllabus with your teacher",e:false},
+  notes:[["Mega Lecture — Maths notes","https://megalecture.com/o-level-maths-notes/"]],
+  papers:[["PastPapers.co — 4024 direct","https://pastpapers.co/caie/o-level/mathematics-d-4024"],["GCE Guide","https://papers.gceguide.cc/o-levels/"]],
+  plan:"Solve daily, don't read daily. One topic's exercises → topical past questions same week → mixed past papers only once most topics are covered."},
+ {n:"Additional Mathematics",code:"4037",
+  book:{t:"New Additional Mathematics",a:"Ho Soo Thong & Khor Nyak Hiong — Marshall Cavendish (also: Cambridge IGCSE & O Level Additional Mathematics Coursebook, CUP)",e:true},
+  notes:[["Mega Lecture — search \"Additional Maths\"","https://megalecture.com/resources/"]],
+  papers:[["GCE Guide","https://papers.gceguide.cc/o-levels/"],["PapaCambridge","https://pastpapers.papacambridge.com/papers/caie/o-level"]],
+  plan:"Only take this alongside a genuinely strong grasp of 4024 content — it assumes it. Redo every worked example closed-book before touching the exercise set."},
+ {n:"Physics",code:"5054",
+  book:{t:"Cambridge O Level Physics Coursebook",a:"Heather Kennett — Cambridge University Press",e:true},
+  notes:[["Mega Lecture — Physics","https://megalecture.com/o-level-physics-notes-worksheets/"],["ZNotes — O Level hub","https://znotes.org/caie/o-level/"]],
+  papers:[["GCE Guide","https://papers.gceguide.cc/o-levels/"],["PapaCambridge","https://pastpapers.papacambridge.com/papers/caie/o-level"]],
+  plan:"One chapter's concept + formula + worked examples per sitting, then immediately its topical set. Redraw every circuit and ray diagram from memory before moving on."},
+ {n:"Chemistry",code:"5070",
+  book:{t:"Cambridge O Level Chemistry",a:"Bryan Earl & Doug Wilford — Hodder Education",e:true},
+  notes:[["Mega Lecture — Chemistry","https://megalecture.com/o-level-chemistry-notes-worksheets/"],["chemistry.com.pk — Pakistan-focused","https://chemistry.com.pk/"]],
+  papers:[["GCE Guide","https://papers.gceguide.cc/o-levels/"],["PapaCambridge","https://pastpapers.papacambridge.com/papers/caie/o-level"]],
+  plan:"Write every equation by hand, never just read it. Keep a running list of expected observations per reaction type — that's where marks are actually lost."},
+ {n:"Biology",code:"5090",
+  book:{t:"Cambridge O Level Biology",a:"D. G. Mackean & Dave Hayward — Hodder Education",e:true},
+  notes:[["Mega Lecture — Biology","https://megalecture.com/o-level-biology-notes-worksheets/"]],
+  papers:[["GCE Guide","https://papers.gceguide.cc/o-levels/"],["PapaCambridge","https://pastpapers.papacambridge.com/papers/caie/o-level"]],
+  plan:"Redraw every labelled diagram from memory weekly. Build comparison tables (e.g. arteries vs veins, mitosis vs meiosis) as you go rather than at revision time."},
+ {n:"Computer Science",code:"2210",
+  book:{t:"Cambridge IGCSE and O Level Computer Science (2nd ed.)",a:"David Watson & Helen Williams — Hodder Education (shares content with 0478/0984)",e:true},
+  notes:[["Majid Tahir — dedicated 2210 notes","https://majidtahir.com/o-level"],["Mega Lecture — Computer Science","https://megalecture.com/computer-science/"]],
+  papers:[["GCE Guide","https://papers.gceguide.cc/o-levels/"],["PapaCambridge","https://pastpapers.papacambridge.com/papers/caie/o-level"]],
+  plan:"Trace algorithms by hand on paper before typing anything. Theory needs the same active-recall treatment as any content subject — don't let programming practice replace it."}
+];
+const bTabsEl=document.getElementById("bookTabs"), bPanelsEl=document.getElementById("bookPanels");
+bookSubjects.forEach((s,i)=>{
+  const b=document.createElement("button");
+  b.className="tab"; b.textContent=s.n; b.setAttribute("role","tab");
+  b.setAttribute("aria-selected",i===0?"true":"false"); b.setAttribute("aria-controls","bpanel-"+i);
+  b.onclick=()=>{
+    bTabsEl.querySelectorAll(".tab").forEach(t=>t.setAttribute("aria-selected","false"));
+    b.setAttribute("aria-selected","true");
+    bPanelsEl.querySelectorAll(".panel").forEach(p=>p.hidden=true);
+    document.getElementById("bpanel-"+i).hidden=false;
+  };
+  bTabsEl.appendChild(b);
+
+  const p=document.createElement("div");
+  p.className="panel"; p.id="bpanel-"+i; p.hidden=i!==0; p.setAttribute("role","tabpanel");
+  const notesLinks=s.notes.map(x=>'<a href="'+x[1]+'" target="_blank" rel="noopener">'+x[0]+'</a>').join(' · ');
+  const papersLinks=s.papers.map(x=>'<a href="'+x[1]+'" target="_blank" rel="noopener">'+x[0]+'</a>').join(' · ');
+  p.innerHTML=
+    '<h4>'+s.n+' <span style="font-family:var(--mono);font-size:.68rem;color:var(--ink-soft);font-weight:400">— syllabus '+s.code+'</span></h4>'+
+    '<div class="term" style="border-top:0;padding-top:.3rem"><dt>Coursebook</dt><dd><strong>'+s.book.t+'</strong><br>'+s.book.a+(s.book.e?' <span style="color:var(--tick);font-family:var(--mono);font-size:.72rem">✓ Cambridge-endorsed</span>':' <span style="color:var(--ink-soft);font-family:var(--mono);font-size:.72rem">— not formally endorsed; verify locally</span>')+'</dd></div>'+
+    '<div class="term"><dt>Free notes</dt><dd>'+notesLinks+'</dd></div>'+
+    '<div class="term"><dt>Past papers</dt><dd>'+papersLinks+'</dd></div>'+
+    '<div class="term" style="border-bottom:0"><dt>Study plan</dt><dd>'+s.plan+'</dd></div>';
+  bPanelsEl.appendChild(p);
+});
+
+/* ── mistakes checklist ──────────────────────── */
+const mistakes=[
+ "Studying without checking the syllabus",
+ "Starting past papers far too late",
+ "Memorising mark schemes without understanding them",
+ "Taking tuition for every subject automatically",
+ "Collecting too many books and note sets",
+ "Watching lectures without practising questions",
+ "Ignoring examiner reports",
+ "Making beautiful notes instead of solving questions",
+ "Studying only your favourite subjects",
+ "Constantly comparing your progress with classmates",
+ "Sacrificing sleep repeatedly",
+ "Counting hours instead of completed work",
+ "Leaving English improvement until the final months",
+ "Ignoring mistakes after marking a paper",
+ "Using outdated syllabus material",
+ "Believing an A* requires studying every waking hour"
+];
+const av=document.getElementById("avoidList");
+mistakes.forEach((m,i)=>{
+  const l=document.createElement("label");
+  l.innerHTML='<input type="checkbox" class="box" data-i="'+i+'"><span>'+m+'</span>';
+  av.appendChild(l);
+});
+(async()=>{
+  const raw=await store.get("olevel:avoid");
+  let set=[]; try{ set=raw?JSON.parse(raw):[]; }catch(e){ set=[]; }
+  av.querySelectorAll("input").forEach(cb=>{
+    cb.checked=set.includes(+cb.dataset.i);
+    cb.onchange=()=>{
+      const now=[...av.querySelectorAll("input")].filter(x=>x.checked).map(x=>+x.dataset.i);
+      store.set("olevel:avoid",JSON.stringify(now));
+    };
+  });
+})();
+</script>
+</body>
+</html>
