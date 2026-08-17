@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Subject — O Level Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="logo" href="index.html"><span class="dot">OL</span> <span class="full">O Level Hub</span></a>
+    <nav class="topnav">
+      <a href="index.html">Subjects</a>
+      <a href="guide.html">How to study</a>
+      <a href="index.html#resources">Free stuff</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section class="subhead">
+    <a class="backlink" href="index.html">← All subjects</a>
+    <div class="subhero" id="subhero"></div>
+  </section>
+
+  <section class="sec">
+    <h2>Your papers</h2>
+    <p class="sub">This is exactly what you will sit in the exam hall.</p>
+    <div class="papers" id="papers"></div>
+  </section>
+
+  <section class="sec">
+    <h2>Book and method</h2>
+    <div class="cards" id="book"></div>
+  </section>
+
+  <section class="sec">
+    <h2>The full syllabus, topic by topic</h2>
+    <p class="sub">Every item below is from the official Cambridge syllabus. Tap a topic to open it, then tick each sub-topic once you can explain it without looking.</p>
+
+    <div class="progwrap" id="prog"></div>
+
+    <div class="notice blue">
+      <b>📄 About the past-paper links</b>
+      We cannot copy real exam questions here — Cambridge owns them and copying them is not allowed. Instead each topic links to the free past-paper archives. Use their <b>topical</b> papers, which sort real questions by topic, and always download the mark scheme with them.
+    </div>
+
+    <div id="topics"></div>
+
+    <div class="center mt">
+      <button class="btn alt" id="resetBtn">↺ Clear my ticks for this subject</button>
+    </div>
+  </section>
+
+  <section class="sec">
+    <h2>Other subjects</h2>
+    <div class="subjects" id="others"></div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <p><b>O Level Hub</b> — free study guide for Cambridge O Level.</p>
+    <p>Topic lists taken from official Cambridge International syllabus documents. Free notes and past-paper links point to independent community sites, not affiliated with Cambridge.</p>
+    <p class="warn">Always confirm your syllabus year and exam deadlines on the official Cambridge and British Council websites.</p>
+  </div>
+</footer>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+<script>
+  const subj = currentSubject();
+  if (!subj) {
+    document.querySelector(".wrap").innerHTML =
+      '<section class="sec"><h2>Subject not found</h2>' +
+      '<p class="sub">That link does not match a subject.</p>' +
+      '<a class="btn" href="index.html">← Back to all subjects</a></section>';
+  } else {
+    renderSubjectPage(subj);
+  }
+</script>
+</body>
+</html>
