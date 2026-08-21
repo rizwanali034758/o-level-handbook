@@ -40,6 +40,8 @@ function pctDone(subject) {
 function renderSubjectGrid(el) {
   el.innerHTML = SUBJECTS.map(s => {
     const pct = pctDone(s);
+    let qtot = 0;
+    s.topics.forEach((t, i) => qtot += qcount(s.id, i));
     return `
     <a class="scard" href="subject.html?s=${s.id}" style="border-color:${pct > 0 ? s.colour + '40' : 'transparent'}">
       <div class="ico" style="background:${s.tint};color:${s.colour}">${s.emoji}</div>
@@ -47,7 +49,7 @@ function renderSubjectGrid(el) {
       <span class="code">SYLLABUS ${s.code}</span>
       <p>${s.oneLine}</p>
       <div class="meta">
-        <span>${s.topics.length} topics</span>
+        <span>${s.topics.length} topics${qtot ? " · " + qtot + " questions" : ""}</span>
         <span class="pill" style="background:${s.tint};color:${s.colour}">${pct}% done</span>
       </div>
     </a>`;
@@ -134,6 +136,17 @@ function renderSubjectPage(subject) {
   }
   paintProgress();
 
+  /* examiner key messages for the whole subject */
+  const exs = (typeof EXAMINER !== "undefined") ? EXAMINER[subject.id] : null;
+  const exBox = document.getElementById("exkeys");
+  if (exs && exBox) {
+    exBox.hidden = false;
+    exBox.innerHTML =
+      '<h2>What examiners want from you</h2>' +
+      '<p class="sub">From Cambridge\'s own <b>' + exs.source + '</b>. These apply to every question in the paper.</p>' +
+      '<div class="excard"><ul>' + exs.keyMessages.map(m => "<li>" + m + "</li>").join("") + "</ul></div>";
+  }
+
   /* topics */
   const progress = getProgress(subject.id);
   const wrap = document.getElementById("topics");
@@ -155,12 +168,15 @@ function renderSubjectPage(subject) {
           </div>`).join("")}
         <div class="tiprow"><b>💡 Where the marks are</b>${t.tip}</div>
         <div class="linkrow">
+          <a class="linkbtn test" href="test.html?s=${subject.id}&t=${ti}"
+             style="background:${subject.colour};color:#fff;border-color:${subject.colour}">
+             🧠 Test${testLabel(subject.id, ti)}</a>
           <a class="linkbtn" target="_blank" rel="noopener"
              href="${yt(subject.name, subject.code, t.t)}">▶️ Video lessons</a>
           <a class="linkbtn" target="_blank" rel="noopener"
-             href="https://znotes.org/caie/o-level/">📝 Notes</a>
+             href="${notesLink(subject.name, subject.code, t.t)}">📝 Notes</a>
           <a class="linkbtn" target="_blank" rel="noopener"
-             href="https://papers.gceguide.cc/o-levels/">📄 Past papers</a>
+             href="${topicalLink(subject.name, subject.code, t.t)}">📄 Past papers</a>
         </div>
       </div>
     </details>`;
@@ -207,6 +223,27 @@ function shade(hex, amt) {
   let r = (n >> 16) + amt, g = ((n >> 8) & 0xff) + amt, b = (n & 0xff) + amt;
   r = Math.max(0, Math.min(255, r)); g = Math.max(0, Math.min(255, g)); b = Math.max(0, Math.min(255, b));
   return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+}
+
+/* how many practice questions exist for a topic (0 if none written yet) */
+function qcount(subjectId, topicIndex) {
+  try {
+    if (typeof QUESTIONS === "undefined") return 0;
+    const s = QUESTIONS[subjectId];
+    return (s && s[topicIndex]) ? s[topicIndex].length : 0;
+  } catch (e) { return 0; }
+}
+
+/* label for the Test button: practice + real question counts */
+function testLabel(subjectId, topicIndex) {
+  const p = qcount(subjectId, topicIndex);
+  let r = 0;
+  try { if (typeof realCount === "function") r = realCount(subjectId, topicIndex); } catch (e) { r = 0; }
+  if (!p && !r) return "";
+  const bits = [];
+  if (p) bits.push(p + " practice");
+  if (r) bits.push(r + " real");
+  return " (" + bits.join(" + ") + ")";
 }
 
 /* read ?s= from the URL */

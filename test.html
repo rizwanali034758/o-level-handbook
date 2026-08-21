@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Practice Test — O Level Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="logo" href="index.html"><span class="dot">OL</span> <span class="full">O Level Hub</span></a>
+    <nav class="topnav">
+      <a href="index.html">Subjects</a>
+      <a href="guide.html">How to study</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section class="subhead">
+    <a class="backlink" id="back" href="index.html">← Back to subject</a>
+    <div class="subhero" id="testhero"></div>
+  </section>
+
+  <section class="sec">
+    <div class="notice">
+      <b>⚠️ Read this first — these are not real past-paper questions</b>
+      These questions were <b>written for this site</b> in Cambridge exam style. They copy the <i>pattern</i> of real questions — the command words, the mark allocations, and how the mark scheme awards each mark — so you learn how examiners think.
+      <br><br>
+      They are <b>not</b> copied from real Cambridge papers, and the exact wording will not appear in your exam. For <b>real</b> questions with <b>official</b> mark schemes, use the past-paper links at the bottom of this page. Do both: practise here, then test yourself on the real thing.
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="toolbar" id="toolbar"></div>
+    <div id="qlist"></div>
+  </section>
+
+  <section class="sec" id="exsec" hidden>
+    <h2>What examiners say about this topic</h2>
+    <p class="sub" id="exsub"></p>
+    <div id="exlist"></div>
+  </section>
+
+  <section class="sec">
+    <h2>Real past-paper questions on this topic</h2>
+    <p class="sub" id="realsub"></p>
+    <div id="reallist"></div>
+  </section>
+
+  <section class="sec">
+    <h2>Now do the real thing</h2>
+    <p class="sub">Practice questions teach you the pattern. Real past papers test it. Use the <b>topical</b> papers — they sort genuine exam questions by topic.</p>
+    <div class="cards" id="archives"></div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <p><b>O Level Hub</b> — practice questions written in Cambridge style, not reproduced from Cambridge papers.</p>
+    <p class="warn">Always check your answers against official mark schemes from the past-paper archives above.</p>
+  </div>
+</footer>
+
+<script src="data.js"></script>
+<script src="questions.js"></script>
+<script src="realquestions.js"></script>
+<script src="app.js"></script>
+<script>
+(function(){
+  const p = new URLSearchParams(location.search);
+  const subject = SUBJECTS.find(s => s.id === p.get("s"));
+  const ti = parseInt(p.get("t"), 10);
+
+  if (!subject || isNaN(ti) || !subject.topics[ti]) {
+    document.querySelector(".wrap").innerHTML =
+      '<section class="sec"><h2>Test not found</h2><p class="sub">That link does not match a topic.</p>' +
+      '<a class="btn" href="index.html">← Back to subjects</a></section>';
+    return;
+  }
+
+  const topic = subject.topics[ti];
+  const qs = (QUESTIONS[subject.id] && QUESTIONS[subject.id][ti]) || [];
+  document.title = topic.t + " — Practice Test";
+  document.getElementById("back").href = "subject.html?s=" + subject.id;
+
+  const totalMarks = qs.reduce((n,q)=>n+q.m,0);
+  const hero = document.getElementById("testhero");
+  hero.style.background = "linear-gradient(135deg," + subject.colour + "," + shade(subject.colour,-22) + ")";
+  hero.innerHTML =
+    '<span class="bigico">🧠</span>' +
+    '<h1>' + topic.t + '</h1>' +
+    '<div class="codeline"><span>' + subject.name + ' ' + subject.code + '</span>' +
+    '<span>' + qs.length + ' questions</span><span>' + totalMarks + ' marks</span></div>' +
+    '<p>Try each question on paper first. Only then reveal the mark scheme.</p>';
+
+  if (!qs.length) {
+    document.getElementById("qlist").innerHTML =
+      '<div class="notice blue"><b>Coming soon</b>Practice questions for this topic are still being written. ' +
+      'In the meantime, use the past-paper links below for real questions on this topic.</div>';
+    document.getElementById("toolbar").innerHTML = "";
+  } else {
+    document.getElementById("toolbar").innerHTML =
+      '<button class="btn alt" id="revealAll">👁️ Reveal all mark schemes</button> ' +
+      '<button class="btn alt" id="hideAll">🙈 Hide all</button>';
+
+    document.getElementById("qlist").innerHTML = qs.map((q,i) => `
+      <div class="qcard">
+        <div class="qtop">
+          <span class="qnum" style="background:${subject.colour}">Q${i+1}</span>
+          <span class="cmdtag">${q.cmd}</span>
+          <span class="marks">[${q.m}]</span>
+        </div>
+        <div class="qtext">${q.q}</div>
+        <button class="reveal" data-i="${i}">Show mark scheme ▾</button>
+        <div class="ms" id="ms${i}" hidden>
+          <b>Mark scheme</b>
+          <ul>${q.ms.map(m=>`<li>${m}</li>`).join("")}</ul>
+          ${q.trap ? `<div class="trap"><b>⚠️ Common mistake</b>${q.trap}</div>` : ""}
+        </div>
+      </div>`).join("");
+
+    document.querySelectorAll(".reveal").forEach(b => {
+      b.addEventListener("click", () => {
+        const box = document.getElementById("ms" + b.dataset.i);
+        box.hidden = !box.hidden;
+        b.textContent = box.hidden ? "Show mark scheme ▾" : "Hide mark scheme ▴";
+      });
+    });
+    const setAll = (hide) => {
+      document.querySelectorAll(".ms").forEach(m => m.hidden = hide);
+      document.querySelectorAll(".reveal").forEach(b =>
+        b.textContent = hide ? "Show mark scheme ▾" : "Hide mark scheme ▴");
+    };
+    document.getElementById("revealAll").onclick = () => setAll(false);
+    document.getElementById("hideAll").onclick = () => setAll(true);
+  }
+
+  /* examiner report insights */
+  const ex = (typeof examinerFor === "function") ? examinerFor(subject.id, ti) : null;
+  if (ex) {
+    document.getElementById("exsec").hidden = false;
+    document.getElementById("exsub").innerHTML =
+      "Straight from Cambridge's own <b>" + ex.source + "</b> \u2014 their analysis of where students actually lost marks. " +
+      "Read this before you attempt the questions below.";
+    document.getElementById("exlist").innerHTML =
+      '<div class="excard"><ul>' + ex.notes.map(n => "<li>" + n + "</li>").join("") + "</ul></div>";
+  }
+
+  /* real past-paper questions for this topic */
+  const real = (typeof REAL_INDEX !== "undefined" && REAL_INDEX[subject.id] && REAL_INDEX[subject.id][ti]) || [];
+  const realsub = document.getElementById("realsub");
+  const reallist = document.getElementById("reallist");
+
+  if (!real.length) {
+    realsub.textContent = "Not indexed yet for this topic. More papers are being added.";
+    reallist.innerHTML = "";
+  } else {
+    const marks = real.reduce((n,r)=>n+r.m,0);
+    realsub.innerHTML = "<b>" + real.length + " real Cambridge questions</b> (" + marks +
+      " marks) found on this topic in your own past papers. These are the actual exam questions \u2014 " +
+      "open the paper, do the question on paper, then mark it with the official mark scheme in the same folder.";
+
+    reallist.innerHTML = real.map(r => {
+      const p = PAPERS[r.paper] || {};
+      return `
+      <div class="qcard real">
+        <div class="qtop">
+          <span class="qnum" style="background:${subject.colour}">Q${r.q}</span>
+          <span class="papertag">${p.short || r.paper}</span>
+          <span class="marks">[${r.m}]</span>
+        </div>
+        <div class="qtext"><b>${r.about}</b></div>
+        <div class="partline"><b>Parts:</b> ${r.parts}</div>
+        <div class="cmdline">${(r.cmds||[]).map(c=>`<span class="cmdchip">${c}</span>`).join("")}</div>
+        <div class="tiprow"><b>🎯 What it's really testing</b>${r.skills}</div>
+        <div class="linkrow">
+          <a class="linkbtn" style="background:${subject.colour};color:#fff;border-color:${subject.colour}"
+             href="${p.qp}" target="_blank" rel="noopener">📄 Open ${p.code || "paper"}</a>
+          <a class="linkbtn" href="${p.folder}" target="_blank" rel="noopener">✅ Mark scheme folder</a>
+        </div>
+      </div>`;
+    }).join("");
+  }
+
+  /* real past-paper links */
+  document.getElementById("archives").innerHTML =
+    `<div class="card" style="border-left:5px solid ${subject.colour}">
+      <h4>🎯 Topical papers for this exact topic</h4>
+      <p>Real Cambridge questions on <b>${topic.t}</b>, sorted by topic.</p>
+      <p style="margin-top:9px"><a href="${topicalLink(subject.name, subject.code, topic.t)}" target="_blank" rel="noopener">Find them →</a></p>
+    </div>` +
+    ARCHIVES.map(a => `
+      <div class="card">
+        <h4>${a.emoji} ${a.name}</h4>
+        <p>${a.what}</p>
+        <p style="margin-top:9px"><a href="${a.url}" target="_blank" rel="noopener">Open →</a></p>
+      </div>`).join("");
+})();
+</script>
+</body>
+</html>

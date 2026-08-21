@@ -43,7 +43,9 @@ No build step, no dependencies. Edit, commit, done.
 ## Honest notes on sources
 
 - Topic lists come from official Cambridge International syllabus PDFs, linked on each subject page.
-- Notes and past-paper links point to **independent community sites** (GCE Guide, PapaCambridge, PastPapers.co, ZNotes, Mega Lecture, Mojza). These are free and widely used, but **not affiliated with Cambridge**.
+- Notes and past-paper links point to **independent community sites** (PapaCambridge, PastPapers.co, XtremePapers, CaieFinder, Physics & Maths Tutor, Mega Lecture, Mojza). These are free and widely used, but **not affiliated with Cambridge**.
+- **GCE Guide was removed in v2.** Its domain expired and now redirects to a gambling site. Do not add it back.
+- Practice questions in `questions.js` were **written for this site** in Cambridge exam style. They are not reproduced from real past papers.
 - Real exam questions are **not** reproduced here — Cambridge owns that copyright. Instead each topic links to the archives where you can get the questions *and* the official mark schemes.
 - Video links are YouTube **search** links, not fixed videos, so they never break and always show current content.
 - Syllabus versions, textbook editions and registration deadlines change. Always confirm on the official Cambridge and British Council sites.

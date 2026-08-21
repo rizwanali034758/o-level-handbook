@@ -4,13 +4,42 @@
    Exam year: 2027
    ============================================================ */
 
-/* Helper: build a YouTube search link for a topic.
-   We use search links (not fixed video links) because videos get
-   deleted — a search always works and always shows the newest ones. */
+/* ------------------------------------------------------------
+   LINK HELPERS
+   We deliberately use *search* links instead of fixed URLs.
+   Fixed links die: GCE Guide's domain expired and was taken over
+   by a gambling site in 2026. A search link can never expire and
+   always shows current results.
+   ------------------------------------------------------------ */
+
+/* Video lessons for a topic */
 function yt(subject, code, topic) {
   return "https://www.youtube.com/results?search_query=" +
     encodeURIComponent("O Level " + subject + " " + code + " " + topic);
 }
+
+/* Notes for a topic */
+function notesLink(subject, code, topic) {
+  return "https://www.google.com/search?q=" +
+    encodeURIComponent("O Level " + subject + " " + code + " " + topic + " notes");
+}
+
+/* Topical past-paper questions for a topic */
+function topicalLink(subject, code, topic) {
+  return "https://www.google.com/search?q=" +
+    encodeURIComponent(subject + " " + code + " topical past papers " + topic);
+}
+
+/* Working past-paper archives, checked August 2026.
+   NOTE: GCE Guide is deliberately NOT listed. Its domain expired and
+   now redirects to a gambling site. Do not add it back. */
+const ARCHIVES = [
+  { name: "PapaCambridge", what: "Yearly AND topical past papers by syllabus code. Topical is what you want for single-topic practice.", url: "https://pastpapers.papacambridge.com/papers/caie/o-level", emoji: "📚" },
+  { name: "PastPapers.co", what: "Clean, fast archive of question papers, mark schemes and examiner reports.", url: "https://pastpapers.co/cie/?dir=O-Level", emoji: "🗂️" },
+  { name: "XtremePapers", what: "The oldest and most reliable mirror. Rarely goes down. Every session, every variant.", url: "https://papers.xtremepape.rs/index.php?dirpath=.%2FCAIE%2FO+Level%2F&order=0", emoji: "📄" },
+  { name: "CaieFinder", what: "Type any phrase from a question and it finds the exact paper and its mark scheme. Brilliant for checking answers.", url: "https://caiefinder.com/", emoji: "🔎" },
+  { name: "Dynamic Papers", what: "Another working mirror. Useful backup when others are slow.", url: "https://dynamicpapers.com/", emoji: "⚡" }
+];
 
 const SUBJECTS = [
 
@@ -388,16 +417,18 @@ const SUBJECTS = [
 
 ];
 
-/* Free resource hubs used across all subjects */
+/* Free resource hubs used across all subjects.
+   All checked working in August 2026. */
 const RESOURCES = [
   { name: "Cambridge International", what: "The official site. Syllabus PDFs, specimen papers, grade thresholds. The final authority on everything.", url: "https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-upper-secondary/cambridge-o-level/", official: true, emoji: "🎓" },
-  { name: "GCE Guide", what: "Huge free archive of past papers, mark schemes and examiner reports, sorted by subject code and session.", url: "https://papers.gceguide.cc/o-levels/", official: false, emoji: "📄" },
-  { name: "PapaCambridge", what: "Yearly and topical past papers, plus free notes and ebooks organised by syllabus code.", url: "https://pastpapers.papacambridge.com/papers/caie/o-level", official: false, emoji: "📚" },
-  { name: "PastPapers.co", what: "A faster, cleaner way to browse the same past-paper archive. Good backup when another site is down.", url: "https://pastpapers.co/cie/?dir=O-Level", official: false, emoji: "🗂️" },
-  { name: "ZNotes", what: "Short, student-written revision notes organised by Cambridge syllabus code. Great first pass before past papers.", url: "https://znotes.org/caie/o-level/", official: false, emoji: "📝" },
-  { name: "Mega Lecture", what: "Pakistan-based. Free notes, worksheets and topical papers. No sign-up needed to download.", url: "https://megalecture.com/resources/", official: false, emoji: "🇵🇰" },
-  { name: "Mojza", what: "Another free Pakistani notes bank covering most O Level subjects.", url: "https://mojza.org/olevels/", official: false, emoji: "✨" },
-  { name: "Khan Academy", what: "Not made for Cambridge, but excellent for understanding Maths and Science concepts from zero. Free, no ads.", url: "https://www.khanacademy.org/", official: false, emoji: "🧠" },
+  { name: "PapaCambridge", what: "Yearly and topical past papers plus free notes, organised by syllabus code. Best source of topical questions.", url: "https://pastpapers.papacambridge.com/papers/caie/o-level", official: false, emoji: "📚" },
+  { name: "PastPapers.co", what: "Clean, fast archive of papers, mark schemes and examiner reports.", url: "https://pastpapers.co/cie/?dir=O-Level", official: false, emoji: "🗂️" },
+  { name: "XtremePapers", what: "The oldest and most reliable past-paper mirror. Every session and variant.", url: "https://papers.xtremepape.rs/index.php?dirpath=.%2FCAIE%2FO+Level%2F&order=0", official: false, emoji: "📄" },
+  { name: "CaieFinder", what: "Search any question phrase and it finds the exact paper plus its mark scheme.", url: "https://caiefinder.com/", official: false, emoji: "🔎" },
+  { name: "Physics & Maths Tutor", what: "Strong notes and topic questions for Physics, Chemistry, Biology and Maths. Better coverage than most free sites.", url: "https://www.physicsandmathstutor.com/", official: false, emoji: "🔬" },
   { name: "Save My Exams", what: "Polished notes and worked questions. Written mainly for IGCSE, so check against your O Level syllabus.", url: "https://www.savemyexams.com/", official: false, emoji: "💡" },
+  { name: "Mega Lecture", what: "Pakistan-based. Free notes and worksheets, including Pak Studies, Islamiyat and Urdu which most sites skip.", url: "https://megalecture.com/resources/", official: false, emoji: "🇵🇰" },
+  { name: "Mojza", what: "Free Pakistani notes bank covering most O Level subjects.", url: "https://mojza.org/olevels/", official: false, emoji: "✨" },
+  { name: "Khan Academy", what: "Not Cambridge-specific, but excellent for building Maths and Science understanding from zero. Free, no ads.", url: "https://www.khanacademy.org/", official: false, emoji: "🧠" },
   { name: "British Council Pakistan", what: "Where private candidates register for exams in Pakistan. Check every deadline here yourself.", url: "https://www.britishcouncil.pk/exam/international-schools-igcse-a-levels/private-candidates", official: true, emoji: "📋" }
 ];
