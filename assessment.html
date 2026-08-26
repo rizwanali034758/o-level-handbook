@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Starting Point Check — O Level Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700;800&family=Noto+Nastaliq+Urdu:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="logo" href="index.html"><span class="dot">OL</span> <span class="full">O Level Hub</span></a>
+    <nav class="topnav">
+      <a href="index.html">Subjects</a>
+      <a href="assessment.html" class="on">Starting Point</a>
+      <a href="guide.html">How to study</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+
+<!-- ========== SCREEN 1: WELCOME ========== -->
+<section id="welcome" class="sec">
+  <div class="asshero">
+    <span class="bigico">🧭</span>
+    <h1>Starting Point Check</h1>
+    <p>This is <b>not</b> a test you can fail. There is no grade and no score to be embarrassed about.</p>
+    <p>It finds out what you already know, so your study plan is built for <b>you</b> — not for an imaginary average student.</p>
+  </div>
+
+  <div class="cards mt">
+    <div class="card"><h4>⏱️ About 25 minutes</h4><p>English takes about 20 minutes. Urdu takes about 10. You can do them separately.</p></div>
+    <div class="card"><h4>🤝 Answer honestly</h4><p>Guessing to look good makes the plan worse. Wrong answers are the useful ones — they show us what to teach.</p></div>
+    <div class="card"><h4>🚫 No help</h4><p>Do it alone. No dictionary, no phone, no one sitting next to you. A wrong result helps nobody.</p></div>
+  </div>
+
+  <div class="notice blue mt">
+    <b>For the parent or guardian</b>
+    Let her do this alone and do not watch over her shoulder. If she feels judged, she will guess to look good, and the plan we build will target the wrong things. The results are only useful if they are real.
+  </div>
+
+  <div class="btnrow mt">
+    <button class="btn" id="startEng">Start English check →</button>
+    <button class="btn alt" id="startUrdu">Start Urdu check →</button>
+  </div>
+  <div id="prevResults" class="mt"></div>
+</section>
+
+<!-- ========== SCREEN 2: SCRIPT CHOICE (URDU) ========== -->
+<section id="scriptChoice" class="sec" hidden>
+  <h2>How would you like to read the Urdu?</h2>
+  <p class="sub">Both are fine. Choose whichever feels easier — this itself tells us something useful.</p>
+  <div class="cards">
+    <button class="card choicecard" id="pickScript">
+      <h4>اردو رسم الخط</h4>
+      <p style="font-family:'Noto Nastaliq Urdu',serif;font-size:1.1rem;line-height:2">میں اسکول جاتی ہوں۔</p>
+      <p>Proper Urdu script</p>
+    </button>
+    <button class="card choicecard" id="pickRoman">
+      <h4>Roman Urdu</h4>
+      <p style="font-size:1.05rem">Main school jaati hoon.</p>
+      <p>Urdu written in English letters</p>
+    </button>
+  </div>
+</section>
+
+<!-- ========== SCREEN 3: QUESTIONS ========== -->
+<section id="quiz" class="sec" hidden>
+  <div class="qprogress">
+    <div class="qptop">
+      <span id="qlabel">Question 1 of 30</span>
+      <span id="qsection">Vocabulary</span>
+    </div>
+    <div class="track"><div class="fill" id="qfill" style="background:linear-gradient(90deg,var(--brand),var(--brand-2))"></div></div>
+  </div>
+
+  <div id="passageBox" class="passagebox" hidden></div>
+
+  <div class="qbig" id="qtext"></div>
+  <div class="opts" id="opts"></div>
+
+  <div class="btnrow mt">
+    <button class="btn alt" id="skipBtn">I don't know — skip</button>
+  </div>
+  <p class="hint mt">Answer honestly. Skipping is better than guessing.</p>
+</section>
+
+<!-- ========== SCREEN 4: WRITING ========== -->
+<section id="writing" class="sec" hidden>
+  <h2>Last part — a short piece of writing</h2>
+  <div class="notice green">
+    <b id="writePrompt"></b>
+    <span id="writeHint"></span>
+  </div>
+  <textarea id="writeBox" class="writebox" placeholder="Start writing here..."></textarea>
+  <div class="writestats" id="writeStats">0 words · 0 sentences</div>
+  <div class="btnrow mt">
+    <button class="btn" id="finishBtn">Finish and see my results →</button>
+  </div>
+</section>
+
+<!-- ========== SCREEN 5: RESULTS ========== -->
+<section id="results" class="sec" hidden></section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <p><b>Starting Point Check</b> — a diagnostic tool, not an exam and not an IQ test.</p>
+    <p>It measures specific sub-skills (vocabulary, grammar, reading, command words) so study time can be aimed at what is actually weak. Results are stored only in this browser.</p>
+  </div>
+</footer>
+
+<script src="assess.js"></script>
+<script>
+(function(){
+  let mode = null;        /* "english" | "urdu" */
+  let script = "roman";   /* urdu script preference */
+  let items = [];
+  let idx = 0;
+  let answers = [];
+
+  const $ = id => document.getElementById(id);
+  const show = id => { ["welcome","scriptChoice","quiz","writing","results"].forEach(s => $(s).hidden = (s !== id)); window.scrollTo({top:0,behavior:"smooth"}); };
+
+  /* ---------- previous results ---------- */
+  function renderPrev(){
+    const e = loadResult("english"), u = loadResult("urdu");
+    if(!e && !u){ $("prevResults").innerHTML=""; return; }
+    let h = '<div class="notice"><b>Previous results found</b>';
+    if(e) h += 'English: level ' + e.level + ' (' + LEVELS[e.level].name + ') · taken ' + e.date + '<br>';
+    if(u) h += 'Urdu: level ' + u.level + ' (' + LEVELS[u.level].name + ') · taken ' + u.date + '<br>';
+    h += '<button class="btn alt" style="margin-top:10px" id="viewPrev">View full report</button> ';
+    h += '<button class="btn alt" style="margin-top:10px" id="clearPrev">Clear and start again</button></div>';
+    $("prevResults").innerHTML = h;
+    $("viewPrev").onclick = () => renderResults(loadResult("english"), loadResult("urdu"));
+    $("clearPrev").onclick = () => {
+      if(!confirm("Delete previous results?")) return;
+      try{ localStorage.removeItem("assess:english"); localStorage.removeItem("assess:urdu"); }catch(err){}
+      renderPrev();
+    };
+  }
+  renderPrev();
+
+  /* ---------- start ---------- */
+  $("startEng").onclick = () => { mode="english"; items=ENGLISH_ITEMS; idx=0; answers=[]; show("quiz"); paint(); };
+  $("startUrdu").onclick = () => { mode="urdu"; show("scriptChoice"); };
+  $("pickScript").onclick = () => { script="script"; beginUrdu(); };
+  $("pickRoman").onclick  = () => { script="roman";  beginUrdu(); };
+  function beginUrdu(){ items=URDU_ITEMS; idx=0; answers=[]; show("quiz"); paint(); }
+
+  /* ---------- paint a question ---------- */
+  function paint(){
+    const it = items[idx];
+    $("qlabel").textContent = "Question " + (idx+1) + " of " + items.length;
+    $("qsection").textContent = it.skill;
+    $("qfill").style.width = ((idx)/items.length*100) + "%";
+
+    /* passage */
+    const pb = $("passageBox");
+    if (mode==="english" && it.passage) {
+      const p = ENGLISH_PASSAGES[it.passage];
+      pb.hidden = false;
+      pb.innerHTML = '<div class="plabel">' + p.title + ' — read this first</div><div class="ptext">' + p.text + '</div>';
+    } else if (mode==="urdu" && it.passage) {
+      pb.hidden = false;
+      pb.innerHTML = '<div class="plabel">عبارت / Passage</div><div class="ptext ' +
+        (script==="script"?"urdu":"") + '">' + URDU_PASSAGE[script] + '</div>';
+    } else { pb.hidden = true; }
+
+    const qhtml = (mode==="urdu") ? it.q[script] : it.q;
+    $("qtext").innerHTML = qhtml;
+    $("qtext").className = "qbig" + (mode==="urdu" && script==="script" ? " urdu" : "");
+
+    const opts = (mode==="urdu") ? it.opts[script] : it.opts;
+    $("opts").innerHTML = opts.map((o,i) =>
+      '<button class="opt' + (mode==="urdu"&&script==="script"?" urdu":"") + '" data-i="' + i + '">' +
+      '<span class="optletter">' + "ABCD"[i] + '</span><span>' + o + '</span></button>').join("");
+
+    $("opts").querySelectorAll(".opt").forEach(b => {
+      b.onclick = () => {
+        b.classList.add("chosen");
+        setTimeout(() => next(parseInt(b.dataset.i,10)), 180);
+      };
+    });
+  }
+
+  $("skipBtn").onclick = () => next(-1);
+
+  function next(ans){
+    answers[idx] = ans;
+    idx++;
+    if (idx < items.length) { paint(); }
+    else {
+      /* writing task */
+      const w = (mode==="english") ? ENGLISH_WRITING : URDU_WRITING[script];
+      $("writePrompt").innerHTML = w.prompt;
+      $("writeHint").innerHTML = "<br>" + w.hint;
+      $("writeBox").value = "";
+      $("writeBox").className = "writebox" + (mode==="urdu" && script==="script" ? " urdu" : "");
+      $("writeStats").textContent = "0 words · 0 sentences";
+      show("writing");
+    }
+  }
+
+  /* ---------- writing live stats ---------- */
+  $("writeBox").addEventListener("input", () => {
+    const m = analyseWriting($("writeBox").value);
+    $("writeStats").textContent = m ? (m.words + " words · " + m.sentences + " sentences") : "0 words · 0 sentences";
+  });
+
+  /* ---------- finish ---------- */
+  $("finishBtn").onclick = () => {
+    const sc = scoreItems(items, answers);
+    sc.writing = analyseWriting($("writeBox").value);
+    sc.writingText = $("writeBox").value;
+    sc.date = new Date().toLocaleDateString();
+    if (mode==="urdu") sc.script = script;
+    saveResult(mode, sc);
+    renderResults(loadResult("english"), loadResult("urdu"));
+  };
+
+  /* ---------- results ---------- */
+  function renderResults(eng, urd){
+    const el = $("results");
+    let h = "";
+
+    const main = eng || urd;
+    const L = LEVELS[main.level];
+    h += '<div class="asshero" style="background:linear-gradient(135deg,' + L.colour + ',' + shadeHex(L.colour,-25) + ')">' +
+         '<span class="bigico">📊</span><h1>Starting Point Report</h1>' +
+         '<p>Done. Nothing here is a judgement — it is a map of where to begin.</p></div>';
+
+    [["english","English",eng],["urdu","Urdu",urd]].forEach(([key,label,r]) => {
+      if(!r) return;
+      const lv = LEVELS[r.level];
+      h += '<div class="reportcard" style="border-top:6px solid ' + lv.colour + '">';
+      h += '<div class="rchead"><div><h3>' + label + '</h3><span class="rcdate">Taken ' + r.date + '</span></div>' +
+           '<div class="rclevel" style="background:' + lv.tint + ';color:' + lv.colour + '">Level ' + r.level + ' · ' + lv.name + '</div></div>';
+      h += '<p class="rcwhat">' + lv.what + '</p>';
+      h += '<div class="rcscore"><b>' + r.correct + ' / ' + r.total + '</b> correct (' + r.pct + '%)</div>';
+
+      /* skill bars */
+      h += '<div class="bars">';
+      Object.entries(r.bySkill).forEach(([sk,v]) => {
+        const p = v.t ? Math.round(v.c/v.t*100) : 0;
+        const col = p>=70?"#16A34A":p>=45?"#D97706":"#E11D48";
+        h += '<div class="bar"><div class="barlabel"><span>' + sk + '</span><span>' + v.c + '/' + v.t + '</span></div>' +
+             '<div class="track"><div class="fill" style="width:' + p + '%;background:' + col + '"></div></div></div>';
+      });
+      h += '</div>';
+
+      /* difficulty ladder */
+      h += '<div class="ladder2"><div class="l2title">How far up the ladder she got</div>';
+      for(let i=1;i<=5;i++){
+        const b=r.byLevel[i]; if(!b.t) continue;
+        const p=Math.round(b.c/b.t*100);
+        const passed = p>=60;
+        h += '<div class="l2row ' + (passed?"pass":"fail") + '"><span class="l2n">Level ' + i + '</span>' +
+             '<span class="l2name">' + LEVELS[i].name + '</span>' +
+             '<span class="l2score">' + b.c + '/' + b.t + '</span>' +
+             '<span class="l2tick">' + (passed?"✓":"—") + '</span></div>';
+      }
+      h += '</div>';
+
+      /* writing */
+      if(r.writing){
+        h += '<div class="writeblock"><div class="l2title">Writing sample</div><div class="wstats">';
+        [["Words",r.writing.words],["Sentences",r.writing.sentences],
+         ["Avg sentence",r.writing.avgSentence+" words"],["Word variety",r.writing.variety+"%"]].forEach(([k,v])=>{
+          h += '<div class="wstat"><b>' + v + '</b><span>' + k + '</span></div>';
+        });
+        h += '</div><ul class="wverdict">';
+        writingVerdict(r.writing).forEach(([tone,msg]) => {
+          h += '<li class="' + tone + '">' + msg + '</li>';
+        });
+        h += '</ul>';
+        if(r.writingText){
+          h += '<details class="wsample"><summary>Read what she wrote</summary><div class="wtext' +
+               (key==="urdu"&&r.script==="script"?" urdu":"") + '">' +
+               r.writingText.replace(/</g,"&lt;").replace(/\n/g,"<br>") + '</div></details>';
+        }
+        h += '</div>';
+      }
+      h += '</div>';
+    });
+
+    /* the plan */
+    const plan = buildPlan(eng, urd);
+    if(plan.length){
+      h += '<h2 class="planh">What to actually do about it</h2>';
+      h += '<p class="sub">Generated from the results above. Start at the top — the list is in priority order.</p>';
+      h += '<div class="plan">';
+      plan.forEach((p,i) => {
+        h += '<div class="plancard"><div class="planicon">' + p.icon + '</div>' +
+             '<div><h4>' + (i+1) + '. ' + p.title + '</h4>' +
+             '<p class="planwhy"><b>Why:</b> ' + p.why + '</p>' +
+             '<p class="planhow"><b>How:</b> ' + p.how + '</p></div></div>';
+      });
+      h += '</div>';
+    }
+
+    /* missing test nudge */
+    if(!eng || !urd){
+      h += '<div class="notice mt"><b>One half is missing</b>The picture is much clearer with both. ' +
+           'Take the ' + (!eng?"English":"Urdu") + ' check too — it takes about ' + (!eng?"20":"10") + ' minutes.</div>';
+    }
+
+    h += '<div class="btnrow mt">' +
+         '<a class="btn" href="index.html">Go to my subjects →</a>' +
+         '<button class="btn alt" id="retake">Take a check again</button>' +
+         '<button class="btn alt" id="printBtn">Print / save as PDF</button></div>';
+
+    el.innerHTML = h;
+    show("results");
+    $("retake").onclick = () => { show("welcome"); renderPrev(); };
+    $("printBtn").onclick = () => window.print();
+  }
+
+  function shadeHex(hex, amt){
+    const n = parseInt(hex.slice(1),16);
+    let r=(n>>16)+amt, g=((n>>8)&0xff)+amt, b=(n&0xff)+amt;
+    r=Math.max(0,Math.min(255,r)); g=Math.max(0,Math.min(255,g)); b=Math.max(0,Math.min(255,b));
+    return "#"+((1<<24)+(r<<16)+(g<<8)+b).toString(16).slice(1);
+  }
+})();
+</script>
+</body>
+</html>
