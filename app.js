@@ -123,7 +123,7 @@ function renderSubjectGrid(el) {
   if (others.length) {
     html += `
       <details class="othersubs">
-        <summary>Other subjects (not on Horia's list) — ${others.length}</summary>
+        <summary>Other subjects (not on this study plan) — ${others.length}</summary>
         <p class="sub" style="margin:12px 0">These were built earlier and are kept as general reference. They are <b>not</b> part of her confirmed subjects, so ignore them unless something changes.</p>
         <div class="subjects">${others.map(subjectCard).join("")}</div>
       </details>`;
@@ -186,8 +186,8 @@ function renderSubjectPage(subject) {
   if (warnEl) {
     let w = "";
     if (subject.notHers) {
-      w = `<div class="notice"><b>⚠️ Not one of Horia's subjects</b>
-        This was built earlier and is kept as general reference only. Her confirmed list does not include it — don't spend time here.</div>`;
+      w = `<div class="notice"><b>⚠️ Not on this study plan</b>
+        This was built earlier and is kept as general reference only. This is not part of the current study plan — don't spend time here.</div>`;
     } else if (subject.id === "urdu") {
       w = `<div class="notice"><b>🎧 Careful — this is IGCSE 0539, not O Level Urdu</b>
         A third of this grade is a <b>listening exam</b>, which the old O Level Urdu course did not have.
