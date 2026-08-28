@@ -19,6 +19,7 @@
       <a href="today.html">Today</a><a href="index.html">Subjects</a>
       <a href="assessment.html">Starting Point</a>
       <a href="guide.html">How to study</a>
+      <a href="about.html">About</a>
     </nav>
   </div>
 </header>
@@ -66,8 +67,10 @@
 
 <footer>
   <div class="wrap">
-    <p><b>O Level Pakistan</b> — practice questions written in Cambridge style, not reproduced from Cambridge papers.</p>
-    <p class="warn">Always check your answers against official mark schemes from the past-paper archives above.</p>
+    <p><b>O Level Pakistan</b> — free, independent study resource for Cambridge O Level and IGCSE students in Pakistan.</p>
+    <p>Topic lists are taken from official Cambridge syllabus documents. Real exam questions are referenced, never reproduced. Practice questions and all explanations are our own original work.</p>
+    <p class="warn">Not affiliated with, endorsed by, or approved by Cambridge Assessment International Education. Always confirm your syllabus year and exam deadlines with the official Cambridge and British Council websites.</p>
+    <p>All original content © O Level Pakistan · <a href="about.html">About</a> · <a href="legal.html">Terms, Privacy &amp; Copyright</a></p>
   </div>
 </footer>
 
@@ -150,7 +153,7 @@
   if (ex) {
     document.getElementById("exsec").hidden = false;
     document.getElementById("exsub").innerHTML =
-      "Straight from Cambridge's own <b>" + ex.source + "</b> \u2014 their analysis of where students actually lost marks. " +
+      "Written by us, from <b>" + ex.source + "</b> \u2014 the specific mistakes that cost students marks on this topic. " +
       "Read this before you attempt the questions below.";
     document.getElementById("exlist").innerHTML =
       '<div class="excard"><ul>' + ex.notes.map(n => "<li>" + n + "</li>").join("") + "</ul></div>";

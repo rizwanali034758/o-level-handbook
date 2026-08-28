@@ -246,8 +246,8 @@ function renderSubjectPage(subject) {
   if (exs && exBox) {
     exBox.hidden = false;
     exBox.innerHTML =
-      '<h2>What examiners want from you</h2>' +
-      '<p class="sub">From Cambridge\'s own <b>' + exs.source + '</b>. These apply to every question in the paper.</p>' +
+      '<h2>How to not lose easy marks</h2>' +
+      '<p class="sub">Written by us, from ' + exs.source + '. These apply to every question in the paper.</p>' +
       '<div class="excard"><ul>' + exs.keyMessages.map(m => "<li>" + m + "</li>").join("") + "</ul></div>";
   }
 

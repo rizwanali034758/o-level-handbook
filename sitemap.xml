@@ -4,6 +4,8 @@
   <url><loc>https://olevelpakistan.com/today.html</loc><priority>0.9</priority></url>
   <url><loc>https://olevelpakistan.com/assessment.html</loc><priority>0.9</priority></url>
   <url><loc>https://olevelpakistan.com/guide.html</loc><priority>0.8</priority></url>
+  <url><loc>https://olevelpakistan.com/about.html</loc><priority>0.8</priority></url>
+  <url><loc>https://olevelpakistan.com/legal.html</loc><priority>0.4</priority></url>
   <url><loc>https://olevelpakistan.com/subject.html?s=physics</loc><priority>0.7</priority></url>
   <url><loc>https://olevelpakistan.com/subject.html?s=chemistry</loc><priority>0.7</priority></url>
   <url><loc>https://olevelpakistan.com/subject.html?s=maths</loc><priority>0.7</priority></url>

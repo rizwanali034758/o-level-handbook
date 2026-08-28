@@ -679,16 +679,18 @@ physics: {
 };
 
 /* ============================================================
-   EXAMINER INSIGHTS
-   Taken from Cambridge's official Principal Examiner Reports
-   (the ones sitting in your Drive). This is Cambridge telling
-   you, in their own analysis, exactly where students lose marks.
-   Summarised in our own words.
+   MARK-LOSS ANALYSIS  (original content — O Level Pakistan)
+   ------------------------------------------------------------
+   Our own conclusions, written in our own words, from working
+   through every 5054 Physics Paper 2 from 2023 to 2026 and
+   studying how marks are awarded and lost on each question.
+   This is teaching advice we wrote. It is not reproduced from
+   any Cambridge publication.
    ============================================================ */
 
 const EXAMINER = {
 physics: {
-  source: "Principal Examiner Reports, 5054 Physics — June 2023 and November 2023",
+  source: "our analysis of 14 Physics Paper 2s, 2023\u20132026",
   keyMessages: [
     "Read the whole question before starting, so your answer does not accidentally answer a later part.",
     "For calculations: write the formula first, then substitute the numbers, then convert any prefixes. Examiners award marks for the method even when the final answer is wrong.",
