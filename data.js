@@ -46,6 +46,8 @@ const SUBJECTS = [
 /* ---------------------------------------------------------- MATHS D */
 {
   id: "maths",
+  qual: "O Level",
+  sitting: 2029,
   name: "Mathematics D",
   code: "4024",
   emoji: "📐",
@@ -82,6 +84,9 @@ const SUBJECTS = [
 /* ---------------------------------------------------------- ADD MATHS */
 {
   id: "addmaths",
+  qual: "O Level",
+  sitting: 0,
+  notHers: true,
   name: "Additional Mathematics",
   code: "4037",
   emoji: "🧮",
@@ -124,6 +129,8 @@ const SUBJECTS = [
 /* ---------------------------------------------------------- PHYSICS */
 {
   id: "physics",
+  qual: "O Level",
+  sitting: 2029,
   name: "Physics",
   code: "5054",
   emoji: "⚛️",
@@ -136,7 +143,7 @@ const SUBJECTS = [
   papers: [
     { name: "Paper 1: Multiple Choice", time: "1 hour", marks: "40 marks · 30%", what: "40 four-option multiple choice questions." },
     { name: "Paper 2: Theory", time: "1 hour 45 minutes", marks: "80 marks · 50%", what: "Short answer and structured questions." },
-    { name: "Paper 3 or 4: Practical", time: "1h 30m or 1h", marks: "40 marks · 20%", what: "Paper 3 is a real lab test. Paper 4 is a written alternative." }
+    { name: "Paper 4: Alternative to Practical", time: "1 hour", marks: "40 marks · 20%", what: "CONFIRMED: she sits Paper 4, the written practical paper — not the hands-on Paper 3. Tests experiment design, readings, graphs and conclusions on paper." }
   ],
   book: { title: "Cambridge O Level Physics Coursebook", author: "Heather Kennett — Cambridge University Press", endorsed: true },
   howToStudy: [
@@ -158,19 +165,21 @@ const SUBJECTS = [
 /* ---------------------------------------------------------- CHEMISTRY */
 {
   id: "chemistry",
+  qual: "O Level",
+  sitting: 2029,
   name: "Chemistry",
   code: "5070",
   emoji: "🧪",
   colour: "#0D9488",
   tint: "#E3F7F5",
-  syllabusYears: "Current",
-  syllabusUrl: "https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-o-level-chemistry-5070/",
+  syllabusYears: "2026–2028",
+  syllabusUrl: "https://www.cambridgeinternational.org/Images/697326-2026-2028-syllabus.pdf",
   subjectPage: "https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-o-level-chemistry-5070/",
   oneLine: "Chemistry punishes vague answers. Be specific about particles.",
   papers: [
     { name: "Paper 1: Multiple Choice", time: "1 hour", marks: "40 marks", what: "40 multiple choice questions. Periodic Table provided." },
     { name: "Paper 2: Theory", time: "1 hour 30 minutes", marks: "75 marks", what: "Section A compulsory. Section B: answer 3 of 4 questions." },
-    { name: "Paper 3 or 4: Practical", time: "1h 30m or 1h", marks: "Scaled to 30", what: "Paper 3 is a lab test. Paper 4 is the written alternative." }
+    { name: "Paper 4: Alternative to Practical", time: "1 hour", marks: "Scaled to 30", what: "CONFIRMED: she sits Paper 4, the written practical paper — not the hands-on Paper 3. Tests apparatus, observations, tables and graphs on paper." }
   ],
   book: { title: "Cambridge O Level Chemistry", author: "Bryan Earl & Doug Wilford — Hodder Education", endorsed: true },
   howToStudy: [
@@ -197,6 +206,9 @@ const SUBJECTS = [
 /* ---------------------------------------------------------- BIOLOGY */
 {
   id: "biology",
+  qual: "O Level",
+  sitting: 0,
+  notHers: true,
   name: "Biology",
   code: "5090",
   emoji: "🧬",
@@ -243,44 +255,58 @@ const SUBJECTS = [
 
 /* ---------------------------------------------------------- COMPUTER SCIENCE */
 {
-  id: "cs",
-  name: "Computer Science",
-  code: "2210",
-  emoji: "💻",
+  id: "ict",
+  name: "ICT",
+  code: "0417",
+  qual: "IGCSE",
+  sitting: 2029,
+  emoji: "\ud83d\udcbb",
   colour: "#0891B2",
   tint: "#E4F6FA",
-  syllabusYears: "Current",
-  syllabusUrl: "https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-o-level-computer-science-2210/",
-  subjectPage: "https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-o-level-computer-science-2210/",
-  oneLine: "Watching someone code is not the same as writing it yourself.",
+  syllabusYears: "2026\u20132028",
+  syllabusUrl: "https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-igcse-information-and-communication-technology-0417/",
+  subjectPage: "https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-igcse-information-and-communication-technology-0417/",
+  oneLine: "Two thirds of this grade is hands-on software skill, not theory. You have to actually use the software.",
   papers: [
-    { name: "Paper 1: Computer Systems", time: "1 hour 45 minutes", marks: "75 marks · 50%", what: "Theory: hardware, software, data, networks." },
-    { name: "Paper 2: Algorithms & Programming", time: "1 hour 45 minutes", marks: "75 marks · 50%", what: "Problem solving, algorithms, pseudocode, programming." }
+    { name: "Paper 1: Theory", time: "1 hour 30 minutes", marks: "80 marks \u00b7 40%", what: "Multiple choice, short answer and structured questions on all 21 sections." },
+    { name: "Paper 2: Document Production, Databases and Presentations", time: "2 hours 15 minutes", marks: "30%", what: "Practical test at a computer. No internet or email allowed." },
+    { name: "Paper 3: Data Analysis and Website Authoring", time: "2 hours 15 minutes", marks: "30%", what: "Practical test: spreadsheets and building web pages." }
   ],
-  book: { title: "Cambridge IGCSE and O Level Computer Science", author: "David Watson & Helen Williams — Hodder Education", endorsed: true },
+  book: { title: "Cambridge IGCSE ICT 0417 coursebook \u2014 NOT a Computer Science book", author: "This is IGCSE ICT, a completely different subject from O Level Computer Science 2210. ICT is about using software well. Computer Science is about programming. Do not buy a 2210 book.", endorsed: true },
   howToStudy: [
-    "Write algorithms by hand, on paper, under time pressure.",
-    "Practise trace tables until they are automatic — they are guaranteed marks.",
-    "Theory needs flashcards just like any content subject.",
-    "Learn the official pseudocode style, not your own coding habits."
+    "60% of your grade is two practical exams. You cannot pass by reading \u2014 you must sit at a computer and do the tasks.",
+    "Practise in whatever office software you have. The exam is software-agnostic, so the skills transfer.",
+    "Learn keyboard efficiency. Both practical papers are a race against the clock.",
+    "Always save with the exact filename the question asks for. Wrong filename can mean zero for that task."
   ],
   topics: [
-    { t: "Data representation", subs: ["Binary, denary and hexadecimal", "Converting between number systems", "Binary addition and logical shifts", "Two's complement", "Text, sound and image representation", "File sizes, compression (lossy and lossless)"], tip: "Number conversions are free marks — but only if you practise until you can do them without thinking." },
-    { t: "Data transmission", subs: ["Packets and packet switching", "Serial and parallel transmission", "Simplex, half-duplex and duplex", "USB", "Parity checks, checksums, echo check", "Automatic Repeat reQuest (ARQ)", "Encryption: symmetric and asymmetric"], tip: "Error-checking methods are often confused. Make one card per method with how it works and its weakness." },
-    { t: "Hardware", subs: ["Computer architecture and the CPU", "The von Neumann model and registers", "The fetch–decode–execute cycle", "Input and output devices", "Primary, secondary and off-line storage", "Embedded systems", "Sensors and their uses"], tip: "The fetch–decode–execute cycle appears constantly. Learn it as a sequence you can write out fully." },
-    { t: "Software", subs: ["System software and application software", "Operating systems", "Interrupts", "High-level and low-level languages", "Compilers, interpreters and assemblers", "Integrated Development Environments (IDEs)"], tip: "Compiler versus interpreter is a guaranteed question. Know at least three differences." },
-    { t: "The internet and its uses", subs: ["The internet and the World Wide Web", "URLs, HTTP and HTTPS", "Web browsers and how web pages are located", "Cookies", "Digital currency and blockchain", "Cyber security threats", "Keeping data safe: firewalls, passwords, biometrics"], tip: "Cyber security threats need a definition AND a prevention method. Questions almost always ask for both." },
-    { t: "Automated and emerging technologies", subs: ["Automated systems and how they work", "Robotics and its characteristics", "Artificial intelligence", "Machine learning and expert systems"], tip: "Newer topic, so past papers are thinner. Learn the definitions precisely — that is most of the marks." },
-    { t: "Algorithm design and problem-solving", subs: ["Program development life cycle", "Decomposition and abstraction", "Flowcharts", "Pseudocode", "Trace tables and dry runs", "Validation and verification", "Identifying and correcting errors", "Standard methods: totalling, counting, searching, sorting"], tip: "Trace tables are the single most reliable source of marks on Paper 2. Practise one every few days." },
-    { t: "Programming", subs: ["Variables, constants and data types", "Sequence, selection and iteration", "Input and output", "Operators and expressions", "Procedures and functions", "Arrays: one and two dimensional", "File handling"], tip: "Write code by hand on paper. Typing it lets the computer catch errors that the exam will not." },
-    { t: "Databases", subs: ["Single-table databases", "Fields, records and primary keys", "Data types in databases", "Structured Query Language (SQL): SELECT, FROM, WHERE, ORDER BY, SUM, COUNT"], tip: "SQL is a small, fixed set of commands. Learn the six main keywords and you can answer nearly every question." },
-    { t: "Boolean logic", subs: ["Logic gates: AND, OR, NOT, NAND, NOR, XOR", "Logic circuits", "Truth tables", "Logic expressions"], tip: "Build the truth table column by column, never all at once. Rushing here causes almost all errors." }
+    { t: "Types and components of computer systems", subs: ["Hardware and software", "Main components of a computer system", "Operating systems and user interfaces", "Types of computer: desktop, laptop, tablet, smartphone", "Emerging technologies: AI, augmented reality"], tip: "Definitions carry the marks here. Learn hardware vs software and the interface types precisely." },
+    { t: "Input and output devices", subs: ["Input devices and their uses", "Direct data entry devices", "Output devices and their uses", "Sensors and control applications", "Choosing the right device for a task"], tip: "Questions usually ask you to justify a choice \u2014 name the device AND give a reason it suits that situation." },
+    { t: "Storage devices and media", subs: ["Backing up data and why it matters", "Magnetic, optical and solid state storage", "Cloud storage", "Comparing capacity, speed and portability"], tip: "Learn one advantage and one disadvantage for each storage type. That is the standard question shape." },
+    { t: "Networks and the effects of using them", subs: ["LAN, WLAN and WAN", "Network hardware: routers, hubs, switches, NIC", "The internet, intranet and extranet", "Network security: passwords, authentication, firewalls", "Video, audio and web conferencing"], tip: "LAN vs WAN vs WLAN is examined every session. Know exactly what distinguishes each one." },
+    { t: "The effects of using IT", subs: ["Microprocessor-controlled devices in the home", "Effects on employment and working patterns", "Health and safety issues", "Repetitive strain injury and eye strain and how to prevent them"], tip: "Health issues need the problem AND the prevention. Half answers get half marks." },
+    { t: "ICT applications", subs: ["Communication: newsletters, posters, websites", "Data handling: surveys, address books, tuck shop records", "Measurement and control systems", "Modelling applications", "Banking, retail, medicine, libraries, expert systems", "School management, online booking, recognition systems"], tip: "The single biggest theory section. Learn a real example for each application area \u2014 generic answers score badly." },
+    { t: "The systems life cycle", subs: ["Analysis: researching the current system", "Design: file structures, forms, reports, validation", "Development and testing, with test data types", "Implementation methods: direct, parallel, pilot, phased", "Documentation: technical and user", "Evaluation"], tip: "Implementation methods come up constantly. Learn all four with one advantage and one drawback each." },
+    { t: "Safety and security", subs: ["Physical safety hazards and prevention", "eSafety: personal data, internet, email, social media", "Security of data: hacking, phishing, smishing, vishing", "Pharming, viruses, card fraud", "Protecting data: firewalls, encryption, biometrics, two-factor"], tip: "Each threat needs a definition and a prevention. Make one card per threat with both halves." },
+    { t: "Audience and communication", subs: ["Audience appreciation and needs", "Copyright and legal issues", "Software copyright", "Communication with an audience", "Email: netiquette, groups, CC and BCC, spam"], tip: "Copyright and netiquette are easy recall marks that students skip because they seem boring." },
+    { t: "File management", subs: ["Managing files effectively", "Generic file formats: css, csv, gif, htm, jpg, pdf, png, rtf, txt, zip, rar", "File compression and why it is used", "Saving and exporting in required formats"], tip: "Know what each file extension is for. This is directly examined and directly needed in the practical papers." },
+    { t: "Images", subs: ["Placing and resizing images", "Maintaining aspect ratio", "Cropping and rotating", "Text wrap around images"], tip: "In the practical papers, distorted images lose marks. Always hold the corner handle to keep the ratio." },
+    { t: "Layout", subs: ["Page setup: size, orientation, margins", "Headers and footers", "Columns and tables", "Page, section and column breaks", "Widows and orphans"], tip: "Headers and footers with automatic fields (filename, date, page number) are asked for in almost every practical paper." },
+    { t: "Styles and proofing", subs: ["Creating and applying corporate house styles", "Font types, sizes, alignment and spacing", "Bullets and numbering", "Spell check and grammar check", "Proofreading against the original text"], tip: "Applying a consistent house style is worth a lot of marks and is easy to lose through carelessness." },
+    { t: "Graphs and charts", subs: ["Bar charts, pie charts and line graphs", "Choosing the right chart for the data", "Chart titles, axis labels and legends", "Selecting non-contiguous data ranges", "Secondary axes"], tip: "Choosing the wrong chart type loses all the marks even if it looks neat. Match the chart to the data." },
+    { t: "Document production (Paper 2)", subs: ["Importing and formatting text", "Setting page layout to a specification", "Mail merge: master document and data source", "Inserting fields and merging", "Producing documents to an exact brief"], tip: "Mail merge is the most commonly failed practical task. Practise it until you can do it without thinking." },
+    { t: "Databases (Paper 2)", subs: ["Creating a database structure and setting field types", "Primary keys and relationships", "Importing data from csv", "Searching with AND, OR, NOT and wildcards", "Sorting on multiple fields", "Calculated fields and summaries", "Producing reports with headers and totals"], tip: "Search criteria must be exact. A single wrong operator returns the wrong records and loses every mark for that task." },
+    { t: "Presentations (Paper 2)", subs: ["Master slides and consistent formatting", "Adding text, images and charts", "Speaker notes and audience handouts", "Transitions and animations", "Printing in the required format"], tip: "The master slide is where the marks are. Format it once rather than editing each slide individually." },
+    { t: "Data analysis / spreadsheets (Paper 3)", subs: ["Creating and formatting a spreadsheet", "Formulae and cell references", "Absolute and relative referencing", "Functions: SUM, AVERAGE, COUNT, COUNTIF, IF, LOOKUP, VLOOKUP, ROUND, MAX, MIN", "Nested functions", "Sorting, filtering and testing the model", "Displaying formulae for printing"], tip: "Absolute vs relative referencing is the single most examined skill in this whole subject. If you learn one thing, learn dollar signs." },
+    { t: "Website authoring (Paper 3)", subs: ["Web development layers: content, presentation, behaviour", "HTML structure, tables and lists", "Inserting images, hyperlinks and anchors", "Attaching stylesheets", "CSS: colours, fonts, alignment, backgrounds", "Testing that a website works"], tip: "You must hand-write HTML and CSS in the exam. Learn the tags properly \u2014 there is no drag-and-drop." }
   ]
 },
 
 /* ---------------------------------------------------------- ENGLISH */
 {
   id: "english",
+  qual: "O Level",
+  sitting: 2029,
   name: "English Language",
   code: "1123",
   emoji: "✍️",
@@ -314,44 +340,50 @@ const SUBJECTS = [
 /* ---------------------------------------------------------- URDU */
 {
   id: "urdu",
-  name: "Urdu",
-  code: "3247 / 3248",
+  name: "Urdu (Second Language)",
+  code: "0539",
+  qual: "IGCSE",
+  sitting: 2028,
   emoji: "🕌",
   colour: "#E11D48",
   tint: "#FEE9EE",
-  syllabusYears: "Current",
-  syllabusUrl: "https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-o-level-urdu-first-language-3247/",
-  subjectPage: "https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-o-level-urdu-first-language-3247/",
-  oneLine: "Speaking Urdu fluently and writing exam Urdu are different skills.",
+  syllabusYears: "2028–2029",
+  syllabusUrl: "https://www.cambridgeinternational.org/Images/745678-2028-2029-syllabus.pdf",
+  subjectPage: "https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-igcse-urdu-as-a-second-language-0539/",
+  oneLine: "Speaking Urdu fluently and passing an Urdu exam are two different skills.",
   papers: [
-    { name: "Paper 1", time: "Varies by syllabus", marks: "50%", what: "Writing and composition tasks." },
-    { name: "Paper 2", time: "Varies by syllabus", marks: "50%", what: "Comprehension, summary and translation where required." }
+    { name: "Paper 1: Reading and Writing", time: "2 hours", marks: "60 marks · 67%", what: "Comprehension exercises and writing tasks. All questions and answers in Urdu." },
+    { name: "Paper 2: Listening", time: "Approx. 35–45 minutes", marks: "30 marks · 33%", what: "Recorded Urdu audio with questions. A whole third of your grade." },
+    { name: "Paper 3: Speaking (optional)", time: "Approx. 10–12 minutes", marks: "Separately graded 1–5", what: "Presentation plus conversation. Does not count towards the A*–G grade." }
   ],
-  book: { title: "Local syllabus-specific sets", author: "Confirm with your teacher which code (3247 First Language or 3248 Second Language) and which syllabus you are entered for BEFORE buying anything.", endorsed: false },
+  book: { title: "IGCSE 0539-specific materials — NOT O Level 3248 books", author: "This is Cambridge IGCSE, not O Level. Books written for O Level Urdu 3247/3248 do not cover the listening paper. Check the code on the cover before buying.", endorsed: false },
   howToStudy: [
-    "First, confirm your exact code. Buying the wrong book wastes money and months.",
-    "Treat it as a full exam subject with its own weekly practice.",
-    "Practise handwriting speed — many students run out of time.",
-    "Do timed past-paper responses, not just reading."
+    "Listening is 33% of your grade and cannot be crammed. Start it in the first month, not the last.",
+    "Listen to Urdu news bulletins and podcasts — real speech at real speed, not slow classroom Urdu.",
+    "Learn the exact format for letters and reports. Format marks are given before content is read.",
+    "Practise handwriting speed. Many students know the answer but run out of time."
   ],
   topics: [
-    { t: "Reading and comprehension", subs: ["Reading passages for detail", "Answering in Urdu accurately", "Inference and interpretation", "Vocabulary in context"], tip: "Answer in complete Urdu sentences. Short fragments lose marks even when the idea is correct." },
-    { t: "Writing and composition", subs: ["Essay writing (mazmoon)", "Letter writing (khat)", "Story writing (kahani)", "Dialogue writing", "Planning and structure"], tip: "Learn the correct format for letters exactly. Format marks are given before content is even read." },
-    { t: "Grammar (Qawaid)", subs: ["Parts of speech", "Tenses", "Sentence construction", "Idioms and proverbs (muhavare aur zarb-ul-amsal)", "Correct spelling (imla)"], tip: "Idioms and proverbs are memory work with guaranteed marks attached. Learn a few every week." },
-    { t: "Summary and translation", subs: ["Summarising a passage (khulasa)", "Translation into Urdu", "Translation into English (where required)", "Staying within word limits"], tip: "Translation is tested on accuracy, not beauty. Translate the meaning faithfully, sentence by sentence." }
+    { t: "Listening (Paper 2) — 33% of the grade", subs: ["Listening for specific details and facts", "Understanding gist and main ideas", "Identifying opinions, attitudes and feelings", "Understanding what is implied but not said directly", "Following longer talks and interviews", "Note-taking while listening"], tip: "This paper did not exist in the old O Level course, so most students prepare for it far too late. You cannot revise listening the night before — it needs weeks of exposure to spoken Urdu." },
+    { t: "Reading and comprehension", subs: ["Reading passages for specific detail", "Understanding gist and writer's purpose", "Inference — what is implied but not stated", "Vocabulary in context", "Answering accurately in Urdu"], tip: "Answer in complete Urdu sentences. Fragments lose marks even when the idea is right." },
+    { t: "Writing and composition", subs: ["Formal and informal letters (khat)", "Reports and articles", "Essay writing (mazmoon)", "Dialogue writing", "Planning before you write", "Matching tone to the audience"], tip: "Learn each format exactly. Format marks are awarded before the examiner even reads your content." },
+    { t: "Grammar (Qawaid)", subs: ["Parts of speech", "Tenses and agreement", "Sentence construction", "Idioms and proverbs (muhavare aur zarb-ul-amsal)", "Correct spelling (imla)"], tip: "Idioms and proverbs are pure memory work with guaranteed marks attached. Learn a few every week." },
+    { t: "Summary and translation", subs: ["Summarising a passage (khulasa)", "Selecting only relevant points", "Translation accuracy", "Staying within word limits"], tip: "Translation is marked on accuracy, not beauty. Translate the meaning faithfully, sentence by sentence." }
   ]
 },
 
 /* ---------------------------------------------------------- PAKISTAN STUDIES */
 {
   id: "pakstudies",
+  qual: "O Level",
+  sitting: 2028,
   name: "Pakistan Studies",
   code: "2059",
   emoji: "🇵🇰",
   colour: "#059669",
   tint: "#E4F6EF",
-  syllabusYears: "2027",
-  syllabusUrl: "https://www.cambridgeinternational.org/Images/732849-2027-syllabus.pdf",
+  syllabusYears: "2028–2030",
+  syllabusUrl: "https://www.cambridgeinternational.org/Images/743607-2028-2030-syllabus.pdf",
   subjectPage: "https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-o-level-pakistan-studies-2059/",
   oneLine: "Two papers, two totally different skills. Treat them as separate subjects.",
   papers: [
@@ -383,13 +415,15 @@ const SUBJECTS = [
 /* ---------------------------------------------------------- ISLAMIYAT */
 {
   id: "islamiyat",
+  qual: "O Level",
+  sitting: 2028,
   name: "Islamiyat",
   code: "2058",
   emoji: "🕋",
   colour: "#9333EA",
   tint: "#F4EBFE",
-  syllabusYears: "Current",
-  syllabusUrl: "https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-o-level-islamiyat-2058/",
+  syllabusYears: "2028",
+  syllabusUrl: "https://www.cambridgeinternational.org/Images/744846-2028-syllabus.pdf",
   subjectPage: "https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-o-level-islamiyat-2058/",
   oneLine: "Not judged on how much you write, but on answering the actual question.",
   papers: [

@@ -16,7 +16,8 @@
   <div class="topbar-in">
     <a class="logo" href="index.html"><span class="dot">OL</span> <span class="full">O Level Hub</span></a>
     <nav class="topnav">
-      <a href="index.html" class="on">Subjects</a>
+      
+      <a href="today.html">Today</a><a href="index.html" class="on">Subjects</a>
       <a href="assessment.html">Starting Point</a>
       <a href="guide.html">How to study</a>
       <a href="#resources">Free stuff</a>
@@ -27,14 +28,16 @@
 <div class="wrap">
 
   <section class="hero">
-    <span class="kicker">📚 Free · Built for the 2027 exams</span>
-    <h1>Everything you need for<br>O Levels, in <span class="hl">one place</span>.</h1>
-    <p class="lead">Every topic from the official Cambridge syllabus. The books examiners actually recommend. Free notes, past papers and video lessons for each topic. Tick things off as you learn them.</p>
+    <span class="kicker">📚 Horia's O Level plan · 2028 &amp; 2029</span>
+    <h1>Everything you need,<br>in <span class="hl">one place</span>.</h1>
+    <p class="lead">Every topic from the official Cambridge syllabus. Real past-paper questions. What examiners actually want. Tick things off as you learn them — nothing here is guesswork.</p>
     <div class="btnrow">
-      <a class="btn" href="assessment.html">🧭 Start here: Starting Point Check →</a>
+      <a class="btn" href="today.html">▶️ Start today's 25 minutes</a>
       <a class="btn alt" href="#subjects">Pick a subject</a>
+      <a class="btn alt" href="assessment.html">🧭 Starting Point Check</a>
       <a class="btn alt" href="guide.html">How to study</a>
     </div>
+    <div class="bigcount" id="bigcount"></div>
   </section>
 
   <div class="progwrap" id="overall"></div>
@@ -52,8 +55,8 @@
   </section>
 
   <section class="sec" id="subjects">
-    <h2>Choose a subject</h2>
-    <p class="sub">Each one has the full topic list, the right book, and links for learning every topic.</p>
+    <h2>Your subjects, by exam</h2>
+    <p class="sub">Two sittings, one year apart. Everything below comes from the official syllabus for <b>her</b> exam year — not a generic list.</p>
     <div class="subjects" id="grid"></div>
   </section>
 
@@ -123,6 +126,7 @@
 <script src="realquestions.js"></script>
 <script src="app.js"></script>
 <script>
+  renderCountdowns(document.getElementById("bigcount"));
   renderSubjectGrid(document.getElementById("grid"));
   renderOverall(document.getElementById("overall"));
   renderResources(document.getElementById("reslist"));

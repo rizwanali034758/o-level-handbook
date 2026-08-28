@@ -36,24 +36,99 @@ function pctDone(subject) {
   return tot ? Math.round(doneSubs(subject) / tot * 100) : 0;
 }
 
-/* ---- build the subject grid on the home page ---- */
-function renderSubjectGrid(el) {
-  el.innerHTML = SUBJECTS.map(s => {
-    const pct = pctDone(s);
-    let qtot = 0;
-    s.topics.forEach((t, i) => qtot += qcount(s.id, i));
+/* days until an exam sitting (exams start early May) */
+function daysUntil(year) {
+  if (!year) return null;
+  const exam = new Date(year, 4, 1);
+  return Math.max(0, Math.ceil((exam - new Date()) / 86400000));
+}
+function monthsUntil(year) {
+  const d = daysUntil(year);
+  return d === null ? null : Math.round(d / 30.44);
+}
+
+/* two big exam countdowns for the home page */
+function renderCountdowns(el) {
+  if (!el) return;
+  const sets = [
+    { year: 2028, label: "Urdu · Pak Studies · Islamiyat", colour: "#E11D48" },
+    { year: 2029, label: "English · Maths · Physics · Chemistry · ICT", colour: "#0D9488" }
+  ];
+  el.innerHTML = sets.map(s => {
+    const d = daysUntil(s.year), m = monthsUntil(s.year);
     return `
-    <a class="scard" href="subject.html?s=${s.id}" style="border-color:${pct > 0 ? s.colour + '40' : 'transparent'}">
-      <div class="ico" style="background:${s.tint};color:${s.colour}">${s.emoji}</div>
+      <div class="cdcard" style="--cd:${s.colour}">
+        <span class="cdyear">May ${s.year}</span>
+        <b class="cddays">${d.toLocaleString()}</b>
+        <span class="cdlabel">days to go · about ${m} months</span>
+        <span class="cdsubs">${s.label}</span>
+      </div>`;
+  }).join("");
+}
+
+/* one subject card */
+function subjectCard(s) {
+  const pct = pctDone(s);
+  let qtot = 0;
+  s.topics.forEach((t, i) => qtot += qcount(s.id, i));
+  let rtot = 0;
+  try { if (typeof realTotal === "function") rtot = realTotal(s.id); } catch (e) {}
+  const badge = s.qual === "IGCSE"
+    ? '<span class="qualbadge igcse">IGCSE</span>'
+    : '<span class="qualbadge olevel">O LEVEL</span>';
+  return `
+    <a class="scard" href="subject.html?s=${s.id}" style="--sc:${s.colour}">
+      <div class="scard-top">
+        <div class="ico" style="background:${s.tint};color:${s.colour}">${s.emoji}</div>
+        ${badge}
+      </div>
       <h3>${s.name}</h3>
-      <span class="code">SYLLABUS ${s.code}</span>
+      <span class="code">${s.code} · syllabus ${s.syllabusYears}</span>
       <p>${s.oneLine}</p>
+      <div class="scard-bar"><span style="width:${pct}%;background:${s.colour}"></span></div>
       <div class="meta">
-        <span>${s.topics.length} topics${qtot ? " · " + qtot + " questions" : ""}</span>
-        <span class="pill" style="background:${s.tint};color:${s.colour}">${pct}% done</span>
+        <span>${s.topics.length} topics${rtot ? " · " + rtot + " real Qs" : qtot ? " · " + qtot + " Qs" : ""}</span>
+        <span class="pill" style="background:${s.tint};color:${s.colour}">${pct}%</span>
       </div>
     </a>`;
-  }).join("");
+}
+
+/* ---- build the subject grid, grouped by exam sitting ---- */
+function renderSubjectGrid(el) {
+  const groups = [
+    { year: 2028, title: "May 2028", sub: "The language and writing set — all answered in English" },
+    { year: 2029, title: "May 2029", sub: "The science, maths and ICT set" }
+  ];
+  let html = "";
+  groups.forEach(g => {
+    const subs = SUBJECTS.filter(s => s.sitting === g.year);
+    if (!subs.length) return;
+    const d = daysUntil(g.year), m = monthsUntil(g.year);
+    html += `
+      <div class="sitting">
+        <div class="sitting-head">
+          <div>
+            <h3>${g.title}</h3>
+            <p>${g.sub}</p>
+          </div>
+          <div class="countdown-chip">
+            <b>${d.toLocaleString()}</b><span>days left · about ${m} months</span>
+          </div>
+        </div>
+        <div class="subjects">${subs.map(subjectCard).join("")}</div>
+      </div>`;
+  });
+
+  const others = SUBJECTS.filter(s => s.notHers);
+  if (others.length) {
+    html += `
+      <details class="othersubs">
+        <summary>Other subjects (not on Horia's list) — ${others.length}</summary>
+        <p class="sub" style="margin:12px 0">These were built earlier and are kept as general reference. They are <b>not</b> part of her confirmed subjects, so ignore them unless something changes.</p>
+        <div class="subjects">${others.map(subjectCard).join("")}</div>
+      </details>`;
+  }
+  el.innerHTML = html;
 }
 
 /* ---- overall progress across all subjects ---- */
@@ -87,17 +162,46 @@ function renderSubjectPage(subject) {
   /* hero */
   const hero = document.getElementById("subhero");
   hero.style.background = `linear-gradient(135deg,${subject.colour},${shade(subject.colour, -22)})`;
+  const d = daysUntil(subject.sitting);
+  const m = monthsUntil(subject.sitting);
   hero.innerHTML = `
     <span class="bigico">${subject.emoji}</span>
     <h1>${subject.name}</h1>
     <div class="codeline">
-      <span>Code ${subject.code}</span>
+      <span>${subject.qual || "O Level"} ${subject.code}</span>
       <span>Syllabus ${subject.syllabusYears}</span>
       <span>${subject.topics.length} topics</span>
+      ${subject.sitting ? `<span class="hot">Exam May ${subject.sitting}</span>` : ""}
     </div>
     <p>${subject.oneLine}</p>
+    ${d !== null && subject.sitting ? `
+      <div class="herocount">
+        <b>${d.toLocaleString()}</b> days until the exam <span>· about ${m} months</span>
+      </div>` : ""}
     <a class="syllink" href="${subject.syllabusUrl}" target="_blank" rel="noopener"
        style="color:${subject.colour}">📥 Get the official syllabus</a>`;
+
+  /* subject-specific warnings */
+  const warnEl = document.getElementById("subwarn");
+  if (warnEl) {
+    let w = "";
+    if (subject.notHers) {
+      w = `<div class="notice"><b>⚠️ Not one of Horia's subjects</b>
+        This was built earlier and is kept as general reference only. Her confirmed list does not include it — don't spend time here.</div>`;
+    } else if (subject.id === "urdu") {
+      w = `<div class="notice"><b>🎧 Careful — this is IGCSE 0539, not O Level Urdu</b>
+        A third of this grade is a <b>listening exam</b>, which the old O Level Urdu course did not have.
+        Books and past papers labelled 3247 or 3248 will not prepare you for it. Start listening practice early — it is the one skill that cannot be crammed.</div>`;
+    } else if (subject.id === "ict") {
+      w = `<div class="notice"><b>💻 This is ICT 0417, not Computer Science 2210</b>
+        Different subject, despite the similar sound. ICT is about <b>using software well</b> — documents, spreadsheets, databases, presentations, websites.
+        Computer Science is about programming. <b>60% of this grade is two hands-on practical exams</b>, so reading alone will not work.</div>`;
+    } else if (subject.id === "physics" || subject.id === "chemistry") {
+      w = `<div class="notice green"><b>✅ Practical route confirmed</b>
+        She sits <b>Paper 4, the written Alternative to Practical</b> — not the hands-on Paper 3. It still tests experiments, but on paper: apparatus, readings, tables, graphs and conclusions.</div>`;
+    }
+    warnEl.innerHTML = w;
+  }
 
   /* papers */
   document.getElementById("papers").innerHTML = subject.papers.map(p => `

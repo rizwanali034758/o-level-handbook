@@ -27,7 +27,7 @@ const LEVELS = {
   4: { name: "Exam-ready",  colour: "#0D9488", tint:"#E3F7F5",
        what: "Strong. Academic text is understood. Now it is about precision and exam technique." },
   5: { name: "A* candidate",colour: "#16A34A", tint:"#E8F7EC",
-       what: "Excellent control of English. The language will not hold back any subject." }
+       what: "Excellent control of general English. Note: some Level 5 vocabulary is exam-science specific (words like 'compressed', 'proportional', 'reliable' used the way Physics and Chemistry papers use them). A fluent reader can still miss these without a science background — that's a vocabulary-to-learn signal, not a fluency problem." }
 };
 
 /* ---------------- ENGLISH ITEMS ---------------- */

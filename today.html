@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Today — O Level Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="logo" href="index.html"><span class="dot">OL</span> <span class="full">O Level Hub</span></a>
+    <nav class="topnav">
+      <a href="today.html" class="on">Today</a>
+      <a href="index.html">Subjects</a>
+      <a href="assessment.html">Starting Point</a>
+      <a href="guide.html">How to study</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section class="sec">
+    <div class="todayhero">
+      <div class="todaydate" id="todayDate"></div>
+      <h1>Today</h1>
+      <p>Three things. About 25 minutes. That's the whole job.</p>
+      <div class="streakrow" id="streakRow"></div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div id="tasks"></div>
+  </section>
+
+  <section class="sec" id="doneBox" hidden>
+    <div class="notice green">
+      <b>🎉 Done for today</b>
+      That's the streak kept alive. Doing this again tomorrow matters more than doing extra today.
+    </div>
+  </section>
+
+  <section class="sec">
+    <h2>Why only three things?</h2>
+    <div class="cards">
+      <div class="card"><h4>🧠 Small beats heroic</h4><p>Studying 25 minutes every day beats 4 hours once a week. Your brain needs repeated visits, not one long one.</p></div>
+      <div class="card"><h4>📖 English runs daily</h4><p>Every subject is marked on precise English sentences — even Pakistan Studies and Islamiyat. Ten minutes a day compounds over years.</p></div>
+      <div class="card"><h4>🔁 Old topics come back</h4><p>You forget most of what you learn within weeks unless you revisit it. That's normal, and the fix is revisiting on schedule.</p></div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <p><b>Today</b> — the daily habit screen. Progress saves in this browser only.</p>
+  </div>
+</footer>
+
+<script src="data.js"></script>
+<script src="questions.js"></script>
+<script src="realquestions.js"></script>
+<script src="app.js"></script>
+<script>
+(function(){
+  const todayKey = new Date().toISOString().slice(0,10);
+
+  /* ---- streak tracking ---- */
+  function getStreak(){
+    try { return JSON.parse(localStorage.getItem("today:streak") || '{"days":[],"count":0}'); }
+    catch(e){ return {days:[],count:0}; }
+  }
+  function saveStreak(o){ try{ localStorage.setItem("today:streak", JSON.stringify(o)); }catch(e){} }
+  function getDone(){
+    try { return JSON.parse(localStorage.getItem("today:done:"+todayKey) || "[]"); }
+    catch(e){ return []; }
+  }
+  function saveDone(a){ try{ localStorage.setItem("today:done:"+todayKey, JSON.stringify(a)); }catch(e){} }
+
+  function recalcStreak(){
+    const s = getStreak();
+    if (!s.days.includes(todayKey)) return s;
+    let count = 0;
+    const d = new Date();
+    while (true) {
+      const k = d.toISOString().slice(0,10);
+      if (s.days.includes(k)) { count++; d.setDate(d.getDate()-1); }
+      else break;
+    }
+    s.count = count;
+    return s;
+  }
+
+  /* ---- pick today's work ---- */
+  /* rotates through her actual subjects so nothing gets neglected */
+  function pickSubject(){
+    const mine = SUBJECTS.filter(s => !s.notHers && s.sitting === 2028);
+    const dayNum = Math.floor(Date.now()/86400000);
+    return mine[dayNum % mine.length];
+  }
+  function pickTopic(subject){
+    const dayNum = Math.floor(Date.now()/86400000);
+    return { topic: subject.topics[dayNum % subject.topics.length],
+             index: dayNum % subject.topics.length };
+  }
+
+  const subj = pickSubject();
+  const pick = pickTopic(subj);
+
+  const TASKS = [
+    { id:"english", icon:"📖", mins:10, title:"Read English for 10 minutes",
+      body:"Read anything in English — a news article, a story, a textbook page. Then write down <b>five words you did not know</b>, with their Urdu meaning and your own sentence for each.",
+      why:"Every subject is marked on precise English. This is the one task that improves all eight subjects at once.",
+      link:null, linkText:null },
+    { id:"topic", icon:subj.emoji, mins:10, title:"One topic: " + pick.topic.t,
+      body:"Today's subject is <b>" + subj.name + "</b>. Open the topic, read one sub-topic, then <b>close the page and write down what you remember</b>. Whatever you forgot is what you actually need to study.",
+      why:"Closing the book and recalling is uncomfortable — that discomfort is the learning. Rereading feels productive and mostly is not.",
+      link:"subject.html?s=" + subj.id, linkText:"Open " + subj.name + " →" },
+    { id:"review", icon:"🔁", mins:5, title:"Review your mistakes",
+      body:"Open your MY MISTAKES notebook and read the last five entries. If you have no mistakes notebook yet, start one today — one page, five columns: question, what I wrote, correct answer, why I lost the mark, rule for next time.",
+      why:"Before exams, this notebook is worth more than the textbook. It is a personalised syllabus of exactly what you get wrong.",
+      link:"guide.html", linkText:"How the mistakes book works →" }
+  ];
+
+  /* ---- render ---- */
+  const dateEl = document.getElementById("todayDate");
+  dateEl.textContent = new Date().toLocaleDateString(undefined,
+    {weekday:"long", day:"numeric", month:"long"});
+
+  function paint(){
+    const done = getDone();
+    document.getElementById("tasks").innerHTML = TASKS.map((t,i) => {
+      const isDone = done.includes(t.id);
+      return `
+      <div class="tasklet ${isDone?"done":""}">
+        <button class="taskcheck ${isDone?"on":""}" data-id="${t.id}" aria-label="Mark done">${isDone?"✓":""}</button>
+        <div class="taskbody">
+          <div class="taskhead">
+            <span class="taskicon">${t.icon}</span>
+            <h3>${t.title}</h3>
+            <span class="taskmins">${t.mins} min</span>
+          </div>
+          <p class="taskwhat">${t.body}</p>
+          <p class="taskwhy"><b>Why this matters:</b> ${t.why}</p>
+          ${t.link?`<a class="linkbtn" href="${t.link}">${t.linkText}</a>`:""}
+        </div>
+      </div>`;
+    }).join("");
+
+    document.querySelectorAll(".taskcheck").forEach(b=>{
+      b.onclick = () => {
+        let d = getDone();
+        const id = b.dataset.id;
+        d = d.includes(id) ? d.filter(x=>x!==id) : d.concat(id);
+        saveDone(d);
+        if (d.length === TASKS.length) {
+          const s = getStreak();
+          if (!s.days.includes(todayKey)) { s.days.push(todayKey); saveStreak(s); }
+        }
+        paint();
+      };
+    });
+
+    const allDone = done.length === TASKS.length;
+    document.getElementById("doneBox").hidden = !allDone;
+
+    const s = recalcStreak();
+    const total = s.days.length;
+    document.getElementById("streakRow").innerHTML = `
+      <div class="streakbit"><b>${s.count}</b><span>day streak</span></div>
+      <div class="streakbit"><b>${total}</b><span>days total</span></div>
+      <div class="streakbit"><b>${done.length}/${TASKS.length}</b><span>done today</span></div>`;
+  }
+  paint();
+})();
+</script>
+</body>
+</html>

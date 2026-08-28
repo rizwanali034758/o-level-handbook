@@ -466,6 +466,120 @@ h1,h2,h3,h4{font-family:var(--display);font-weight:700;line-height:1.15;margin:0
 .assbanner p{margin:0 0 18px;opacity:.95;max-width:56ch;font-size:1rem}
 .assbanner .btn{background:#fff;color:var(--brand);box-shadow:0 4px 14px rgba(0,0,0,.18)}
 
+/* ---------- exam countdowns ---------- */
+.bigcount{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:13px;margin-top:26px}
+.cdcard{
+  background:var(--card);border-radius:var(--r-lg);padding:20px 22px;
+  box-shadow:var(--shadow);border-top:5px solid var(--cd);position:relative;overflow:hidden;
+}
+.cdcard::after{
+  content:"";position:absolute;right:-30px;top:-30px;width:110px;height:110px;
+  border-radius:50%;background:var(--cd);opacity:.07;
+}
+.cdyear{
+  font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--cd);display:block;margin-bottom:4px;
+}
+.cddays{
+  font-family:var(--display);font-size:2.9rem;line-height:1;display:block;
+  color:var(--ink);letter-spacing:-.02em;
+}
+.cdlabel{font-size:.82rem;font-weight:700;color:var(--ink-soft);display:block;margin-top:3px}
+.cdsubs{
+  font-size:.78rem;color:var(--ink-soft);display:block;margin-top:11px;
+  padding-top:11px;border-top:1px solid var(--line);line-height:1.5;
+}
+
+/* ---------- sitting groups ---------- */
+.sitting{margin-bottom:34px}
+.sitting-head{
+  display:flex;justify-content:space-between;align-items:center;gap:14px;
+  flex-wrap:wrap;margin-bottom:15px;padding-bottom:12px;border-bottom:2px solid var(--line);
+}
+.sitting-head h3{font-size:1.5rem;margin:0}
+.sitting-head p{margin:2px 0 0;font-size:.88rem;color:var(--ink-soft)}
+.countdown-chip{
+  background:var(--ink);color:#fff;border-radius:var(--r-md);padding:9px 15px;text-align:right;
+}
+.countdown-chip b{font-family:var(--display);font-size:1.25rem;display:block;line-height:1.1}
+.countdown-chip span{font-size:.7rem;opacity:.8}
+
+/* ---------- enhanced subject cards ---------- */
+.scard-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px}
+.scard .ico{margin-bottom:0}
+.qualbadge{
+  font-size:.62rem;font-weight:800;letter-spacing:.09em;padding:4px 9px;border-radius:99px;
+}
+.qualbadge.igcse{background:#F3EEFF;color:#7C3AED}
+.qualbadge.olevel{background:#EEF2FF;color:#4F46E5}
+.scard-bar{
+  height:5px;background:var(--bg);border-radius:99px;overflow:hidden;margin-bottom:11px;
+}
+.scard-bar span{display:block;height:100%;border-radius:99px;transition:width .4s}
+.scard:hover{border-color:var(--sc)}
+
+.othersubs{
+  background:var(--card);border-radius:var(--r-md);padding:16px 18px;
+  box-shadow:var(--shadow);margin-top:8px;
+}
+.othersubs summary{
+  cursor:pointer;font-family:var(--display);font-weight:700;font-size:1rem;color:var(--ink-soft);
+}
+.othersubs[open] summary{margin-bottom:6px}
+
+/* ---------- subject hero extras ---------- */
+.codeline .hot{background:rgba(255,255,255,.35)!important;font-weight:800}
+.herocount{
+  background:rgba(255,255,255,.2);border-radius:var(--r-md);padding:11px 16px;
+  margin-top:15px;display:inline-block;font-size:.92rem;
+}
+.herocount b{font-family:var(--display);font-size:1.5rem}
+.herocount span{opacity:.85;font-size:.85rem}
+
+/* ---------- today page ---------- */
+.todayhero{
+  border-radius:var(--r-lg);padding:28px 26px;color:#fff;
+  background:linear-gradient(135deg,#5B4BE8,#8B5CF6);box-shadow:var(--shadow-lg);
+}
+.todaydate{font-size:.8rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;opacity:.85;margin-bottom:6px}
+.todayhero h1{font-size:clamp(2.2rem,7vw,3.2rem);margin-bottom:8px}
+.todayhero p{margin:0;opacity:.94}
+.streakrow{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap}
+.streakbit{
+  background:rgba(255,255,255,.2);border-radius:var(--r-md);padding:11px 17px;min-width:92px;
+}
+.streakbit b{font-family:var(--display);font-size:1.6rem;display:block;line-height:1.1}
+.streakbit span{font-size:.72rem;font-weight:700;opacity:.88}
+
+.tasklet{
+  background:var(--card);border-radius:var(--r-md);padding:18px;box-shadow:var(--shadow);
+  margin-bottom:13px;display:flex;gap:15px;align-items:flex-start;
+  border-left:5px solid var(--brand);transition:.18s;
+}
+.tasklet.done{opacity:.58;border-left-color:var(--good)}
+.taskcheck{
+  width:34px;height:34px;flex:0 0 auto;border-radius:11px;cursor:pointer;
+  border:2.5px solid #C9CEDD;background:#fff;font-size:1.05rem;font-weight:800;color:#fff;
+  display:grid;place-items:center;transition:.15s;
+}
+.taskcheck.on{background:var(--good);border-color:var(--good)}
+.taskcheck:hover{border-color:var(--brand)}
+.taskbody{min-width:0;flex:1}
+.taskhead{display:flex;align-items:center;gap:9px;margin-bottom:9px;flex-wrap:wrap}
+.taskicon{font-size:1.3rem}
+.taskhead h3{font-size:1.1rem;margin:0;flex:1;min-width:120px}
+.taskmins{
+  font-size:.7rem;font-weight:800;background:var(--bg);color:var(--ink-soft);
+  padding:4px 10px;border-radius:99px;
+}
+.tasklet.done .taskhead h3{text-decoration:line-through}
+.taskwhat{font-size:.95rem;margin:0 0 9px;line-height:1.6}
+.taskwhy{
+  font-size:.86rem;margin:0 0 11px;color:var(--ink-soft);background:var(--bg);
+  border-radius:var(--r-sm);padding:10px 13px;line-height:1.5;
+}
+.taskwhy b{color:var(--ink)}
+
 /* ---------- lists ---------- */
 ul.ticks{list-style:none;padding:0;margin:0}
 ul.ticks li{
