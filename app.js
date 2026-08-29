@@ -124,7 +124,7 @@ function renderSubjectGrid(el) {
     html += `
       <details class="othersubs">
         <summary>Other subjects (not on this study plan) — ${others.length}</summary>
-        <p class="sub" style="margin:12px 0">These were built earlier and are kept as general reference. They are <b>not</b> part of her confirmed subjects, so ignore them unless something changes.</p>
+        <p class="sub" style="margin:12px 0">These were built earlier and are kept as general reference. They are <b>not</b> part of the current study plan, so skip them unless your school says otherwise.</p>
         <div class="subjects">${others.map(subjectCard).join("")}</div>
       </details>`;
   }
@@ -197,8 +197,8 @@ function renderSubjectPage(subject) {
         Different subject, despite the similar sound. ICT is about <b>using software well</b> — documents, spreadsheets, databases, presentations, websites.
         Computer Science is about programming. <b>60% of this grade is two hands-on practical exams</b>, so reading alone will not work.</div>`;
     } else if (subject.id === "physics" || subject.id === "chemistry") {
-      w = `<div class="notice green"><b>✅ Practical route confirmed</b>
-        She sits <b>Paper 4, the written Alternative to Practical</b> — not the hands-on Paper 3. It still tests experiments, but on paper: apparatus, readings, tables, graphs and conclusions.</div>`;
+      w = `<div class="notice green"><b>✅ Which practical paper?</b>
+        Most Pakistani schools enter students for <b>Paper 4, the written Alternative to Practical</b> — not the hands-on Paper 3. It still tests experiments, but on paper: apparatus, readings, tables, graphs and conclusions.</div>`;
     }
     warnEl.innerHTML = w;
   }

@@ -143,7 +143,7 @@ const SUBJECTS = [
   papers: [
     { name: "Paper 1: Multiple Choice", time: "1 hour", marks: "40 marks · 30%", what: "40 four-option multiple choice questions." },
     { name: "Paper 2: Theory", time: "1 hour 45 minutes", marks: "80 marks · 50%", what: "Short answer and structured questions." },
-    { name: "Paper 4: Alternative to Practical", time: "1 hour", marks: "40 marks · 20%", what: "CONFIRMED: she sits Paper 4, the written practical paper — not the hands-on Paper 3. Tests experiment design, readings, graphs and conclusions on paper." }
+    { name: "Paper 4: Alternative to Practical", time: "1 hour", marks: "40 marks · 20%", what: "The written practical paper — not the hands-on Paper 3. Tests experiment design, readings, graphs and conclusions on paper. Check which one your school enters you for." }
   ],
   book: { title: "Cambridge O Level Physics Coursebook", author: "Heather Kennett — Cambridge University Press", endorsed: true },
   howToStudy: [
@@ -179,7 +179,7 @@ const SUBJECTS = [
   papers: [
     { name: "Paper 1: Multiple Choice", time: "1 hour", marks: "40 marks", what: "40 multiple choice questions. Periodic Table provided." },
     { name: "Paper 2: Theory", time: "1 hour 30 minutes", marks: "75 marks", what: "Section A compulsory. Section B: answer 3 of 4 questions." },
-    { name: "Paper 4: Alternative to Practical", time: "1 hour", marks: "Scaled to 30", what: "CONFIRMED: she sits Paper 4, the written practical paper — not the hands-on Paper 3. Tests apparatus, observations, tables and graphs on paper." }
+    { name: "Paper 4: Alternative to Practical", time: "1 hour", marks: "Scaled to 30", what: "The written practical paper — not the hands-on Paper 3. Tests apparatus, observations, tables and graphs on paper. Check which one your school enters you for." }
   ],
   book: { title: "Cambridge O Level Chemistry", author: "Bryan Earl & Doug Wilford — Hodder Education", endorsed: true },
   howToStudy: [

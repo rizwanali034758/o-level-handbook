@@ -7,15 +7,23 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=10">
+<link rel="stylesheet" href="style.css?v=11">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#6366F1">
 </head>
 <body>
 
 <header class="topbar">
   <div class="topbar-in">
-    <a class="logo" href="index.html"><span class="dot">OL</span> <span class="full">O Level Pakistan</span></a>
-    <nav class="topnav">
-      <a href="today.html" class="on">Today</a>
+    <a class="logo" href="index.html" aria-label="O Level Pakistan, home">
+      <span class="logomark" aria-hidden="true"><svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="olpG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6366F1"/><stop offset="1" stop-color="#FF7A59"/></linearGradient></defs><rect width="32" height="32" rx="9" fill="url(#olpG)"/><path d="M8.5 17.2l4.6 4.6L23.6 11.3" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M18.6 11.3h5v5" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <span class="logotext"><b>O Level</b> <span class="lt-sub">Pakistan</span></span>
+    </a>
+    <button class="navtoggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="topnav">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="topnav" id="topnav">
+      <a href="today.html">Today</a>
       <a href="index.html">Subjects</a>
       <a href="assessment.html">Starting Point</a>
       <a href="guide.html">How to study</a>
@@ -66,10 +74,10 @@
   </div>
 </footer>
 
-<script src="data.js?v=10"></script>
-<script src="questions.js?v=10"></script>
-<script src="realquestions.js?v=10"></script>
-<script src="app.js?v=10"></script>
+<script src="data.js?v=11"></script>
+<script src="questions.js?v=11"></script>
+<script src="realquestions.js?v=11"></script>
+<script src="app.js?v=11"></script>
 <script>
 (function(){
   const todayKey = new Date().toISOString().slice(0,10);
@@ -183,5 +191,6 @@
   paint();
 })();
 </script>
+<script src="ui.js?v=11"></script>
 </body>
 </html>

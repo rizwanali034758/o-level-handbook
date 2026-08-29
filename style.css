@@ -4,16 +4,19 @@
    ============================================================ */
 
 :root{
-  --bg:#F6F7FB;
+  /* ---- BRAND: friendly, encouraging, built for nervous students ---- */
+  --brand:#6366F1;          /* study violet  - primary actions */
+  --brand-2:#8B5CF6;        /* violet        - gradients */
+  --accent:#FF7A59;         /* warm coral    - highlights, energy */
+  --good:#10B981;           /* mint green    - success, done */
+  --warn:#F59E0B;           /* amber         - caution */
+  --hot:#F43F5E;            /* rose          - important */
+
+  --bg:#F7F7FB;
   --card:#FFFFFF;
-  --ink:#1A1D2E;
-  --ink-soft:#5C6480;
-  --line:#E6E8F0;
-  --brand:#5B4BE8;
-  --brand-2:#8B5CF6;
-  --good:#16A34A;
-  --warn:#F59E0B;
-  --hot:#E11D48;
+  --ink:#16162E;
+  --ink-soft:#5A6080;
+  --line:#E8E9F2;
 
   --display:'Baloo 2','Trebuchet MS',sans-serif;
   --body:'Nunito','Segoe UI',sans-serif;
@@ -21,9 +24,12 @@
   --r-lg:22px;
   --r-md:16px;
   --r-sm:10px;
-  --shadow:0 2px 10px rgba(26,29,46,.06);
-  --shadow-lg:0 8px 26px rgba(26,29,46,.10);
+  --shadow:0 2px 10px rgba(22,22,46,.06);
+  --shadow-lg:0 10px 30px rgba(22,22,46,.11);
   --wrap:1080px;
+
+  /* touch target minimum for phones */
+  --tap:44px;
 }
 
 *{box-sizing:border-box}
@@ -610,3 +616,146 @@ footer .warn{color:var(--hot);font-weight:700}
 .center{text-align:center}
 .mt{margin-top:20px}
 .hide{display:none}
+
+/* ============================================================
+   BRAND HEADER — logo mark + wordmark + mobile menu
+   ============================================================ */
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
+.logomark{width:34px;height:34px;flex:0 0 auto;display:block}
+.logomark svg{width:100%;height:100%;display:block}
+.logotext{font-family:var(--display);font-weight:700;font-size:1.1rem;letter-spacing:-.01em;white-space:nowrap}
+.logotext b{font-weight:800}
+.logotext .lt-sub{color:var(--brand)}
+
+.navtoggle{
+  display:none;width:var(--tap);height:var(--tap);margin-left:auto;
+  background:transparent;border:0;cursor:pointer;border-radius:12px;
+  flex-direction:column;justify-content:center;align-items:center;gap:5px;
+}
+.navtoggle span{
+  display:block;width:21px;height:2.5px;border-radius:2px;background:var(--ink);
+  transition:transform .22s,opacity .22s;
+}
+.navtoggle[aria-expanded="true"] span:nth-child(1){transform:translateY(7.5px) rotate(45deg)}
+.navtoggle[aria-expanded="true"] span:nth-child(2){opacity:0}
+.navtoggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
+
+/* ============================================================
+   MOBILE — everything below 820px
+   ============================================================ */
+@media(max-width:820px){
+  .navtoggle{display:flex}
+  .topbar-in{flex-wrap:nowrap;padding:10px 16px;gap:10px}
+  .topnav{
+    position:absolute;left:0;right:0;top:100%;
+    flex-direction:column;gap:0;background:var(--card);
+    border-bottom:1px solid var(--line);box-shadow:var(--shadow-lg);
+    max-height:0;overflow:hidden;transition:max-height .26s ease;
+    margin-left:0;padding:0;
+  }
+  .topnav.open{max-height:70vh;overflow-y:auto}
+  .topnav a{
+    padding:15px 20px;border-radius:0;font-size:1rem;
+    border-bottom:1px solid var(--line);min-height:var(--tap);
+    display:flex;align-items:center;
+  }
+  .topnav a:last-child{border-bottom:0}
+  .topnav a.on{background:var(--bg);color:var(--brand)}
+  .topbar{position:sticky}
+  .logotext{font-size:1rem}
+}
+
+@media(max-width:640px){
+  body{font-size:16px}
+  .wrap{padding:0 16px}
+
+  /* hero + headings scale down */
+  .hero{padding:24px 0 8px}
+  .hero h1{font-size:clamp(1.8rem,8.5vw,2.4rem)}
+  .hero p.lead{font-size:1rem}
+  .btnrow{gap:8px}
+  .btn{padding:13px 16px;font-size:.88rem;min-height:var(--tap);justify-content:center}
+  /* primary action gets full width, secondary actions share a row */
+  .btnrow .btn:first-child{flex:1 1 100%}
+  .btnrow .btn.alt{flex:1 1 calc(50% - 4px);padding:12px 10px;font-size:.82rem}
+
+  /* countdowns stack and shrink */
+  .bigcount{grid-template-columns:1fr;gap:10px;margin-top:20px}
+  .cdcard{padding:17px 18px}
+  .cddays{font-size:2.3rem}
+
+  /* sitting header stacks */
+  .sitting-head{flex-direction:column;align-items:flex-start;gap:10px}
+  .countdown-chip{align-self:stretch;text-align:left}
+  .sitting-head h3{font-size:1.3rem}
+
+  /* cards single column, tighter */
+  .subjects{grid-template-columns:1fr;gap:12px}
+  .cards,.steps,.papers,.weeks,.grid2{grid-template-columns:1fr}
+  .scard{padding:17px}
+  .card,.step,.paper{padding:16px}
+
+  /* subject hero */
+  .subhero{padding:22px 20px}
+  .subhero h1{font-size:clamp(1.5rem,7.5vw,2rem)}
+  .codeline{gap:6px}
+  .codeline span{font-size:.72rem;padding:3px 9px}
+  .herocount{display:block}
+  .herocount b{font-size:1.3rem}
+  .syllink{width:100%;justify-content:center}
+
+  /* topics + questions */
+  .topic summary{padding:14px 15px;gap:9px}
+  .topic .tname{font-size:.98rem}
+  .tbody{padding:0 15px 15px}
+  .subrow{font-size:.92rem;padding:11px 0}
+  .box{width:24px;height:24px}
+  .linkrow{gap:7px}
+  .linkbtn{
+    font-size:.78rem;padding:11px 14px;min-height:var(--tap);
+    flex:1 1 calc(50% - 4px);justify-content:center;text-align:center;
+  }
+  .qcard{padding:16px}
+  .qtext{font-size:.96rem}
+  .partline{font-size:.85rem}
+  .marks{margin-left:0}
+  .qtop{gap:7px}
+
+  /* assessment */
+  .asshero{padding:24px 20px}
+  .asshero h1{font-size:clamp(1.6rem,7.5vw,2.1rem)}
+  .qbig{font-size:1.1rem}
+  .opt{padding:14px;font-size:.96rem;min-height:var(--tap)}
+  .optletter{width:27px;height:27px}
+  .wstats{grid-template-columns:repeat(2,1fr)}
+  .rchead{flex-direction:column;align-items:flex-start}
+  .plancard{flex-direction:column;gap:10px}
+
+  /* today */
+  .todayhero{padding:24px 20px}
+  .todayhero h1{font-size:clamp(1.9rem,9vw,2.6rem)}
+  .streakrow{gap:8px}
+  .streakbit{flex:1 1 calc(33% - 6px);min-width:0;padding:10px 12px}
+  .streakbit b{font-size:1.35rem}
+  .tasklet{padding:16px;gap:12px}
+  .taskcheck{width:30px;height:30px}
+
+  /* tracker table scrolls */
+  .tracker-wrap{border-radius:var(--r-sm)}
+
+  footer{padding:24px 0 34px}
+}
+
+@media(max-width:380px){
+  .logotext{font-size:.92rem}
+  .cddays{font-size:2rem}
+  .linkbtn{flex:1 1 100%}
+  .streakbit{flex:1 1 100%}
+}
+
+/* bigger tap targets on touch devices generally */
+@media(hover:none){
+  .topnav a,.btn,.linkbtn,.reveal,.tab{min-height:var(--tap)}
+  .scard:hover{transform:none}
+  .btn:hover{transform:none}
+}
