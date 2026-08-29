@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=11">
+<link rel="stylesheet" href="style.css?v=12">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#6366F1">
 </head>
@@ -16,7 +16,7 @@
 <header class="topbar">
   <div class="topbar-in">
     <a class="logo" href="index.html" aria-label="O Level Pakistan, home">
-      <span class="logomark" aria-hidden="true"><svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="olpG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6366F1"/><stop offset="1" stop-color="#FF7A59"/></linearGradient></defs><rect width="32" height="32" rx="9" fill="url(#olpG)"/><path d="M8.5 17.2l4.6 4.6L23.6 11.3" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M18.6 11.3h5v5" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <span class="logomark" aria-hidden="true"><svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="olpG" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#6366F1"/><stop offset="1" stop-color="#8B5CF6"/></linearGradient></defs><rect width="32" height="32" rx="9" fill="url(#olpG)"/><rect x="8" y="18" width="4.4" height="7" rx="2.2" fill="#fff" opacity=".62"/><rect x="14" y="13" width="4.4" height="12" rx="2.2" fill="#fff" opacity=".82"/><rect x="20" y="7" width="4.4" height="18" rx="2.2" fill="#fff"/></svg></span>
       <span class="logotext"><b>O Level</b> <span class="lt-sub">Pakistan</span></span>
     </a>
     <button class="navtoggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="topnav">
@@ -25,7 +25,7 @@
     <nav class="topnav" id="topnav">
       <a href="today.html">Today</a>
       <a href="index.html">Subjects</a>
-      <a href="assessment.html">Starting Point</a>
+      <a href="practice.html">Practice Tests</a>
       <a href="guide.html">How to study</a>
       <a href="about.html">About</a>
     </nav>
@@ -83,14 +83,14 @@
     <p><b>O Level Pakistan</b> — free, independent study resource for Cambridge O Level and IGCSE students in Pakistan.</p>
     <p>Topic lists are taken from official Cambridge syllabus documents. Real exam questions are referenced, never reproduced. Practice questions and all explanations are our own original work.</p>
     <p class="warn">Not affiliated with, endorsed by, or approved by Cambridge Assessment International Education. Always confirm your syllabus year and exam deadlines with the official Cambridge and British Council websites.</p>
-    <p>All original content © O Level Pakistan · <a href="about.html">About</a> · <a href="legal.html">Terms, Privacy &amp; Copyright</a></p>
+    <p>All original content © O Level Pakistan · <a href="about.html">About</a> · <a href="legal.html">Terms &amp; Privacy</a> · <a href="assessment.html">English &amp; Urdu level check</a></p>
   </div>
 </footer>
 
-<script src="data.js?v=11"></script>
-<script src="questions.js?v=11"></script>
-<script src="realquestions.js?v=11"></script>
-<script src="app.js?v=11"></script>
+<script src="data.js?v=12"></script>
+<script src="questions.js?v=12"></script>
+<script src="realquestions.js?v=12"></script>
+<script src="app.js?v=12"></script>
 <script>
   const subj = currentSubject();
   if (!subj) {
@@ -102,6 +102,6 @@
     renderSubjectPage(subj);
   }
 </script>
-<script src="ui.js?v=11"></script>
+<script src="ui.js?v=12"></script>
 </body>
 </html>

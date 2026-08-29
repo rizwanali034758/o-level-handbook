@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Practice Tests — O Level Pakistan</title>
+<meta name="description" content="Free O Level and IGCSE practice tests by topic. Test yourself, see the mark scheme, and find out exactly what you need to work on.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=12">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#6366F1">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="logo" href="index.html" aria-label="O Level Pakistan, home">
+      <span class="logomark" aria-hidden="true"><svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="olpG" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#6366F1"/><stop offset="1" stop-color="#8B5CF6"/></linearGradient></defs><rect width="32" height="32" rx="9" fill="url(#olpG)"/><rect x="8" y="18" width="4.4" height="7" rx="2.2" fill="#fff" opacity=".62"/><rect x="14" y="13" width="4.4" height="12" rx="2.2" fill="#fff" opacity=".82"/><rect x="20" y="7" width="4.4" height="18" rx="2.2" fill="#fff"/></svg></span>
+      <span class="logotext"><b>O Level</b> <span class="lt-sub">Pakistan</span></span>
+    </a>
+    <button class="navtoggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="topnav">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="topnav" id="topnav">
+      <a href="today.html">Today</a>
+      <a href="index.html">Subjects</a>
+      <a href="practice.html">Practice Tests</a>
+      <a href="guide.html">How to study</a>
+      <a href="about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section class="hero">
+    <h1>Test yourself.<br>Find out what you <span class="hl">actually</span> know.</h1>
+    <p class="lead">Reading your notes feels like studying. It isn't. The only way to know if you understand a topic is to answer questions on it and check the marks. Pick a topic below and start.</p>
+  </section>
+
+  <section class="sec">
+    <div id="ptlist"></div>
+  </section>
+
+  <section class="sec">
+    <h2>How to use these tests</h2>
+    <div class="cards">
+      <div class="card"><h4>1. Do it on paper first</h4><p>Write your real answer out. Don't just think "I know this" — thinking it and writing it are very different.</p></div>
+      <div class="card"><h4>2. Then check the marks</h4><p>Every question shows you where each mark comes from. Compare it to what you wrote, line by line.</p></div>
+      <div class="card"><h4>3. Write down what you missed</h4><p>Keep one notebook of mistakes. Before the exam, that notebook is worth more than your textbook.</p></div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <p><b>O Level Pakistan</b> — free study help for Cambridge O Level and IGCSE students in Pakistan.</p>
+    <p>Topics come from the official Cambridge syllabus. Real exam questions are pointed to, never copied. All practice questions and explanations are written by us.</p>
+    <p class="warn">Not connected to Cambridge Assessment International Education. Always check your syllabus year and exam dates with your school or the British Council.</p>
+    <p>© O Level Pakistan · <a href="about.html">About</a> · <a href="legal.html">Terms &amp; Privacy</a> · <a href="assessment.html">English &amp; Urdu level check</a></p>
+  </div>
+</footer>
+
+<script src="data.js?v=12"></script>
+<script src="questions.js?v=12"></script>
+<script src="realquestions.js?v=12"></script>
+<script src="app.js?v=12"></script>
+<script src="ui.js?v=12"></script>
+<script>
+(function(){
+  var out = [];
+  var groups = [
+    {year:2028, title:"May 2028 exams"},
+    {year:2029, title:"May 2029 exams"}
+  ];
+  groups.forEach(function(g){
+    var subs = SUBJECTS.filter(function(s){ return s.sitting === g.year; });
+    if(!subs.length) return;
+    out.push('<div class="sitting"><div class="sitting-head"><div><h3>'+g.title+'</h3></div></div>');
+    subs.forEach(function(s){
+      var rows = s.topics.map(function(t,i){
+        var pq = qcount(s.id, i);
+        var rq = (typeof realCount === "function") ? realCount(s.id, i) : 0;
+        var total = pq + rq;
+        var badge = total
+          ? '<span class="ptcount ready">'+total+' questions</span>'
+          : '<span class="ptcount soon">coming soon</span>';
+        var cls = total ? '' : ' dim';
+        return '<a class="ptrow'+cls+'" href="test.html?s='+s.id+'&t='+i+'">'+
+               '<span class="pttopic">'+t.t+'</span>'+badge+'</a>';
+      }).join("");
+      var done = s.topics.filter(function(t,i){ return qcount(s.id,i) > 0; }).length;
+      out.push(
+        '<details class="ptsub"'+(done?' open':'')+'>'+
+        '<summary><span class="ptico" style="background:'+s.tint+';color:'+s.colour+'">'+s.emoji+'</span>'+
+        '<span class="ptname">'+s.name+'</span>'+
+        '<span class="ptmeta">'+(done? done+' / '+s.topics.length+' topics ready' : 'building')+'</span></summary>'+
+        '<div class="ptrows">'+rows+'</div></details>');
+    });
+    out.push('</div>');
+  });
+  document.getElementById("ptlist").innerHTML = out.join("");
+})();
+</script>
+</body>
+</html>
