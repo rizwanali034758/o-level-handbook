@@ -24,6 +24,7 @@ const PAPERS = {
     total: 80,
     time: "1h 45m",
     qp: "https://drive.google.com/file/d/1ZFYewStvsdUteXc6tGHjNW5Tuo_dY8j5/view",
+    ms: "https://drive.google.com/file/d/1UMH_koevfhzU-Mzavrz1Lc3n2NwUtRYR/view",
     folder: "https://drive.google.com/drive/folders/1ITRw7yonE0w2EURo5xtZSfqAvButlwEA"
   },
   "5054/22 M/J 26": {
@@ -33,6 +34,7 @@ const PAPERS = {
     total: 80,
     time: "1h 45m",
     qp: "https://drive.google.com/file/d/16Yys_ucyoHAqQbCEavs0n9eHRtl4NxE5/view",
+    ms: "https://drive.google.com/file/d/1S1j1Qa1Xnn3E1l9UF_iIX-aTNFsvNKiE/view",
     folder: "https://drive.google.com/drive/folders/1ITRw7yonE0w2EURo5xtZSfqAvButlwEA"
   },
   "5054/21 M/J 25": {
@@ -42,6 +44,7 @@ const PAPERS = {
     total: 80,
     time: "1h 45m",
     qp: "https://drive.google.com/file/d/1u-ukKuHIXdyfbeGCDZXzNCBPaR7I_yyw/view",
+    ms: "https://drive.google.com/file/d/1SS93uMSjbKFUraMNqO_TCNaDReg2Y-Sj/view",
     folder: "https://drive.google.com/drive/folders/107bCHd_9phUiijVbwzuJci44JXC_xHSx"
   },
   "5054/22 M/J 25": {
@@ -51,6 +54,7 @@ const PAPERS = {
     total: 80,
     time: "1h 45m",
     qp: "https://drive.google.com/file/d/1ELRMyhkxx-QINCWeeSivGe3pGwQrp-O_/view",
+    ms: "https://drive.google.com/file/d/1IJyVyn2BBYCjAqJ1USA5OMLTkHLRI-iZ/view",
     folder: "https://drive.google.com/drive/folders/107bCHd_9phUiijVbwzuJci44JXC_xHSx"
   },
   "5054/21 O/N 25": {
@@ -60,6 +64,7 @@ const PAPERS = {
     total: 80,
     time: "1h 45m",
     qp: "https://drive.google.com/file/d/1NzsqEm5u1JZfO41FWR5KkYEh0fEhYKN3/view",
+    ms: "https://drive.google.com/file/d/1wpaReyV7qtpPhRWQv6Av33UW1xI8beY6/view",
     folder: "https://drive.google.com/drive/folders/1pHd1DVWmpnSqOvPR_LL06wBCUFRwAnfI"
   },
   "5054/22 O/N 25": {
@@ -69,6 +74,7 @@ const PAPERS = {
     total: 80,
     time: "1h 45m",
     qp: "https://drive.google.com/file/d/1ThpsrBAuHyprbSzTPTZSXsbtajLUdYLj/view",
+    ms: "https://drive.google.com/file/d/1LC66sTNhodbD-75-37jMHPyGLeXme6Vl/view",
     folder: "https://drive.google.com/drive/folders/1pHd1DVWmpnSqOvPR_LL06wBCUFRwAnfI"
   },
   "5054/21 M/J 24": {
@@ -78,6 +84,7 @@ const PAPERS = {
     total: 80,
     time: "1h 45m",
     qp: "https://drive.google.com/file/d/1gxllP6yLsW2p2NVVt04AAP_QBoST64BN/view",
+    ms: "https://drive.google.com/file/d/1moeEOr8P0OGHVtdDU7FLLrDLmD_KJNDU/view",
     folder: "https://drive.google.com/drive/folders/1utSEJzIjnuMmzkgDCiJCroLKTlBmzrYR"
   },
   "5054/22 M/J 24": {
@@ -87,42 +94,49 @@ const PAPERS = {
     total: 80,
     time: "1h 45m",
     qp: "https://drive.google.com/file/d/1OT41rBkF8AHP3Qvi0EQkIz1CgbkAEj19/view",
+    ms: "https://drive.google.com/file/d/1ojs43_LyTD10GKD3RK_OVvLexWx9tR8h/view",
     folder: "https://drive.google.com/drive/folders/1utSEJzIjnuMmzkgDCiJCroLKTlBmzrYR"
   },
   "5054/21 O/N 24": {
     label: "Oct/Nov 2024 \u00b7 Paper 2 \u00b7 Variant 1",
     code: "5054/21/O/N/24", short: "N24 P21", total: 80, time: "1h 45m",
     qp: "https://drive.google.com/file/d/1FtgmsfgpYnqIqlsbkaaTGd2Inb0h8qOf/view",
+    ms: "https://drive.google.com/file/d/1s_Ly7GKnGtwUjVxfUvLCtjPAMZxxzc4b/view",
     folder: "https://drive.google.com/drive/folders/1Rzo4XK-tB-CQeOQhdOTxKeYijnXOiAr3"
   },
   "5054/22 O/N 24": {
     label: "Oct/Nov 2024 \u00b7 Paper 2 \u00b7 Variant 2",
     code: "5054/22/O/N/24", short: "N24 P22", total: 80, time: "1h 45m",
     qp: "https://drive.google.com/file/d/1Sa73TbOsPVASwZ1qcoGJ3conlGFzFSxy/view",
+    ms: "https://drive.google.com/file/d/1i1KfjM44l5njfemJw2cZCGN09f3r-g7A/view",
     folder: "https://drive.google.com/drive/folders/1Rzo4XK-tB-CQeOQhdOTxKeYijnXOiAr3"
   },
   "5054/21 M/J 23": {
     label: "May/June 2023 \u00b7 Paper 2 \u00b7 Variant 1",
     code: "5054/21/M/J/23", short: "J23 P21", total: 80, time: "1h 45m",
     qp: "https://drive.google.com/file/d/1QW1twMbLeBB_bhxnCRJyZvbR2XUW65H2/view",
+    ms: "https://drive.google.com/file/d/1QZRlXM0NgZtQtS8sLJKPxW6vMMzznI29/view",
     folder: "https://drive.google.com/drive/folders/1BZzHZfV9eyPlBrd1wKY4XOxS2uOTVK7u"
   },
   "5054/22 M/J 23": {
     label: "May/June 2023 \u00b7 Paper 2 \u00b7 Variant 2",
     code: "5054/22/M/J/23", short: "J23 P22", total: 80, time: "1h 45m",
     qp: "https://drive.google.com/file/d/1bqtbzcG1Z3pCrBxvjYI4h3rsxnSZOT30/view",
+    ms: "https://drive.google.com/file/d/18kkmk4MnQLvXRiE_wTLm7SPFnOIyzTM_/view",
     folder: "https://drive.google.com/drive/folders/1BZzHZfV9eyPlBrd1wKY4XOxS2uOTVK7u"
   },
   "5054/21 O/N 23": {
     label: "Oct/Nov 2023 \u00b7 Paper 2 \u00b7 Variant 1",
     code: "5054/21/O/N/23", short: "N23 P21", total: 80, time: "1h 45m",
     qp: "https://drive.google.com/file/d/1Hmspi_iQH7IGFYn84o2NqWULoCP-c11o/view",
+    ms: "https://drive.google.com/file/d/197JDTgLWBv7sxqWTb1yCWTam0Q3VvtnI/view",
     folder: "https://drive.google.com/drive/folders/1dQe3ThPDFIvWczUf0OCe0o0mDOOBPtB4"
   },
   "5054/22 O/N 23": {
     label: "Oct/Nov 2023 \u00b7 Paper 2 \u00b7 Variant 2",
     code: "5054/22/O/N/23", short: "N23 P22", total: 80, time: "1h 45m",
     qp: "https://drive.google.com/file/d/1tpT_QYbQ2EILTES1dmN31__tMkhxiX_Q/view",
+    ms: "https://drive.google.com/file/d/1oGCkOjlEHBvMa8VC3_3JONq7U1aVVyqF/view",
     folder: "https://drive.google.com/drive/folders/1dQe3ThPDFIvWczUf0OCe0o0mDOOBPtB4"
   },
 

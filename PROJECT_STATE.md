@@ -102,7 +102,7 @@ This is not abandoning Horia — the site still works for her — but scope, ton
 | `app.js` | Rendering logic, progress tracking, countdowns, mobile menu hooks |
 | `ui.js` | Mobile hamburger menu behaviour |
 | `questions.js` | **218** original practice questions with mark schemes (Physics 6 topics / 60, Chemistry 11 topics / 110, **Islamiyat 8 topics / 48**) |
-| `realquestions.js` | Real past-paper index (Physics: 128 q / 1085 marks / 14 papers 2023–2026. **Islamiyat: 20 q / 256 marks / 4 papers, the complete May-June 2026 session**) + Physics mark-loss analysis (50 notes, original content) |
+| `realquestions.js` | Real past-paper index (Physics: 128 q / 1085 marks / 14 papers 2023–2026. **Islamiyat: 20 q / 256 marks / 4 papers, the complete May-June 2026 session**) + Physics mark-loss analysis (50 notes, original content). **All 18 papers now carry a direct `ms:` mark-scheme file link — zero folder fallbacks remain.** |
 | `howto.js` | "How to answer" step-by-step guides. Physics: 18 patterns / 6 topics. **Islamiyat: 24 patterns / 8 topics.** |
 | `assess.js` | Starting Point Check scoring engine |
 
@@ -135,13 +135,25 @@ Folder: `Cambridge_Archive_2022-2026`. Contains ~830 past papers across all 8 co
 - **Maths D, English, Pakistan Studies**: practice questions and how-to guides not started
 
 ### AGREED NEXT PRIORITY (do not deviate without asking)
-**Owner changed the order on 3 Sep 2026: Islamiyat was built ahead of Chemistry.** Reasoning accepted at the time — Islamiyat sits in the May 2028 window (before Physics/Chemistry in 2029), it is pure text so it is far cheaper to build well, and the (a)/(b) mark split is a genuine gap no other Pakistani site explains.
+**Owner changed the order on 3 Sep 2026: Islamiyat was built ahead of Chemistry.** Reasoning accepted — Islamiyat sits in the May 2028 window (before Physics/Chemistry in 2029), it is pure text so it is far cheaper to build well, and the (a)/(b) mark split is a genuine gap no other Pakistani site explains.
 
-**The cost of that choice: Chemistry is still half-built and visibly so** — 110 practice questions live, but no real-question index and no how-to guides. A student opening Chemistry sees a subject that looks abandoned. Next chats, in order:
-1. **Chemistry real question index** — 14 papers sitting in Drive, none read yet.
-2. **Chemistry how-to-answer guides** — 11 topics.
-3. Physics mark-scheme direct links (see below).
-4. Islamiyat 2022–2025 index backfill (optional, additive).
+**Confirmed again on 3 Sep 2026, second decision:** the owner was asked directly whether he was consciously leaving Chemistry half-built, and said yes. **Finish ALL Islamiyat first. Chemistry waits.** This is a deliberate choice, not drift. Do not reopen it — just note the cost below when relevant.
+
+**The standing cost:** Chemistry has 110 practice questions live but no real-question index and no how-to guides. A student who opens Chemistry sees a subject that looks abandoned. This will remain true for roughly 6–8 more chats.
+
+### THE ISLAMIYAT COMPLETION PLAN (agreed 3 Sep 2026)
+Target: index every Islamiyat 2058 past paper 2022–2026 (~35 question papers), give every paper a direct mark-scheme link, and turn the examiner reports into original mark-loss notes.
+
+**This cannot be one chat.** Each Islamiyat paper is ~20 pages of PapaCambridge boilerplate around 5 real questions, and 35 papers is roughly 175 index entries. Run it as one session per chat, uploading between each.
+
+Order:
+1. ~~**Mark-scheme links — metadata only.**~~ **DONE 3 Sep 2026.** All 14 Physics papers now have direct `ms:` links; Islamiyat's 4 already did. 18/18 papers verified in a real browser at 390px — 148 mark-scheme buttons, all pointing at a file, zero folder fallbacks.
+2. **Index backfill, newest first, one session per chat:** 2025 M/J → 2025 O/N → 2024 M/J → 2024 O/N → 2023 M/J → 2023 O/N → 2022 M/J → 2022 O/N. Enumerate what actually exists in Drive before planning each one — Oct-Nov series do not always have both variants, and PROJECT_STATE section 5 notes some 2024/2025 Oct-Nov sessions are missing entirely.
+3. **Examiner reports → Islamiyat mark-loss notes.** Reuse the existing `EXAMINER` structure in `realquestions.js` and the `examinerFor()` helper — Physics already renders this, so no new code is needed, only data. Split across two chats (Paper 1 reports, then Paper 2 reports) if reports run long.
+
+**Mark schemes are linked, never indexed.** Do not paraphrase mark scheme content into the site. Reproducing the wording breaks Hard Rule 1, and paraphrasing an answer key is worse than useless — students must mark against the real document.
+
+**Diminishing returns are real.** Islamiyat questions repeat heavily across sessions (the Caliphs, the Hijra, the Pillars come round most years). If the index starts duplicating itself, say so and stop rather than padding the count.
 
 ---
 
@@ -161,8 +173,17 @@ Folder: `Cambridge_Archive_2022-2026`. Contains ~830 past papers across all 8 co
 
 ## 8. OPEN QUESTIONS
 
-### Mark scheme links — half fixed
-`test.html` now renders the mark-scheme button from `PAPERS[x].ms` (a direct Drive file link) and only falls back to `.folder` when `ms` is missing. **Islamiyat's 4 papers have `ms` set. Physics' 14 papers do not** — they still drop the student in a folder. The fix is data-only now: pull the 14 Physics mark-scheme file IDs from Drive and add an `ms:` line to each `PAPERS` entry. No code change needed.
+### Mark scheme links — CLOSED (3 Sep 2026)
+Every paper in `PAPERS` now has a direct `ms:` file link. No paper drops a student in a folder. All 14 Physics mark schemes were found in Drive in the same session folders the question papers already point to, and two were spot-checked for sharing: permission is `anyone: reader`, so students do not need to be signed in.
+
+### Drive archive — two duplicate copies exist (found 3 Sep 2026)
+The same papers are stored twice under two naming schemes:
+- older, created 20 Aug 2026 — `Physics 5054 - 2024 Oct-Nov - Paper 2 Variant 1 - Mark Scheme.pdf`
+- newer, created 29 Aug 2026 — `2024 May-June - P2 V1 - Mark Scheme - [5054_s24_ms_21].pdf`
+
+File sizes match byte-for-byte, so they are the same documents. The site links to the **older** set, because those live in the folders `PAPERS[x].folder` already points at. Worth deciding which copy to keep before the archive grows further — and worth knowing that a filename search can miss a paper that exists under the other scheme (this happened once this session with 2024 Oct-Nov).
+
+**Correction to an earlier note:** Physics 5054 **2024 Oct-Nov is complete** in the archive, question papers and mark schemes. The "some 2024/2025 Oct-Nov sessions missing" line in Section 5 is not true for Physics and should be narrowed to whichever subjects it actually applies to, once checked.
 
 ### Still open
 
