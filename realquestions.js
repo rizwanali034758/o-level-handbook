@@ -124,7 +124,50 @@ const PAPERS = {
     code: "5054/22/O/N/23", short: "N23 P22", total: 80, time: "1h 45m",
     qp: "https://drive.google.com/file/d/1tpT_QYbQ2EILTES1dmN31__tMkhxiX_Q/view",
     folder: "https://drive.google.com/drive/folders/1dQe3ThPDFIvWczUf0OCe0o0mDOOBPtB4"
+  },
+
+  /* ---- ISLAMIYAT 2058 ---- */
+  "2058/11 M/J 26": {
+    label: "May/June 2026 · Paper 1 · Variant 1",
+    code: "2058/11/M/J/26",
+    short: "J26 P11",
+    total: 50,
+    time: "1h 30m",
+    qp: "https://drive.google.com/file/d/1bMFhIf3ZLCrvdlGi81_M25Zi4znQ-_6Y/view",
+    ms: "https://drive.google.com/file/d/1n-nDyTGOFj3pIB6gJdhAaCnJDHecgvE2/view",
+    folder: "https://drive.google.com/drive/folders/1caSUOFPeIpYbKXtv13uaPrPzmd5qIX0H"
+  },
+  "2058/12 M/J 26": {
+    label: "May/June 2026 · Paper 1 · Variant 2",
+    code: "2058/12/M/J/26",
+    short: "J26 P12",
+    total: 50,
+    time: "1h 30m",
+    qp: "https://drive.google.com/file/d/1wfAzdABCB2e2B8uAjMy3plEpb43rbpn3/view",
+    ms: "https://drive.google.com/file/d/1cdIfSb2SVz_RHjNSctj8QXLykNv1tLWc/view",
+    folder: "https://drive.google.com/drive/folders/1caSUOFPeIpYbKXtv13uaPrPzmd5qIX0H"
+  },
+  "2058/21 M/J 26": {
+    label: "May/June 2026 · Paper 2 · Variant 1",
+    code: "2058/21/M/J/26",
+    short: "J26 P21",
+    total: 50,
+    time: "1h 30m",
+    qp: "https://drive.google.com/file/d/1D9xsLZUgAETYQSROsiCkAuckiQcBzj09/view",
+    ms: "https://drive.google.com/file/d/1OtECK8vZqu4tizoo1UvrF-tzk84mmGx4/view",
+    folder: "https://drive.google.com/drive/folders/1caSUOFPeIpYbKXtv13uaPrPzmd5qIX0H"
+  },
+  "2058/22 M/J 26": {
+    label: "May/June 2026 · Paper 2 · Variant 2",
+    code: "2058/22/M/J/26",
+    short: "J26 P22",
+    total: 50,
+    time: "1h 30m",
+    qp: "https://drive.google.com/file/d/1uVdI8Ag5QQTfmQxe-OMZoMVLHrwv6yCK/view",
+    ms: "https://drive.google.com/file/d/1rFWzAY1tBIsrBkgKZY2J_4v3k-3vsAAE/view",
+    folder: "https://drive.google.com/drive/folders/1caSUOFPeIpYbKXtv13uaPrPzmd5qIX0H"
   }
+
 };
 
 /* REAL_INDEX[subjectId][topicIndex] = [ question, question, ... ]
@@ -676,6 +719,124 @@ physics: {
 ]
 
 }
+,
+
+islamiyat: {
+
+/* ---- 0. P1 · Major themes of the Qur'an ---- */
+0: [
+  { paper:"2058/11 M/J 26", q:"1", m:8, cmds:["Explain"],
+    about:"Q1 passage question. Three set passages offered — Sura 112, Sura 1 and Sura 2.21–22 — and you answer on any two.",
+    parts:"(a) name the main theme(s) of each passage you chose [4] · (b) say why those themes matter in a Muslim's life today [4]",
+    skills:"Choosing well and stopping at 4 marks. The themes here are God's oneness, God's mercy, and God as Creator to be worshipped alone." },
+  { paper:"2058/12 M/J 26", q:"1", m:8, cmds:["Describe","Explain"],
+    about:"Q1 passage question. The three set passages offered were Sura 96.1–5, Sura 99 and Sura 5.110 — answer on any two.",
+    parts:"(a) describe the main theme or themes of each chosen passage [4] · (b) explain why those themes matter to Muslims today [4]",
+    skills:"Very different themes on offer: first revelation and knowledge, the Last Day and exact accountability, and the prophethood of Jesus. Know all 15 set passages so you always have two you can write about." }
+],
+
+/* ---- 1. P1 · History and importance of the Qur'an ---- */
+1: [
+  { paper:"2058/11 M/J 26", q:"2", m:14, cmds:["Outline","To what extent"],
+    about:"The four sources of Islamic law and how they work together, then a judgement on whether using all four makes practice easier today.",
+    parts:"(a) outline the four sources and how they are used together [10] · (b) to what extent does using all of them make practising Islam easy today — with reasons [4]",
+    skills:"The Qur'an → Hadith → ijma' → qiyas ranking, and what each one is actually for. Compulsory question — you cannot skip it." },
+  { paper:"2058/12 M/J 26", q:"2", m:14, cmds:["Write about","To what extent"],
+    about:"The Qur'an as a source of law alongside two other sources, then whether those sources let Islamic law adapt as times change.",
+    parts:"(a) the Qur'an as a source of law and how it is used with two other sources [10] · (b) to what extent do these sources allow the law to adapt to changing times [4]",
+    skills:"Same block of knowledge as the other variant, asked from a different angle. Learn the four sources once and both versions are covered." }
+],
+
+/* ---- 2. P1 · Life and importance of the Prophet (pbuh) ---- */
+2: [
+  { paper:"2058/11 M/J 26", q:"3", m:14, cmds:["Choose","Describe","To what extent"],
+    about:"Two qualities of the Prophet's character, shown through events in his life, then whether Muslims today can build those qualities.",
+    parts:"(a) choose two qualities and describe how he showed them [10] · (b) to what extent can Muslims today develop these qualities [4]",
+    skills:"You pick the qualities — so pick two you have solid incidents for. A quality with no event attached scores almost nothing." },
+  { paper:"2058/11 M/J 26", q:"4", m:14, cmds:["Describe"],
+    about:"The Battle of the Trench (Khandaq), then the lessons in how the Prophet (pbuh) conducted himself during it.",
+    parts:"(a) describe the events of the battle [10] · (b) what lessons Muslims can take from his conduct in it [4]",
+    skills:"A straight events question. Order, names, the digging of the trench, the siege, and the outcome — then consultation and calm under pressure for part (b)." },
+  { paper:"2058/12 M/J 26", q:"3", m:14, cmds:["Outline","Discuss"],
+    about:"Three separate dealings the Prophet (pbuh) had with the Quraysh after the move to Madina, then what his handling of opponents teaches.",
+    parts:"(a) outline three different interactions with the Quraysh after the Hijra [10] · (b) discuss what Muslims can learn from how he treated those who opposed him [4]",
+    skills:"'Three interactions' means three, roughly equal. Badr, Uhud, Khandaq, Hudaibiya and the conquest all qualify — pick the three you know best." },
+  { paper:"2058/12 M/J 26", q:"4", m:14, cmds:["Write about"],
+    about:"The migration of the early Muslims to Abyssinia, then the lessons Muslims draw from it.",
+    parts:"(a) the main events of the migration to Abyssinia [10] · (b) what lessons Muslims can learn from it [4]",
+    skills:"An often-skipped topic that came up as a full 14-mark question. Who went, why, the Quraysh delegation, and the Negus's decision." }
+],
+
+/* ---- 3. P1 · The first Islamic community ---- */
+3: [
+  { paper:"2058/11 M/J 26", q:"5", m:14, cmds:["Give an account"],
+    about:"The lives of Abu Talib and Abu Sufyan during the Prophet's lifetime, then what they show about dealing with people outside the faith.",
+    parts:"(a) give an account of both men during the Prophet's life [10] · (b) lessons about relationships with non-Muslims [4]",
+    skills:"Two figures who were not Muslims for most of the story — one protected him, one opposed him then accepted Islam. Ten marks split roughly evenly between them." },
+  { paper:"2058/12 M/J 26", q:"5", m:14, cmds:["Write about","Discuss"],
+    about:"The lives of Umar ibn al-Khattab and Khalid ibn al-Walid during the Prophet's lifetime, then lessons from their conduct after accepting Islam.",
+    parts:"(a) both men during the Prophet's lifetime [10] · (b) discuss two lessons from their conduct after becoming Muslim [4]",
+    skills:"Careful — 'during the Prophet's lifetime'. Umar's caliphate is Paper 2 and scores nothing here. Both were opponents first, which is the point of part (b)." }
+],
+
+/* ---- 4. P2 · Major teachings in the Hadiths ---- */
+4: [
+  { paper:"2058/21 M/J 26", q:"1", m:8, cmds:["Describe","Explain"],
+    about:"Q1 Hadith question. Four set Hadiths offered — on wanting good for others, striving with self and wealth, caring for orphans, and the believers as one body — answer on any two.",
+    parts:"(a) describe what the chosen Hadiths teach about Muslim belief [4] · (b) explain how Muslims can put those teachings into action [4]",
+    skills:"Part (b) wants real, concrete action. Vague words like 'be a good Muslim' score nothing." },
+  { paper:"2058/22 M/J 26", q:"1", m:8, cmds:["Describe","Explain"],
+    about:"Q1 Hadith question. The four offered covered sincerity in religion, guarding your speech and being generous to neighbour and guest, keeping up study of the Qur'an, and mercy towards others.",
+    parts:"(a) describe their teachings about Muslim belief [4] · (b) explain how these teachings are put into practice [4]",
+    skills:"Both 2026 variants asked Q1 the same way. The wording is stable — only the Hadiths change, and they come from a fixed set of 20." }
+],
+
+/* ---- 5. P2 · History and importance of the Hadiths ---- */
+5: [
+  { paper:"2058/21 M/J 26", q:"2", m:14, cmds:["Outline"],
+    about:"The Prophet's teachings and their effect on personal conduct, drawing on four studied Hadiths, then the importance of Hadith compilation today.",
+    parts:"(a) outline his teachings and their impact on personal conduct, referring to four Hadiths you have studied [10] · (b) how important is Hadith compilation for Muslims today [4]",
+    skills:"Note the instruction to use four Hadiths. Fewer than four caps your marks — this is where knowing the set of 20 pays for itself." },
+  { paper:"2058/22 M/J 26", q:"2", m:14, cmds:["Outline","Discuss"],
+    about:"The two parts of a Hadith and the categories Hadiths are sorted into, then why classifying authentic Hadiths matters so much.",
+    parts:"(a) outline the two parts of a Hadith and the different categories [10] · (b) discuss why so much importance is given to classification — give two reasons [4]",
+    skills:"Isnad and matn, plus the grading categories. Part (b) explicitly asks for two reasons — give exactly two, both developed." }
+],
+
+/* ---- 6. P2 · The Rightly Guided Caliphs ---- */
+6: [
+  { paper:"2058/21 M/J 26", q:"3", m:14, cmds:["Write an account"],
+    about:"The problems that built up during Uthman's last six years and led to the rebellion, then what his refusal to use force says about him.",
+    parts:"(a) an account of the issues in his final six years that led to the rebellion [10] · (b) what his refusal to call in the military says about his character [4]",
+    skills:"This is the problem-and-response pattern again. Complaints about appointments, unrest in Egypt and Iraq, and the march on Madina." },
+  { paper:"2058/22 M/J 26", q:"3", m:14, cmds:["Give an account"],
+    about:"The deaths of two of the three Caliphs Umar, Uthman and Ali, then a judgement on which death affected the community most.",
+    parts:"(a) give an account of the martyrdom of two of the three named Caliphs [10] · (b) which one impacted the Muslim community most, with reasons [4]",
+    skills:"You choose two, so know at least two properly. Part (b) needs a clear pick and reasons tied to what followed each death." }
+],
+
+/* ---- 7. P2 · Articles of Faith and Pillars of Islam ---- */
+7: [
+  { paper:"2058/21 M/J 26", q:"4", m:14, cmds:["Write about"],
+    about:"The two halves of the Declaration of Faith and why each matters, then the link between believing in God and believing in the Prophet's message.",
+    parts:"(a) the two parts of the Shahada and their importance [10] · (b) in your opinion, why belief in God is connected to belief in the prophethood of Muhammad (pbuh) [4]",
+    skills:"Ten marks on the shortest Pillar. That means depth: what each half rules out, and what accepting it commits a Muslim to." },
+  { paper:"2058/21 M/J 26", q:"5", m:14, cmds:["Describe"],
+    about:"How the call to prayer began, and the conditions that must be met before a Muslim starts to pray, then what the words of the azaan mean.",
+    parts:"(a) how the azaan was introduced and the conditions before prayer [10] · (b) in your opinion, the significance of the words of the azaan [4]",
+    skills:"Two things in part (a): the history of how it started, and the conditions — cleanliness, clothing, direction, time. Cover both or you lose half the marks." },
+  { paper:"2058/22 M/J 26", q:"4", m:14, cmds:["Write an account","Discuss"],
+    about:"Muslim belief in the oneness of God and what that belief covers, then why tawhid sits at the centre of Islam.",
+    parts:"(a) an account of tawhid and what the belief includes [10] · (b) discuss the importance of tawhid being at the heart of Islam [4]",
+    skills:"The most central belief in the syllabus, and a full 14-mark question. Cover oneness in being, in lordship and in worship — and what it rules out." },
+  { paper:"2058/22 M/J 26", q:"5", m:14, cmds:["Write a detailed account"],
+    about:"The two main Islamic festivals and how Muslims around the world celebrate them, then why celebrating them matters.",
+    parts:"(a) a detailed account of both festivals and how they are celebrated worldwide [10] · (b) why Islamic festivals are important to celebrate, with reasons [4]",
+    skills:"Eid al-Fitr and Eid al-Adha. 'Across the world' is a hint — mention that practice varies by country while the core stays the same." }
+]
+
+}
+
 };
 
 /* ============================================================

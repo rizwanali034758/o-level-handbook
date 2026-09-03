@@ -87,6 +87,7 @@ const SUBJECTS = [
   qual: "O Level",
   sitting: 0,
   notHers: true,
+  hidden: true,   /* hidden from the site — data kept so it can be restored */
   name: "Additional Mathematics",
   code: "4037",
   emoji: "🧮",
@@ -209,6 +210,7 @@ const SUBJECTS = [
   qual: "O Level",
   sitting: 0,
   notHers: true,
+  hidden: true,   /* hidden from the site — data kept so it can be restored */
   name: "Biology",
   code: "5090",
   emoji: "🧬",
@@ -425,27 +427,28 @@ const SUBJECTS = [
   syllabusYears: "2028",
   syllabusUrl: "https://www.cambridgeinternational.org/Images/744846-2028-syllabus.pdf",
   subjectPage: "https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-o-level-islamiyat-2058/",
-  oneLine: "Not judged on how much you write, but on answering the actual question.",
+  oneLine: "Marks come from answering the question asked — not from writing more.",
   papers: [
-    { name: "Paper 1", time: "1 hour 30 minutes", marks: "50 marks · 50%", what: "The Qur'an, the life of the Prophet (pbuh), the first Islamic community." },
-    { name: "Paper 2", time: "1 hour 30 minutes", marks: "50 marks · 50%", what: "Hadith, the Rightly Guided Caliphs, Articles of Faith and Pillars of Islam." }
+    { name: "Paper 1", time: "1 hour 30 minutes", marks: "50 marks · 50%", what: "5 questions. You answer Q1, Q2 and any two others. Q1 is 8 marks; the others are 14 each — 10 for part (a), 4 for part (b). Topics: the Qur'an, the Prophet (pbuh), the first Muslim community." },
+    { name: "Paper 2", time: "1 hour 30 minutes", marks: "50 marks · 50%", what: "Same shape as Paper 1. Topics: Hadith, the four Caliphs, the Articles of Faith and the Pillars of Islam." }
   ],
   book: { title: "Islamiyat: a core text for Cambridge O Level / Farkhanda Noor Muhammad's Islamiat for Students", author: "David Thomas & Mustafa Draper (OUP) · Farkhanda Noor Muhammad (Ferozsons)", endorsed: true },
   howToStudy: [
-    "Every question has a part (a) knowledge and a part (b) evaluation. Practise both.",
-    "Support points with a relevant Qur'anic verse or Hadith wherever you can.",
-    "Build one topic sheet per theme, then answer real past questions on it.",
-    "Part (b) asks for your reasoned view — not a repeat of part (a)."
+    "Part (a) is 10 marks and wants facts. Part (b) is 4 marks and wants your own view, with reasons. Different jobs.",
+    "Aim for about 6 developed points in part (a) — each with a fact and a because. Not 20 short ones.",
+    "Back a point with a verse or a Hadith when you can. The mark scheme rewards it.",
+    "Never repeat part (a) inside part (b). That is the commonest way students throw away 4 marks.",
+    "Learn the 15 set passages and the 20 set Hadiths. That is 8 marks in every paper, every session."
   ],
   topics: [
-    { t: "P1 · Major themes of the Qur'an", subs: ["Passages on God in Himself", "Passages on God's relationship with the created world", "Passages on God's Messengers", "Explaining the theme of each passage", "Applying the themes to Muslim life today"], tip: "Do not just translate the passage. Explain what it teaches and why it matters — that is where the marks are." },
-    { t: "P1 · History and importance of the Qur'an", subs: ["Revelation of the Qur'an", "Compilation under Abu Bakr", "Standardisation under Uthman", "The importance of the Qur'an for Muslims"], tip: "The compilation story has a clear order of events. Learn who did what, and when." },
-    { t: "P1 · Life and importance of the Prophet (pbuh)", subs: ["Life in Makkah before the revelation", "The first revelations and early preaching", "Opposition and persecution in Makkah", "The Hijra to Madinah", "The Constitution of Madinah", "The major battles: Badr, Uhud, Khandaq", "Treaty of Hudaibiya and conquest of Makkah", "The Farewell Pilgrimage and final years"], tip: "For each event learn: what happened, why it happened, and what it achieved. The third part is what separates grades." },
-    { t: "P1 · The first Islamic community", subs: ["The Prophet's relations with other faiths", "Abu Bakr, Umar, Uthman and Ali during the Prophet's lifetime", "Other important companions", "The wives and family of the Prophet (pbuh)"], tip: "This section covers the four Caliphs only during the Prophet's lifetime. Their rule as Caliphs belongs to Paper 2." },
-    { t: "P2 · Major teachings in the Hadiths", subs: ["Hadiths on individual conduct", "Hadiths on relations with others", "Hadiths on Muslim belief and worship", "Explaining and applying Hadith teachings"], tip: "Explain the meaning in your own words, then give a real example of it in daily life." },
-    { t: "P2 · History and importance of Hadith", subs: ["Collection and transmission of Hadith", "Isnad and matn", "The major collections and their compilers", "Relationship of Hadith with the Qur'an, ijma' and qiyas"], tip: "Know how a Hadith is judged authentic. It comes up regularly and most students prepare it poorly." },
-    { t: "P2 · The Rightly Guided Caliphs", subs: ["Abu Bakr: election, wars of apostasy, achievements", "Umar: expansion, administration and reforms", "Uthman: compilation of the Qur'an, opposition and death", "Ali: challenges, civil war and significance", "Their importance as examples for later times"], tip: "For each Caliph learn their main problems AND how they solved them. Questions are usually framed that way." },
-    { t: "P2 · Articles of Faith and Pillars of Islam", subs: ["Belief in God (Tawhid)", "Angels, Books and Prophets", "Resurrection and the Last Day", "Predestination (Qadr)", "Shahada and Salat", "Zakat and Sawm", "Hajj", "Jihad in its full range of meanings"], tip: "Do not just describe a pillar. Explain its spiritual purpose and its effect on the individual and community." }
+    { t: "P1 · Major themes of the Qur'an", subs: ["Passages on God in Himself", "Passages on God's relationship with the created world", "Passages on God's Messengers", "Explaining the theme of each passage", "Applying the themes to Muslim life today"], tip: "Do not translate the passage. The examiner has the translation. Name the theme, then say what it teaches." },
+    { t: "P1 · History and importance of the Qur'an", subs: ["Revelation of the Qur'an", "Compilation under Abu Bakr", "Standardisation under Uthman", "The importance of the Qur'an for Muslims"], tip: "Learn the order: revelation → Abu Bakr → Uthman. Who did what, and why they had to." },
+    { t: "P1 · Life and importance of the Prophet (pbuh)", subs: ["Life in Makkah before the revelation", "The first revelations and early preaching", "Opposition and persecution in Makkah", "The Hijra to Madinah", "The Constitution of Madinah", "The major battles: Badr, Uhud, Khandaq", "Treaty of Hudaibiya and conquest of Makkah", "The Farewell Pilgrimage and final years"], tip: "For every event: what happened, why, and what it changed. Most students skip the third one. That is the grade." },
+    { t: "P1 · The first Islamic community", subs: ["The Prophet's relations with other faiths", "Abu Bakr, Umar, Uthman and Ali during the Prophet's lifetime", "Other important companions", "The wives and family of the Prophet (pbuh)"], tip: "The four Caliphs appear here only as companions. Their rule is Paper 2. If it happened while the Prophet (pbuh) was alive, it belongs here." },
+    { t: "P2 · Major teachings in the Hadiths", subs: ["Hadiths on individual conduct", "Hadiths on relations with others", "Hadiths on Muslim belief and worship", "Explaining and applying Hadith teachings"], tip: "Say the meaning in your own words, then give one real example from ordinary life. Four marks, four moves." },
+    { t: "P2 · History and importance of Hadith", subs: ["Collection and transmission of Hadith", "Isnad and matn", "The major collections and their compilers", "Relationship of Hadith with the Qur'an, ijma' and qiyas"], tip: "Learn isnad and matn properly. This comes up constantly and most students fumble it. Easy place to get ahead." },
+    { t: "P2 · The Rightly Guided Caliphs", subs: ["Abu Bakr: election, wars of apostasy, achievements", "Umar: expansion, administration and reforms", "Uthman: compilation of the Qur'an, opposition and death", "Ali: challenges, civil war and significance", "Their importance as examples for later times"], tip: "Make a two-column sheet per Caliph: problem on the left, what he did on the right. That answers nearly every question here." },
+    { t: "P2 · Articles of Faith and Pillars of Islam", subs: ["Belief in God (Tawhid)", "Angels, Books and Prophets", "Resurrection and the Last Day", "Predestination (Qadr)", "Shahada and Salat", "Zakat and Sawm", "Hajj", "Jihad in its full range of meanings"], tip: "Describing the ritual is only half the marks. The other half is what it does for the person and for the community." }
   ]
 }
 
@@ -459,7 +462,7 @@ const RESOURCES = [
   { name: "PastPapers.co", what: "Clean, fast archive of papers, mark schemes and examiner reports.", url: "https://pastpapers.co/cie/?dir=O-Level", official: false, emoji: "🗂️" },
   { name: "XtremePapers", what: "The oldest and most reliable past-paper mirror. Every session and variant.", url: "https://papers.xtremepape.rs/index.php?dirpath=.%2FCAIE%2FO+Level%2F&order=0", official: false, emoji: "📄" },
   { name: "CaieFinder", what: "Search any question phrase and it finds the exact paper plus its mark scheme.", url: "https://caiefinder.com/", official: false, emoji: "🔎" },
-  { name: "Physics & Maths Tutor", what: "Strong notes and topic questions for Physics, Chemistry, Biology and Maths. Better coverage than most free sites.", url: "https://www.physicsandmathstutor.com/", official: false, emoji: "🔬" },
+  { name: "Physics & Maths Tutor", what: "Strong notes and topic questions for Physics, Chemistry and Maths. Better coverage than most free sites.", url: "https://www.physicsandmathstutor.com/", official: false, emoji: "🔬" },
   { name: "Save My Exams", what: "Polished notes and worked questions. Written mainly for IGCSE, so check against your O Level syllabus.", url: "https://www.savemyexams.com/", official: false, emoji: "💡" },
   { name: "Mega Lecture", what: "Pakistan-based. Free notes and worksheets, including Pak Studies, Islamiyat and Urdu which most sites skip.", url: "https://megalecture.com/resources/", official: false, emoji: "🇵🇰" },
   { name: "Mojza", what: "Free Pakistani notes bank covering most O Level subjects.", url: "https://mojza.org/olevels/", official: false, emoji: "✨" },

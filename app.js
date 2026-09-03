@@ -119,7 +119,7 @@ function renderSubjectGrid(el) {
       </div>`;
   });
 
-  const others = SUBJECTS.filter(s => s.notHers);
+  const others = SUBJECTS.filter(s => s.notHers && !s.hidden);
   if (others.length) {
     html += `
       <details class="othersubs">
@@ -312,7 +312,7 @@ function renderSubjectPage(subject) {
   /* other subjects strip */
   const others = document.getElementById("others");
   if (others) {
-    others.innerHTML = SUBJECTS.filter(s => s.id !== subject.id).map(s => `
+    others.innerHTML = SUBJECTS.filter(s => s.id !== subject.id && !s.hidden).map(s => `
       <a class="scard" href="subject.html?s=${s.id}">
         <div class="ico" style="background:${s.tint};color:${s.colour}">${s.emoji}</div>
         <h3>${s.name}</h3>

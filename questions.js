@@ -610,6 +610,187 @@ chemistry: {
     trap:"Not naming an example of each. The question asks for both." }
 ]
 }
+,
+
+islamiyat: {
+
+/* --- 0. P1 · Major themes of the Qur'an (Q1 style, 4 marks each) --- */
+0: [
+  { cmd:"Explain", m:4, q:"A passage from the set list describes God as living, never sleeping, and holding all things in the heavens and the earth.<br><b>Explain</b> the main theme of this passage and its importance for Muslims.",
+    ms:["Names the theme: God's oneness, eternal life and total power (1)","Refers to a detail in the passage as evidence — e.g. that God is never overtaken by sleep (1)","Explains the teaching: God alone sustains creation and depends on nothing (1)","Applies it to a Muslim's life — e.g. God is always aware, so a Muslim acts honestly even unseen (1)"],
+    trap:"Translating the passage back into English. The examiner already has the translation. He is paying for the meaning." },
+  { cmd:"Explain", m:4, q:"A set passage states that God has no son and no partner, and that no vision can grasp Him.<br><b>Explain</b> what this teaches Muslims about the nature of God.",
+    ms:["Theme identified: tawhid — God's absolute oneness (1)","Notes the denial of any offspring or partner (1)","Explains that God is beyond human sight and imagination (1)","States the effect on belief: worship is directed to God alone, and no image of Him is made (1)"],
+    trap:"Drifting into a general essay about Islam. Four marks means four tight points about this passage." },
+  { cmd:"Describe", m:4, q:"A set passage lists the night, the day, the sun and the moon as signs of God, and tells people to worship the Creator rather than the created.<br><b>Describe</b> the theme of this passage and how it applies today.",
+    ms:["Theme: the natural world as evidence pointing to its Creator (1)","Identifies the specific signs mentioned (1)","Explains that created things must not themselves be worshipped (1)","Applies it: a Muslim looks at the world and is reminded of God, not distracted from Him (1)"],
+    trap:"Listing the signs and stopping. The list is one mark. The meaning is three." },
+  { cmd:"Explain", m:4, q:"A set passage describes God teaching Adam the names of all things, and the angels being told to bow.<br><b>Explain</b> what this passage teaches about human beings.",
+    ms:["Theme: humanity's special place in creation (1)","Notes that knowledge was given by God, not earned (1)","Explains the honour shown by the command to the angels (1)","Draws the responsibility: knowledge is a trust, so it must be used well (1)"],
+    trap:"Retelling the story as a story. Every sentence should answer 'what does this teach?'" },
+  { cmd:"Explain", m:4, q:"A set passage reminds the Prophet (pbuh) that God did not abandon him, found him an orphan and gave him shelter, and tells him not to treat the orphan harshly or drive the beggar away.<br><b>Explain</b> the theme and its importance.",
+    ms:["Theme: God's care for His Messenger, and gratitude shown through kindness (1)","Refers to the reminder of the Prophet's own early hardship (1)","Explains the link: because he was helped, he must help others (1)","Applies it to Muslims: those who have received must give — care for orphans and the poor (1)"],
+    trap:"Writing only about the Prophet (pbuh) and never reaching the instruction at the end of the passage." },
+  { cmd:"Explain", m:4, q:"A set passage says that on the Last Day anyone who has done an atom's weight of good will see it, and anyone who has done an atom's weight of evil will see it.<br><b>Explain</b> the theme and the effect this belief has on a Muslim.",
+    ms:["Theme: resurrection and exact accountability (1)","Notes that even the smallest act is counted (1)","Explains that no deed is too small to matter, good or bad (1)","Effect on behaviour: a Muslim is careful in small everyday actions, not only large ones (1)"],
+    trap:"Saying only 'Muslims will be judged'. The point of this passage is the *atom's weight* — the smallness." }
+],
+
+/* --- 1. P1 · History and importance of the Qur'an (10 + 4) --- */
+1: [
+  { cmd:"Describe", m:10, q:"<b>Describe</b> how the Qur'an was collected and preserved, from the lifetime of the Prophet (pbuh) to the time of Uthman.",
+    ms:["Revelation came in stages over roughly 23 years (1)","Companions memorised it; scribes wrote it on available materials (1)","The Prophet (pbuh) reviewed the order of the revelations (1)","After the battle of Yamama many memorisers were killed (1)","Umar urged Abu Bakr to have it gathered into one written copy (1)","Zayd ibn Thabit was given the task and worked with great caution (1)","The completed copy passed to Umar, then to Hafsa (1)","Differences in recitation appeared as Islam spread (1)","Uthman ordered a standard written version to be produced (1)","Copies were sent to the main centres and other versions were withdrawn (1)"],
+    trap:"Jumping straight to Uthman. The marks are spread across the whole timeline, including the Prophet's own lifetime." },
+  { cmd:"Explain", m:10, q:"<b>Explain</b> why the Qur'an is regarded as the highest authority in Islamic law, and how it works alongside the other sources.",
+    ms:["It is believed to be the direct, unaltered word of God (1)","It is therefore the first source consulted (1)","Hadith is the second source (1)","Hadith explains and applies the Qur'an rather than overriding it (1)","Consensus of scholars — ijma' — comes next (1)","Analogy — qiyas — is used where no direct ruling exists (1)","No later source may contradict the Qur'an (1)","Example of the Qur'an giving a principle that Hadith then details, such as prayer (1)","Its rulings cover belief, worship and daily conduct (1)","It is unchanged, which is why its authority is not questioned within Islam (1)"],
+    trap:"Naming the four sources without saying how they rank or relate. The ranking is the answer." },
+  { cmd:"Explain", m:4, q:"'The work of Uthman was more important than the work of Abu Bakr in preserving the Qur'an.'<br><b>Do you agree?</b> Give reasons for your answer.",
+    ms:["Takes a clear position in the opening line (1)","Reason one, grounded in what that Caliph actually did (1)","Reason two, distinct from the first (1)","Acknowledges the other view briefly and still concludes (1)"],
+    trap:"Repeating part (a) in shorter words. Part (b) wants your reasoning, not more facts." },
+  { cmd:"Explain", m:4, q:"<b>Explain</b> why Muslims believe the Qur'an has remained unchanged.",
+    ms:["Memorisation began immediately and continues today (1)","It was written down during the Prophet's lifetime as well as memorised (1)","The standardisation under Uthman removed variation in the written text (1)","Muslims believe its preservation is promised by God (1)"],
+    trap:"Giving only the religious belief with no historical detail, or only the history with no belief. Both halves score." },
+  { cmd:"Describe", m:10, q:"<b>Describe</b> the way the Qur'an was revealed to the Prophet (pbuh) and give an account of the first revelation.",
+    ms:["Revelation began when he was about forty, in the cave of Hira (1)","The angel Jibril brought the revelation (1)","The first words commanded him to read in the name of his Lord (1)","He was frightened and returned home to Khadija (1)","Khadija reassured him and took him to Waraqa ibn Nawfal (1)","Waraqa identified the experience as true prophethood (1)","There was then a pause before revelation resumed (1)","Revelation continued in pieces over about 23 years (1)","Some verses came in Makka, others in Madina, and their content differs in emphasis (1)","Revelation ended shortly before his death (1)"],
+    trap:"Telling the cave story well and then stopping. Half the marks are in what happened afterwards." },
+  { cmd:"Explain", m:4, q:"'The Qur'an is only useful to someone who reads Arabic.'<br><b>Do you agree?</b> Give reasons.",
+    ms:["Clear position stated (1)","Reason acknowledging the importance of the original Arabic text (1)","Reason involving translation, study and the fact that meaning can be conveyed (1)","Reaches a reasoned conclusion rather than sitting on the fence (1)"],
+    trap:"Answering with feeling instead of reasons. Four marks, two reasons, one conclusion." }
+],
+
+/* --- 2. P1 · Life and importance of the Prophet (pbuh) (10 + 4) --- */
+2: [
+  { cmd:"Describe", m:10, q:"<b>Describe</b> the main events of the Hijra and explain why it was necessary.",
+    ms:["Persecution in Makka had become severe (1)","The pledges at Aqaba invited the Prophet (pbuh) to Madina (1)","A plot was made against his life (1)","Ali slept in his bed to disguise the departure (1)","He travelled with Abu Bakr (1)","They hid in the cave of Thawr while searchers passed (1)","They reached Quba, then entered Madina (1)","He was welcomed by the Ansar (1)","A mosque was built and the community was organised (1)","The Hijra later became the start of the Muslim calendar (1)"],
+    trap:"Ending at the arrival in Madina. What he *did* on arrival is worth several marks." },
+  { cmd:"Describe", m:10, q:"<b>Give an account</b> of the battle of Uhud and explain its consequences for the Muslim community.",
+    ms:["The Makkans came to avenge their defeat at Badr (1)","The Muslims were heavily outnumbered (1)","Archers were placed on the hill with clear orders to hold position (1)","The Muslims gained the advantage early (1)","Archers left their posts to collect spoils (1)","Khalid ibn al-Walid attacked through the gap (1)","The Prophet (pbuh) was wounded and a rumour spread that he had been killed (1)","Hamza was among those killed (1)","The Muslims suffered a serious setback but were not destroyed (1)","The lesson drawn was obedience to command and the danger of greed (1)"],
+    trap:"Describing the fighting and never reaching the consequences. The question asks for both." },
+  { cmd:"Explain", m:10, q:"<b>Explain</b> how the conduct of the Prophet (pbuh) at the conquest of Makka serves as an example for Muslims.",
+    ms:["He entered Makka with a large force but ordered restraint (1)","Bloodshed was avoided almost entirely (1)","He granted a general amnesty to those who had opposed him (1)","He forgave individuals who had caused him great harm (1)","The Ka'ba was cleared of idols (1)","He did not seek revenge for years of persecution (1)","He entered in humility rather than triumph (1)","This shows forgiveness as strength, not weakness (1)","It shows power should be used with mercy (1)","Muslims are taught to forgive when they have the upper hand (1)"],
+    trap:"Listing events without ever using the words forgiveness, mercy or restraint. Those words carry the marks." },
+  { cmd:"Explain", m:4, q:"'The treaty of Hudaibiya looked like a defeat but was really a victory.'<br><b>Do you agree?</b> Give reasons.",
+    ms:["Clear position stated at the start (1)","Reason referring to the terms that seemed unfavourable at the time (1)","Reason referring to what followed — peace, growth in numbers, later entry to Makka (1)","Concludes with reasoning rather than assertion (1)"],
+    trap:"Describing the treaty terms in detail. Part (b) is not the place for narrative." },
+  { cmd:"Explain", m:10, q:"<b>Explain</b> the significance of the Farewell Sermon.",
+    ms:["Delivered during his final pilgrimage (1)","He stated that all Muslims are equal regardless of race (1)","He spoke about the rights of women (1)","He addressed the treatment of those in service (1)","He forbade the taking of interest (1)","He stressed the sanctity of life and property (1)","He reminded them to hold to the Qur'an and his example (1)","It served as a summary of his teaching (1)","It was delivered before a very large gathering (1)","Its principles are still quoted as a statement of Muslim values (1)"],
+    trap:"Calling it 'his last speech' and adding nothing. Each principle he stated is a separate mark." },
+  { cmd:"Explain", m:4, q:"<b>Explain</b> what the phrase 'Seal of the Prophets' means and why it matters to Muslims.",
+    ms:["It means he is the final Messenger (1)","No prophet will come after him (1)","His message completes and confirms earlier revelations (1)","Therefore his example and the Qur'an remain the guide for all later Muslims (1)"],
+    trap:"Defining the phrase and stopping. The 'why it matters' half is two marks." }
+],
+
+/* --- 3. P1 · The first Islamic community (10 + 4) --- */
+3: [
+  { cmd:"Describe", m:10, q:"<b>Describe</b> the brotherhood established between the Muhajirun and the Ansar, and explain why it was needed.",
+    ms:["The Muhajirun had left property and wealth behind in Makka (1)","They arrived in Madina with almost nothing (1)","The Prophet (pbuh) paired each emigrant with a helper (1)","The Ansar shared homes, work and income (1)","This removed immediate poverty among the newcomers (1)","It bound two groups with no tribal tie to one another (1)","It replaced tribal loyalty with loyalty to faith (1)","It reduced the risk of division inside the new community (1)","Named example of such a pairing (1)","It set a lasting model of Muslim generosity (1)"],
+    trap:"Explaining who the two groups were and never reaching what the brotherhood actually achieved." },
+  { cmd:"Describe", m:10, q:"<b>Give an account</b> of the life of Khadija and explain her importance in early Islam.",
+    ms:["She was a respected merchant of Makka (1)","She employed the Prophet (pbuh) to trade for her (1)","She proposed marriage and they married (1)","She was the first person to accept his message (1)","She reassured him after the first revelation (1)","She took him to Waraqa ibn Nawfal (1)","She supported him financially through the boycott (1)","She stood by him during the years of severe opposition (1)","Her death came in a year of great sorrow for him (1)","She is honoured as the first Muslim and a model of loyal support (1)"],
+    trap:"Writing about her only as the Prophet's wife. Her own actions and standing are where the marks are." },
+  { cmd:"Explain", m:10, q:"<b>Explain</b> the role of Abu Bakr and Umar during the lifetime of the Prophet (pbuh).",
+    ms:["Abu Bakr was among the earliest converts (1)","He used his wealth to free enslaved Muslims, including Bilal (1)","He accompanied the Prophet (pbuh) on the Hijra (1)","He led the prayer during the Prophet's final illness (1)","Umar's acceptance of Islam strengthened the Muslims in Makka (1)","He was known for firmness and courage (1)","He emigrated openly rather than in secret (1)","Both were close advisers to the Prophet (pbuh) (1)","Both were among the Ten Blessed Companions (1)","Their standing in his lifetime explains their later selection as Caliphs (1)"],
+    trap:"Writing about their rule as Caliphs. That belongs to Paper 2 and scores nothing here." },
+  { cmd:"Explain", m:4, q:"'The Ansar deserve more credit than the Muhajirun.'<br><b>Do you agree?</b> Give reasons.",
+    ms:["Clear position (1)","Reason based on what the Ansar gave up or provided (1)","Reason based on what the Muhajirun sacrificed (1)","Reasoned conclusion (1)"],
+    trap:"Praising both equally and never deciding. Fence-sitting caps you at the lower level." },
+  { cmd:"Describe", m:10, q:"<b>Describe</b> the main features of the Constitution of Madina and explain what it achieved.",
+    ms:["It was agreed after the Prophet's arrival in Madina (1)","It set out the Muslims as one community (1)","It included the Jewish tribes of Madina in the agreement (1)","It guaranteed freedom of religion to the parties (1)","It required joint defence of the city (1)","It set rules for settling disputes (1)","The Prophet (pbuh) was recognised as the authority in disagreements (1)","It ended long-standing feuds between Madinan tribes (1)","It gave the community a legal footing rather than only a religious one (1)","It is often described as an early written constitution (1)"],
+    trap:"Treating it as a religious document only. Its political and legal effects carry several marks." },
+  { cmd:"Explain", m:4, q:"<b>Explain</b> why the Prophet's Companions are important to Muslims today.",
+    ms:["They witnessed his conduct directly (1)","They transmitted the Qur'an and the Hadith (1)","Their lives provide practical models of faith under pressure (1)","Their example is used to settle questions about how the Prophet (pbuh) lived (1)"],
+    trap:"Answering with praise instead of reasons. State the function they serve, not how great they were." }
+],
+
+/* --- 4. P2 · Major teachings in the Hadiths (Q1 style, 4 marks each) --- */
+4: [
+  { cmd:"Explain", m:4, q:"A set Hadith states that none of you believes until he wants for his brother what he wants for himself.<br><b>Explain</b> its teaching and how a Muslim would act on it.",
+    ms:["Teaching: faith is incomplete without genuine goodwill towards others (1)","Explains that this means wanting good for others, not merely avoiding harm (1)","Notes that it applies to all people, not only close friends (1)","Gives a concrete example — sharing an opportunity rather than keeping it (1)"],
+    trap:"Repeating the Hadith in different words. Four marks need four separate ideas." },
+  { cmd:"Explain", m:4, q:"A set Hadith says that whoever believes in God and the Last Day should speak good or keep silent, and should be generous to neighbour and guest.<br><b>Explain</b> what this requires of a Muslim.",
+    ms:["Links belief directly to daily behaviour (1)","Speech: say something useful or say nothing — this covers gossip and insult (1)","Neighbour: care for those nearby regardless of who they are (1)","Guest: hospitality is a duty, not a favour (1)"],
+    trap:"Covering only the speech part. The Hadith has three duties and the marks follow them." },
+  { cmd:"Explain", m:4, q:"A set Hadith describes many small acts as charity, including a good word, helping someone with their load, and removing something harmful from the road.<br><b>Explain</b> the teaching of this Hadith.",
+    ms:["Charity is not limited to giving money (1)","Ordinary daily actions count as charity (1)","It is therefore open to the poor as well as the rich (1)","Example of such an act in everyday life today (1)"],
+    trap:"Listing the examples in the Hadith without drawing the general principle. The principle is the mark." },
+  { cmd:"Explain", m:4, q:"A set Hadith says that whoever sees an evil action should change it with his hand, and if unable, with his tongue, and if unable, with his heart — and that this last is the weakest of faith.<br><b>Explain</b> its meaning.",
+    ms:["Sets out three levels of response to wrongdoing (1)","Hand means direct action where one has the ability or authority (1)","Tongue means speaking against it (1)","Heart means inward rejection — still required, but the least (1)"],
+    trap:"Reading 'hand' as violence. It means acting within your proper ability and authority." },
+  { cmd:"Explain", m:4, q:"A set Hadith states that no one eats better food than that which he eats from the work of his own hand.<br><b>Explain</b> the teaching and its importance.",
+    ms:["Honest work is honoured in Islam (1)","Earning by one's own effort is better than depending on others (1)","No lawful work is beneath a person (1)","Encourages self-reliance and discourages unnecessary begging (1)"],
+    trap:"Turning it into an attack on the poor. The Hadith praises work; it does not condemn those in genuine need." },
+  { cmd:"Explain", m:4, q:"A set Hadith says God does not look at your forms and possessions but at your hearts and deeds.<br><b>Explain</b> what this teaches and how it should affect a Muslim's behaviour.",
+    ms:["Teaching: God judges intention and action, not appearance or wealth (1)","Explains that status and looks carry no weight before God (1)","Links to sincerity — an act done for show loses its value (1)","Application: a Muslim checks their intention, and does not judge others by appearance (1)"],
+    trap:"Explaining only the first half. 'Hearts and deeds' — intention *and* action — is where the last marks sit." }
+],
+
+/* --- 5. P2 · History and importance of the Hadiths (10 + 4) --- */
+5: [
+  { cmd:"Describe", m:10, q:"<b>Describe</b> the methods used by scholars to test whether a Hadith is authentic.",
+    ms:["Two things were examined: the chain of transmitters and the text (1)","The chain is called the isnad (1)","The text is called the matn (1)","Narrators were checked for honesty and good character (1)","Their memory and accuracy were assessed (1)","It had to be possible for each narrator to have met the next (1)","An unbroken chain was required (1)","The text was checked against the Qur'an (1)","It was checked against better-attested Hadiths and against reason (1)","Hadiths were then graded by strength rather than simply accepted or rejected (1)"],
+    trap:"Using the words isnad and matn without defining them, or defining them and never saying what was tested." },
+  { cmd:"Describe", m:10, q:"<b>Give an account</b> of the work of the major collectors of Hadith.",
+    ms:["Collection became urgent as the generation of Companions passed away (1)","Early material was gathered in musnad form, arranged by narrator (1)","Later collections were musannaf, arranged by subject (1)","Al-Bukhari is regarded as the most rigorous collector (1)","Muslim produced the other most trusted Sunni collection (1)","Abu Dawud, al-Tirmidhi, al-Nasa'i and Ibn Maja complete the six (1)","Collectors travelled widely to verify chains in person (1)","They rejected far more material than they accepted (1)","Shi'a Muslims recognise four principal collections (1)","Their work protected the Sunna from invented sayings (1)"],
+    trap:"Inventing numbers of Hadiths sifted or accepted. If you are unsure, write 'a very large number'. A wrong figure damages the answer." },
+  { cmd:"Explain", m:10, q:"<b>Explain</b> the relationship between the Hadith and the Qur'an in Islamic law.",
+    ms:["The Qur'an is the first and highest source (1)","Hadith is the second source (1)","Hadith explains what the Qur'an states in general terms (1)","Example: the Qur'an commands prayer and Hadith shows how it is performed (1)","Hadith may give detail the Qur'an does not (1)","Hadith may not contradict the Qur'an (1)","A Hadith conflicting with the Qur'an is treated as unreliable (1)","Ijma' — scholarly consensus — comes after both (1)","Qiyas — reasoning by analogy — is used where no text applies (1)","Together they form the framework for Muslim practice (1)"],
+    trap:"Treating the two as equal authorities. The ranking is the point of the question." },
+  { cmd:"Explain", m:4, q:"'Testing the isnad matters more than testing the matn.'<br><b>Do you agree?</b> Give reasons.",
+    ms:["Clear position (1)","Reason for the importance of the chain (1)","Reason for the importance of the text (1)","Reasoned conclusion (1)"],
+    trap:"Describing both methods again. Part (b) wants a judgement between them." },
+  { cmd:"Explain", m:4, q:"<b>Explain</b> why the collection of Hadith became necessary.",
+    ms:["The Companions who had heard the Prophet (pbuh) were dying (1)","Islam had spread far beyond Arabia (1)","False sayings were being attributed to him (1)","A written, tested record was needed to preserve his example accurately (1)"],
+    trap:"Giving one reason expanded into four sentences. Four marks means four different reasons." },
+  { cmd:"Explain", m:4, q:"<b>Explain</b> the difference between a musnad and a musannaf collection.",
+    ms:["A musnad is arranged by the narrator (1)","All Hadiths from one Companion appear together (1)","A musannaf is arranged by subject (1)","This makes it easier to find rulings on a particular topic (1)"],
+    trap:"Defining one and guessing the other. These two terms are worth memorising exactly." }
+],
+
+/* --- 6. P2 · The Rightly Guided Caliphs (10 + 4) --- */
+6: [
+  { cmd:"Describe", m:10, q:"<b>Describe</b> the difficulties Abu Bakr faced on becoming Caliph and explain how he dealt with them.",
+    ms:["The Prophet's death left the community shaken and uncertain (1)","There was disagreement over who should lead (1)","Some tribes refused to pay zakat (1)","Several people falsely claimed prophethood (1)","Tribes across Arabia broke away from the state (1)","He insisted zakat was an obligation, not a tax to be dropped (1)","He fought the wars of apostasy to restore unity (1)","He sent Khalid ibn al-Walid against the main threats (1)","Arabia was reunited under Muslim authority (1)","He also ordered the Qur'an to be gathered into one written copy (1)"],
+    trap:"Listing his achievements. The question asked about difficulties *and* responses — answer in pairs." },
+  { cmd:"Explain", m:10, q:"<b>Explain</b> the main administrative reforms of Umar and why they mattered.",
+    ms:["The expanding state needed proper structure (1)","He divided the territory into provinces with appointed governors (1)","He appointed judges separate from governors (1)","He set up a treasury, the bayt al-mal (1)","He introduced a register for the payment of allowances (1)","He established the Hijri calendar (1)","He arranged policing and night patrols (1)","He held governors strictly accountable and investigated complaints (1)","Non-Muslim subjects were given defined rights and obligations (1)","These reforms turned a growing conquest into a governable state (1)"],
+    trap:"Filling the answer with battles. Umar's administration is the more valuable half of this topic." },
+  { cmd:"Describe", m:10, q:"<b>Give an account</b> of the caliphate of Uthman, including both his achievements and the opposition he faced.",
+    ms:["He continued the expansion of the state (1)","He organised the first Muslim naval force (1)","He ordered the standardisation of the written Qur'an (1)","Copies were sent to the main centres of the empire (1)","He expanded the Prophet's Mosque (1)","He was accused of favouring his own relatives in appointments (1)","Discontent grew in Egypt and Iraq (1)","Rebels came to Madina with complaints (1)","He refused to resign or to allow fighting in his defence (1)","He was killed, and the divisions that followed shaped later Muslim history (1)"],
+    trap:"Writing only the good or only the bad. The question asks for both, and honesty scores." },
+  { cmd:"Explain", m:4, q:"'The Rightly Guided Caliphs are good models for leaders today.'<br><b>Do you agree?</b> Give reasons.",
+    ms:["Clear position stated first (1)","Reason tied to a specific action by a named Caliph (1)","Second, distinct reason (1)","Acknowledges a difficulty — such as the civil conflict — and still concludes (1)"],
+    trap:"Presenting the period as perfect. An answer that admits the hard parts and still argues its case scores higher." },
+  { cmd:"Describe", m:10, q:"<b>Describe</b> the main challenges of the caliphate of Ali.",
+    ms:["He took office immediately after the killing of Uthman (1)","He faced demands for immediate revenge for that killing (1)","He moved the capital to Kufa (1)","He faced opposition at the battle of the Camel (1)","He then faced Mu'awiya, governor of Syria (1)","The conflict at Siffin ended in a call for arbitration (1)","The arbitration did not settle the dispute (1)","The Kharijites broke away in protest (1)","He fought them at Nahrawan (1)","He was assassinated, ending the period of the Rightly Guided Caliphs (1)"],
+    trap:"Blurring the order of events. Camel, then Siffin, then the Kharijites — sequence matters here." },
+  { cmd:"Explain", m:4, q:"<b>Explain</b> why the period of the four Caliphs is called 'rightly guided'.",
+    ms:["All four were close Companions of the Prophet (pbuh) (1)","They aimed to govern according to the Qur'an and his example (1)","They were chosen by the community rather than inheriting power (1)","Their rule is treated as the model period of Muslim government (1)"],
+    trap:"Saying only that they were good men. The election point and the Qur'an-and-Sunna point are the substance." }
+],
+
+/* --- 7. P2 · Articles of Faith and Pillars of Islam (10 + 4) --- */
+7: [
+  { cmd:"Describe", m:10, q:"<b>Describe</b> how zakat is paid and explain its significance for the individual and the community.",
+    ms:["It is the fourth Pillar and an obligation, not charity (1)","It is due on wealth held above a minimum threshold (1)","It is paid annually once that threshold has been held for a year (1)","It is calculated as a fixed proportion of qualifying wealth (1)","The categories of recipient are set out in the Qur'an (1)","For the individual it works against greed and attachment to wealth (1)","It reminds the giver that wealth is a trust from God (1)","For the community it transfers wealth to those in need (1)","It reduces resentment between rich and poor (1)","It strengthens the bond between members of the community (1)"],
+    trap:"Describing the mechanics and stopping. Significance is roughly half the marks in every Pillar question." },
+  { cmd:"Explain", m:10, q:"<b>Explain</b> the main observances of hajj and their significance.",
+    ms:["It is the fifth Pillar, obligatory once for those able (1)","Pilgrims enter the state of ihram, wearing simple identical clothing (1)","This removes visible differences of wealth and rank (1)","Tawaf — circling the Ka'ba (1)","Sa'i — travelling between Safa and Marwa (1)","Standing at Arafat, the central rite of the pilgrimage (1)","The symbolic stoning at Mina (1)","The sacrifice and the festival of Eid al-Adha (1)","It recalls the actions of Ibrahim and his family (1)","It demonstrates the unity and equality of Muslims worldwide (1)"],
+    trap:"Listing rites like a timetable. Each rite should carry a short 'which shows...'." },
+  { cmd:"Explain", m:10, q:"<b>Explain</b> the six Articles of Faith and how they shape a Muslim's behaviour.",
+    ms:["Belief in God, one and without partner (1)","Belief in angels and their duties (1)","Belief in the revealed books (1)","Belief in the prophets, ending with Muhammad (pbuh) (1)","Belief in predestination and God's decree (1)","Belief in resurrection and the Last Day (1)","Belief in God's oneness means worship and obedience are directed to Him alone (1)","Belief in recording angels encourages care in private conduct (1)","Belief in the Last Day makes every action carry consequence (1)","Belief in qadr produces trust in God without removing personal responsibility (1)"],
+    trap:"Listing all six and never linking any of them to behaviour. The link is the second half of the question." },
+  { cmd:"Explain", m:10, q:"<b>Explain</b> jihad in its full range of meanings.",
+    ms:["The root meaning is struggle or effort in the way of God (1)","It is not limited to fighting (1)","The greater jihad is the struggle against one's own wrong desires (1)","This includes discipline in worship, honesty and self-control (1)","Jihad by the tongue means speaking against wrongdoing (1)","Jihad by the hand means acting to correct wrong where one is able (1)","Armed struggle is permitted only under strict conditions (1)","It requires proper authority, not individual decision (1)","Non-combatants, crops and places of worship are protected (1)","It is defensive in character and must stop when the other side stops (1)"],
+    trap:"Answering only about warfare. The syllabus asks for physical, mental and spiritual meanings — one of three cannot reach the top level." },
+  { cmd:"Explain", m:4, q:"'Belief in predestination removes a Muslim's responsibility for their actions.'<br><b>Do you agree?</b> Give reasons.",
+    ms:["Clear position (1)","Explains that God's knowledge does not force the choice (1)","Explains that judgement itself assumes real choice (1)","Reasoned conclusion (1)"],
+    trap:"Avoiding the question because it is difficult. Answer it directly — this is exactly what part (b) is for." },
+  { cmd:"Explain", m:4, q:"<b>Explain</b> the significance of salat for the individual Muslim.",
+    ms:["It is performed five times daily at set times (1)","It builds discipline and a regular routine (1)","It gives repeated direct contact with God through the day (1)","Congregational prayer builds equality and community (1)"],
+    trap:"Describing how to pray. This question asks what it does for the person, not the method." }
+]
+
+}
 
 };
 
